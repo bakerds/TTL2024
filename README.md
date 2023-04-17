@@ -5,5 +5,5 @@
 
 ---
 
-## [Routing Security -- BGP, IRR, and RPKI](routing-security/README.md)
+## [Routing Security — BGP, IRR, and RPKI](routing-security/README.md)
 :watch: Wednesday, May 3, 2023; 8:00 - 8:50 am
