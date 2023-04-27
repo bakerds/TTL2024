@@ -23,12 +23,12 @@
 ### What are IRR and RPKI for?
 
 - IRR serves three purposes:
-	- provides a means to publish your own routing intentions
-	- provites the information necessary to build route filters
-	- aids in troubleshooting and network management by providing information about other networks
+    - provides a means to publish your own routing intentions
+    - provites the information necessary to build route filters
+    - aids in troubleshooting and network management by providing information about other networks
 - RPKI serves two purposes:
-	- provides a cryptographic means to publish your own routing intentions
-	- provides a cryptographic means for validating routes you receive
+    - provides a cryptographic means to publish your own routing intentions
+    - provides a cryptographic means for validating routes you receive
 
 
 ### Why are route filtering and validation important?
@@ -38,12 +38,12 @@
 - Now the Internet has 5 billion users (about 70,000 active ASNs)
 - Routing issues can cause financial losses, compromise of data, or even loss of life!
 - Money and political gain are powerful incentives for some to tamper with Internet routing
-	- Hackers and scammers
-	- Unfriendly governments or adversaries
+    - Hackers and scammers
+    - Unfriendly governments or adversaries
 - Mistakes happen -- misconfigurations or software bugs can cause route leaks, loops, and traffic loss
 - Many providers use IRR to build filters. You must maintain up-to-date IRR entries to ensure all backbone carriers will carry your routes!
-	- *"But I don't have IRR, and my providers are carrying my routes just fine!"*
-	- Most likely one or more of your providers has created IRR records on your behalf, a practice known as "proxy registration". You should maintain your own IRR records rather than rely on a carrier to get them right. The records may have been created be a carrier you no longer use.
+    - *"But I don't have IRR, and my providers are carrying my routes just fine!"*
+    - Most likely one or more of your providers has created IRR records on your behalf, a practice known as "proxy registration". You should maintain your own IRR records rather than rely on a carrier to get them right. The records may have been created be a carrier you no longer use.
 - Many providers filter *RPKI invalid* routes but still accept *RPKI unknown* routes. You get the most protection against route hijacking by signing your route advertisements with RPKI so they are *RPKI valid*.
 
 
@@ -57,7 +57,7 @@ The IRR is not a single database -- there are several routing registries to choo
 
 The IRR can be queried using whois: `whois -h rr.arin.net AS14773`
 
-If you don't have a whois client (Windows :unamused:), you can query at https://www.radb.net/query
+If you don't have a whois client (Windows :unamused:), you can query from your web browser at [https://www.radb.net/query](https://www.radb.net/query?keywords=AS14773). If you're on Ubuntu, `sudo apt install whois`.
 
 
 ## Using the IRR
@@ -66,35 +66,35 @@ If you don't have a whois client (Windows :unamused:), you can query at https://
 
 #### Object types
 
-- route/route6: describes a prefix that you will originate
-	- Maintained By: links the record to your ARIN organization
-	- Prefix: the prefix you plan to announce
-	- Origin: the ASN that will originate the prefix
-	- Description: your organization's name and address, and any additional information about the prefix
-- as-set: specifies a set of Autonomous System Numbers (ASNs) through which traffic can be routed. Useful if you have downstream ASNs (customers)
-	- AS Set Name: the unique name of the as-set
-	- Description: your organization's name and address, and any additional information about the as-set
-	- Members: ASNs and as-set names that are included in the as-set
-- aut-num: specifies an ASN and its routing policies
-	- Maintained By: links the record to your ARIN organization
-	- ASN: the ASN described by this object
-	- AS Name: a human-readable nickname for the ASN
-	- Description: your organization's name and address, and any additional information about the autonomous system
-	- Routing Policy Specifications:
-		- Import: IPv4 import policy
-		- Export: IPv4 export policy
-		- Default: IPv4 default routing policy
-		- Mp Import: multi-protocol import policy (multi-protocol support added later for IPv6)
-		- Mp Export: multi-protocol export policy
-		- Mp Default: multi-protocol default routing policy
-		- Remarks: additional comments or notes visible to the public
-- route-set: a set of of IPv4 prefixes, IPv6 prefixes, and other route-sets that can be used in aut-num policy specifications
-	- Route Set Name: the unique name of the route-set
-	- Description: your organization's name and address, and any additional information about the route-set
-	- Members: a list of IPv4 prefixes or route-sets to include
-	- Mp Members: a list of IPv6 prefixes or route-sets to include
-	- Members by Reference: a list of organizations whose route objects should be included in the route-set
-	- Remarks: additional comments or notes visible to the public
+- **route/route6**: describes a prefix that you will originate
+    - Maintained By: links the record to your ARIN organization
+    - Prefix: the prefix you plan to announce
+    - Origin: the ASN that will originate the prefix
+    - Description: your organization's name and address, and any additional information about the prefix
+- **as-set**: specifies a set of Autonomous System Numbers (ASNs) through which traffic can be routed. Useful if you have downstream ASNs (customers)
+    - AS Set Name: the unique name of the as-set
+    - Description: your organization's name and address, and any additional information about the as-set
+    - Members: ASNs and as-set names that are included in the as-set
+- **aut-num**: specifies an ASN and its routing policies
+    - Maintained By: links the record to your ARIN organization
+    - ASN: the ASN described by this object
+    - AS Name: a human-readable nickname for the ASN
+    - Description: your organization's name and address, and any additional information about the autonomous system
+    - Routing Policy Specifications:
+        - Import: IPv4 import policy
+        - Export: IPv4 export policy
+        - Default: IPv4 default routing policy
+        - Mp Import: multi-protocol import policy (multi-protocol support added later for IPv6)
+        - Mp Export: multi-protocol export policy
+        - Mp Default: multi-protocol default routing policy
+        - Remarks: additional comments or notes visible to the public
+- **route-set**: a set of of IPv4 prefixes, IPv6 prefixes, and other route-sets that can be used in aut-num policy specifications
+    - Route Set Name: the unique name of the route-set
+    - Description: your organization's name and address, and any additional information about the route-set
+    - Members: a list of IPv4 prefixes or route-sets to include
+    - Mp Members: a list of IPv6 prefixes or route-sets to include
+    - Members by Reference: a list of organizations whose route objects should be included in the route-set
+    - Remarks: additional comments or notes visible to the public
 
 #### Example objects:
 
@@ -187,6 +187,74 @@ source:         ARIN
 
 ### Build route filters using IRR
 
+For customer networks (like school districts), it is most important to publish your own IRR objects. Filtering received routes using IRR is only necessary when you have customer networks or non-transit peerings.
+
+#### bgpq3
+
+[bgpq3](https://github.com/snar/bgpq3) is a utility used to generate router configurations (prefix-lists, extended access-lists, policy-statement terms and as-path lists) based on IRR data.  If you're on Ubuntu, `sudo apt install bgpq3`.
+
+bgpq3 can generate output formatted for JunOS, IOS, BIRD, generic JSON, and more. ([bgpq3 man page](https://github.com/snar/bgpq3/blob/master/README.md))
+
+##### Examples (JunOS)
+If you have customer AS395182 (Hempfield School District):
+
+```
+$ bgpq3 -Jz -4 -l Cust-Hempfield-v4 AS395182
+policy-options {
+replace:
+  route-filter-list Cust-Hempfield-v4 {
+    67.199.243.0/24 exact;
+  }
+}
+
+$ bgpq3 -Jz -6 -l Cust-Hempfield-v4 AS395182
+policy-options {
+replace:
+  route-filter-list Cust-Hempfield-v4 {
+    2620:120:c000::/40 exact;
+  }
+}
+```
+
+If you have peer AS20940 (Akamai — as-set AS-AKAMAI):
+
+```
+$ bgpq3 -Jz -A -4 -l Peer-Akamai-v4 AS-AKAMAI
+policy-options {
+replace:
+  route-filter-list Peer-Akamai-v4 {
+    2.16.0.0/13 exact;
+    2.16.0.0/22 prefix-length-range /24-/24;
+    2.16.4.0/22 prefix-length-range /23-/23;
+
+    ( 6449 lines omitted )
+
+    221.111.224.0/26 exact;
+  }
+}
+
+$ bgpq3 -Jz -A -6 -l Peer-Akamai-v6 AS-AKAMAI
+policy-options {
+replace:
+  route-filter-list Peer-Akamai-v6 {
+    2001:218:3003:100::/56 exact;
+    2001:218:3003:200::/56 exact;
+    2001:218:3004::/48 exact;
+    
+    ( 2820 lines omitted )
+       
+    2c0f:fd58:9::/64 exact;
+  }
+}
+
+```
+
+- **Config automation is strongly recommended!**
+    - For networks with more than a few customers or peers, config automation should be used to keep route filters up-to-date
+- **Watch out for filter list size!**
+    - Your router will likely crash and burn if you try to use a list that's too large
+    - For example, AS-HURRICANE, unsummarized, has over 900,000 IPv4 route entries and over 200,000 IPv6 route entries! Few, if any, hardware routers will handle lists that large
+	- Route server software such as BIRD can handle large filter sets more easily and are commonly deployed in IX peering environments
 
 
 ---
@@ -201,41 +269,41 @@ source:         ARIN
 #### Common scenarios for school districts connecting to the Internet:
 
 - Static routing
-	- The school leases a public IP address range from an ISP and uses a static route to send outbound traffic to the ISP
-	- The ISP owns the public IP address range and originates a BGP advertisement to the Internet
-	- Dual-homing is possible with NAT, but failover is bumpy and public-facing services are broken if the main provider is down
-	
+    - The school leases a public IP address range from an ISP and uses a static route to send outbound traffic to the ISP
+    - The ISP owns the public IP address range and originates a BGP advertisement to the Internet
+    - Dual-homing is possible with NAT, but failover is bumpy and public-facing services are broken if the main provider is down
+    
 - BGP with provider aggregable (PA) address space
-	- The school leases public IP address range from an ISP and uses BGP to advertise the prefix to the ISP
-	- The ISP owns the public IP address range and likely originates a BGP advertisement for a *larger* prefix to the Internet
-	- Dual-homing with two connections to the *same provider* is possible. Dual-homing with two *different* providers *may* be possible depending on prefix size and the policies of both ISPs
-	
+    - The school leases public IP address range from an ISP and uses BGP to advertise the prefix to the ISP
+    - The ISP owns the public IP address range and likely originates a BGP advertisement for a *larger* prefix to the Internet
+    - Dual-homing with two connections to the *same provider* is possible. Dual-homing with two *different* providers *may* be possible depending on prefix size and the policies of both ISPs
+    
 - BGP with provider independent (PI) address space
-	- The school is assigned an ASN and public IP address range from an RIR and uses BGP to advertise the prefix to the ISP
-	- The school originates the route from the school's ASN
-	- Dual-homing with multiple providers is possible (and required to quality for an ASN and IP allocation)
+    - The school is assigned an ASN and public IP address range from an RIR and uses BGP to advertise the prefix to the ISP
+    - The school originates the route from the school's ASN
+    - Dual-homing with multiple providers is possible (and required to quality for an ASN and IP allocation)
 
 
 #### Common scenarios for large organizations or small ISPs:
 
 - Transit
-	- The network operator purchases *full transit* connectivity from one or more larger providers. Full transit means a complete view of the Internet routing table and connectivity to 100% of the Internet
-	- The network operator has its own ASN and public IP allocations which it advertises to upstream carriers, along with customer advertisements
+    - The network operator purchases *full transit* connectivity from one or more larger providers. Full transit means a complete view of the Internet routing table and connectivity to 100% of the Internet
+    - The network operator has its own ASN and public IP allocations which it advertises to upstream carriers, along with customer advertisements
 - Transit and peering
-	- In addition to transit, the operator may establish *peering* with other providers. Peering is the exchange of a limited set of routes and traffic with another network, often a content provider such as Akamai, Netflix, or Google
-	- Peering is often available at no cost when the two networks are present in a common location
-	- 
+    - In addition to transit, the operator may establish *peering* with other providers. Peering is the exchange of a limited set of routes and traffic with another network, often a content provider such as Akamai, Netflix, or Google
+    - Peering is often available at no cost when the two networks are present in a common location
+    - 
 
 
 
 
 - Common types of BGP relationships:
-	- Transit provider
-		- Transit or "full transit" means the network operator purchases a complete view of the Internet routing table and connectivity to 100% of the Internet from a larger provider
-		- The network operator has its own ASN and public IP allocations which it advertises to upstream carriers, along with customer advertisements
-	- Peering
-		- Peering is the exchange of a limited set of routes and traffic with another network, frequently a content provider such as Akamai, Netflix, or Google
-		- Peering is often available at no cost when the two networks are present in a common location
-		- Peering helps to reduce transit bandwidth demands
-	- Customer
-		- A customer peering is wh
+    - Transit provider
+        - Transit or "full transit" means the network operator purchases a complete view of the Internet routing table and connectivity to 100% of the Internet from a larger provider
+        - The network operator has its own ASN and public IP allocations which it advertises to upstream carriers, along with customer advertisements
+    - Peering
+        - Peering is the exchange of a limited set of routes and traffic with another network, frequently a content provider such as Akamai, Netflix, or Google
+        - Peering is often available at no cost when the two networks are present in a common location
+        - Peering helps to reduce transit bandwidth demands
+    - Customer
+        - A customer peering is wh
