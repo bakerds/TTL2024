@@ -47,19 +47,17 @@
 - Many providers filter *RPKI invalid* routes but still accept *RPKI unknown* routes. You get the most protection against route hijacking by signing your route advertisements with RPKI so they are *RPKI valid*.
 
 
-
-
 ## IRR: Internet Routing Registry
 
 The IRR is not a single database -- there are several routing registries to choose from:
-- ARIN (most likely choice)
-- RADb (paid service, mirrors others)
-- Level3 (mirrors others)
-- NTT (mirrors others)
+- ARIN (most likely choice) - rr.arin.net
+- RADb (paid service) - whois.radb.net
+- Level3 - rr.level3.net
+- NTT - rr.ntt.net
 
-The IRR can be queried using WHOIS: `whois -h rr.arin.net AS14773`
+The IRR can be queried using whois: `whois -h rr.arin.net AS14773`
 
-*Using Windows? Try Windows Subsystem for Linux. At an elevated command prompt, run `wsl --install`. After installation completes, launch Ubuntu from the Start menu and run `sudo apt install whois`.*
+If you don't have a whois client (Windows :unamused:), you can query at https://www.radb.net/query
 
 
 ## Using the IRR
