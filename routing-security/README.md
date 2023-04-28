@@ -478,6 +478,8 @@ IU13 maintains two GoRTR servers which are used by our Internet routers and are 
 #### Router Configuration
 Juniper, Cisco, Arista, BIRD, and several other types of routers have native support for the RTR protocol.
 
+##### JunOS Example
+
 Configuring and verifying RTR functionality
 ```
 routing-options {
