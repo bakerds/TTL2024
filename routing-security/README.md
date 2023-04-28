@@ -55,7 +55,7 @@ The IRR is not a single database — there are several routing registries to cho
 - Level3 - rr.level3.net
 - NTT - rr.ntt.net
 
-Most IRR databases mirror eachother.
+Most IRR databases mirror the others.
 
 The IRR can be queried using whois: `whois -h rr.arin.net AS14773`
 
@@ -365,3 +365,78 @@ replace:
 ---
 
 # RPKI — Resource Public Key Infrastructure
+
+- RPKI uses cryptographically verifiable statements to ensure that Internet number resources are certifiably linked to the stated holders of those resources
+- Each Regional Internet Registry (RIR) is responsible for providing resource certificates to resource holders (customer organizations)
+- The resource certificate verifies the IP resources allocated to the organization
+- Resource certificates are available only to organizations who have contractual relationships with one or more RIRs and have been allocated number resources (IP addresses)
+
+#### RPKI Terminology
+- **Resource Certificate**: A certificate issued by an RIR that lists a the Internet number resources (IPv4 addresses, IPv6 addresses, and Autonomous System Numbers) that are associated with an organization
+- **Route Origin Authorization (ROA)**: a cryptographically signed object that states which Autonomous System (AS) is authorized to originate a particular IP address prefix or set of prefixes
+    - ROA Name: a descriptive name for the ROA
+	- Origin AS: the ASN that will originate the prefix
+	- Start Date: the first date your ROA can be considered valid
+	- End Date: the last date your ROA can be considered valid
+	- Prefixes: a list of prefixes to be included in the ROA
+
+#### Viewing RPKI records
+RPKI records are hosted in public repositories. The easiest way to query them is using a web service such as the [Cloudflare RPKI Portal](https://rpki.cloudflare.com/) or the [RIPE Routinator](https://rpki-validator.ripe.net/ui/)
+
+#### Example ROAs:
+[206.82.16.0/20](https://rpki.cloudflare.com/?view=explorer&prefix=206.82.16.0%2F20&explorerTab=list)
+
+![](images/cloudflare-roa.png)
+
+A ROA exists for 206.82.16.0/20 to be announced by AS14773. The ROA is signed by the ARIN Trust Anchor because the IP prefix was assigned by ARIN.
+
+## RPKI Models
+- Hosted RPKI
+    - Each RIR hosts a Certificate Authority (CA) and signs Route Origin Authorizations (ROAs) for resources within the RIR region
+	- Downstream organizations must have their upstream provider submit ROAs on their behalf
+	- Infrastructure is maintained by the RIR
+- Delegated RPKI
+    - You can run your own RPKI Certification Authority (CA), manage your Route Origin Authorizations (ROAs) and publish them in your own repository
+	- You can delegate subordinate CAs to downstream organization
+	- Infrastructure is maintained by the organization
+
+## Using the RPKI
+
+### Publishing routing information (ARIN Hosted RPKI)
+Official documentation: https://www.arin.net/resources/manage/rpki/hosted/
+
+You can preview this process using the ARIN Test environment before making changes to production! Log in at https://www.ote.arin.net
+
+- Create an RSA keypair to use to sign ROAs (store private key in a secure location!)
+    - `OpenSSL> genrsa -out orgkeypair.pem 2048`
+- Extract public key
+    - `OpenSSL> rsa -in orgkeypair.pem -pubout -outform PEM -out org_pubkey.pem`
+- Request a resource certificate from ARIN
+	- Log in to ARIN Online and navigate to Routing Security > RPKI
+	- Click "View Details" for your organization
+	- In the top bar of the Manage RPKI page, select "Hosted Certificate" from the top line menu
+	- Paste your public key that you created into the Public Key field
+	- Submit the form and wait for ARIN to email you saying they have issue the resource certificate
+- Create a ROA for each prefix you advertise in BGP
+	- Do not create ROAs for prefixes you do not plan to advertise!
+		- This creates an opportunity for a BGP hijack
+	- Do not use the max-length field to permit more-specific advertisements!
+		- This creates an opportunity for a BGP hijack
+	- Do not include multiple prefixes in a single ROA
+		- It is not possible to remove a prefix from an existing ROA
+		- If you need to remove a prefix from a ROA with multiple prefixes, you would need to delete the entire ROA and recreate it
+		- Best practice is to create your ROAs with exactly one prefix each
+
+![](images/arin-rpki-1.png)
+
+- When creating a ROA in ARIN, you need to provide your private key
+	- The private key is used client-side to sign the ROA, which is then submitted to ARIN
+	- The private key is **not** submitted to ARIN, and should *never be shared or uploaded* anywhere
+	- If you lose your private key, you will need to submit a ticket to ARIN to have your RPKI records deleted and start over with a new resource certificate
+
+![](images/arin-rpki-2.png)
+
+- Enter the required information, attack your private key, and click Next Step
+- The web page will generate the ROA signed by your private key and then provide a validation screen where you can confirm or cancel ROA creation
+
+### Validating received routes
