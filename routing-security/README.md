@@ -371,7 +371,7 @@ replace:
 - The resource certificate verifies the IP resources allocated to the organization
 - Resource certificates are available only to organizations who have contractual relationships with one or more RIRs and have been allocated number resources (IP addresses)
 
-#### RPKI Terminology
+**RPKI Terminology**
 - **Resource Certificate**: A certificate issued by an RIR that lists a the Internet number resources (IPv4 addresses, IPv6 addresses, and Autonomous System Numbers) that are associated with an organization
 - **Route Origin Authorization (ROA)**: a cryptographically signed object that states which Autonomous System (AS) is authorized to originate a particular IP address prefix or set of prefixes
     - ROA Name: a descriptive name for the ROA
@@ -380,10 +380,11 @@ replace:
 	- End Date: the last date your ROA can be considered valid
 	- Prefixes: a list of prefixes to be included in the ROA
 
-#### Viewing RPKI records
+## Viewing RPKI records
 RPKI records are hosted in public repositories. The easiest way to query them is using a web service such as the [Cloudflare RPKI Portal](https://rpki.cloudflare.com/) or the [RIPE Routinator](https://rpki-validator.ripe.net/ui/)
 
-#### Example ROAs:
+**Example ROAs**
+
 [206.82.16.0/20](https://rpki.cloudflare.com/?view=explorer&prefix=206.82.16.0%2F20&explorerTab=list)
 
 ![](images/cloudflare-roa.png)
