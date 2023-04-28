@@ -1,6 +1,6 @@
 # Routing Security — BGP, IRR, and RPKI
 
-## Important terms:
+## Important terms
 
 - **Router**: a device that connects multiple networks at layer 3
 - **Autonomous System (AS)**: a network or group of networks that belongs to a single organization and is connected to the Internet
@@ -33,21 +33,21 @@
 
 ### Why are route filtering and validation important?
 
-- The early Internet was built on trust between the connected networks
+- The early Internet was built on trust between the connected networks. BGP has no built-in security, so **any** ASN can announce **any** prefix!
 - Network operators are generally well-behaved and announce the correct routes
 - Now the Internet has 5 billion users (about 70,000 active ASNs)
 - Routing issues can cause financial losses, compromise of data, or even loss of life!
 - Money and political gain are powerful incentives for some to tamper with Internet routing
     - Hackers and scammers
     - Unfriendly governments or adversaries
-- Mistakes happen -- misconfigurations or software bugs can cause route leaks, loops, and traffic loss
+- Mistakes happen — misconfigurations or software bugs can cause route leaks, loops, and traffic loss
 - Many providers use IRR to build filters. You must maintain up-to-date IRR entries to ensure all backbone carriers will carry your routes!
     - *"But I don't have IRR, and my providers are carrying my routes just fine!"*
     - Most likely one or more of your providers has created IRR records on your behalf, a practice known as "proxy registration". You should maintain your own IRR records rather than rely on a carrier to get them right. The records may have been created be a carrier you no longer use.
 - Many providers filter *RPKI invalid* routes but still accept *RPKI unknown* routes. You get the most protection against route hijacking by signing your route advertisements with RPKI so they are *RPKI valid*.
 
 
-## IRR: Internet Routing Registry
+# IRR: Internet Routing Registry
 
 The IRR is not a single database -- there are several routing registries to choose from:
 - ARIN (most likely choice) - rr.arin.net
@@ -57,7 +57,7 @@ The IRR is not a single database -- there are several routing registries to choo
 
 The IRR can be queried using whois: `whois -h rr.arin.net AS14773`
 
-If you don't have a whois client (Windows :unamused:), you can query from your web browser at [https://www.radb.net/query](https://www.radb.net/query?keywords=AS14773). If you're on Ubuntu, `sudo apt install whois`.
+If you don't have a whois client (Windows :unamused:), you can query from your web browser at :link: [https://www.radb.net/query](https://www.radb.net/query?keywords=AS14773). If you're on Ubuntu, `sudo apt install whois`.
 
 
 ## Using the IRR
@@ -96,7 +96,7 @@ If you don't have a whois client (Windows :unamused:), you can query from your w
     - Members by Reference: a list of organizations whose route objects should be included in the route-set
     - Remarks: additional comments or notes visible to the public
 
-#### Example objects:
+#### Example objects
 
 ##### aut-num
 IU13 WAN
@@ -195,7 +195,7 @@ For customer networks (like school districts), it is most important to publish y
 
 bgpq3 can generate output formatted for JunOS, IOS, BIRD, generic JSON, and more. ([bgpq3 man page](https://github.com/snar/bgpq3/blob/master/README.md))
 
-##### Examples (JunOS)
+#### Examples (JunOS)
 If you have customer AS395182 (Hempfield School District):
 
 ```
@@ -256,11 +256,11 @@ replace:
     - For example, AS-HURRICANE, unsummarized, has over 900,000 IPv4 route entries and over 200,000 IPv6 route entries! Few, if any, hardware routers will handle lists that large
 	- Route server software such as BIRD can handle large filter sets more easily and are commonly deployed in IX peering environments
 
-### Next Steps
+### Next Steps — Check the state of your IRR (and fix it!)
 
-#### Checking out the state of your IRR
+#### Example: Check the state of your IRR
 
-#### Example: Red Lion Area School District
+**Red Lion Area School District**
 
 Let's find out what IP ranges they have been assigned by ARIN:
 ```
@@ -278,7 +278,7 @@ $ whois -h rr.arin.net 192.133.103.0/24
 %  No entries found for the selected source(s).
 ```
 
-Nothing in ARIN, so let's try RADb:
+Nothing in ARIN... let's try RADb:
 ```
 $ whois -h whois.radb.net 192.133.103.0/24
 route:      192.133.103.0/24
@@ -289,21 +289,24 @@ changed:    skyler.blumer@zitomedia.com 20220330
 source:     RADB
 ```
 
-`descr: Zito Networks` is clearly not accurate, since ARIN says the prefix is allocated to Red Lion! Notice that the maintainer is Zito as well. This is an example of "proxy registration", where a carrier creates IRR on behalf of their customer to make sure the route is accepted upstream.
+`descr: Zito Networks` is clearly not accurate, since ARIN says the prefix is allocated to Red Lion! Notice that the maintainer is Zito as well. This is an example of "proxy registration", where a carrier creates IRR on behalf of their customer to make sure the customer's route is accepted upstream.
 
-Red Lion has two ISPs, Zito and FirstLight. What would happen if Red Lion's contract with Zito ended and Zito chose to clean up their IRR records? FirstLight might still carry Red Lion's prefix, but their upstream carriers would likely begin filtering it, causing bad routing or even service disruption for Red Lion!
+Red Lion has two ISPs, Zito and FirstLight. What would happen if Red Lion's contract with Zito ended and Zito chose to clean up their IRR records? FirstLight *might* still carry Red Lion's prefix, but their upstream carriers would likely begin filtering it, causing bad routing or even service disruption for the school district!
 
 Don't worry, you don't have to check every IRR database individually!
 
-The [IRR Explorer](https://irrexplorer.nlnog.net/) queries all of the IRR databases and displays a column for each with a link to view the underlying whois query and response.
+[IRR Explorer](https://irrexplorer.nlnog.net/) queries all of the IRR databases and displays a column for each database the prefix appears in, with a link to view the underlying whois query and response.
 
-https://irrexplorer.nlnog.net/asn/AS397737
+:link: https://irrexplorer.nlnog.net/asn/AS397737
+
+Here we see that Red Lion's prefix appears only in RADb, the same record we discovered above.
 
 ![](images/rlasd-irr.png)
 ![](images/rlasd-radb.png)
 
-##### Next steps
-Red Lion should create the following IRR records in the ARIN Dashboard (information pulled from public ARIN records):
+#### Example: Publishing IRR
+
+Red Lion should create the following IRR records in the ARIN Dashboard:
 
 **aut-num**
 ```
@@ -332,12 +335,24 @@ tech-c:         BEARD140-ARIN
 mnt-by:         MNT-RLASD
 ```
 
-##### ARIN Dashboard
+ARIN Dashboard Preview
 
-https://account.arin.net/public/secure/dashboard
+:link: https://account.arin.net/public/secure/dashboard
 
 ![](images/arin-dashboard-1.png)
 ![](images/arin-dashboard-2.png)
 ![](images/arin-dashboard-aut-num.png)
 ![](images/arin-dashboard-3.png)
 ![](images/arin-dashboard-route.png)
+
+### Problems with IRR
+- IRR data is incomplete — not every organization has published IRR
+- IRR data may become outdated and inaccurate over time if not actively maintained
+- Not every network uses IRR to filter routes
+- There is no verification of IP or ASN ownership, so untrue records could be created in the IRR in an attempt to permit BGP hijacks rather than prevent them
+
+### Questions about IRR?
+
+---
+
+# RPKI — Resource Public Key Infrastructure
