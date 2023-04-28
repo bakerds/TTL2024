@@ -47,22 +47,26 @@
 - Many providers filter *RPKI invalid* routes but still accept *RPKI unknown* routes. You get the most protection against route hijacking by signing your route advertisements with RPKI so they are *RPKI valid*.
 
 
-# IRR: Internet Routing Registry
+# IRR — Internet Routing Registry
 
-The IRR is not a single database -- there are several routing registries to choose from:
+The IRR is not a single database — there are several routing registries to choose from:
 - ARIN (most likely choice) - rr.arin.net
-- RADb (paid service) - whois.radb.net
+- RADb (pay to list) - whois.radb.net
 - Level3 - rr.level3.net
 - NTT - rr.ntt.net
 
+Most IRR databases mirror eachother.
+
 The IRR can be queried using whois: `whois -h rr.arin.net AS14773`
 
-If you don't have a whois client (Windows :unamused:), you can query from your web browser at :link: [https://www.radb.net/query](https://www.radb.net/query?keywords=AS14773). If you're on Ubuntu, `sudo apt install whois`.
+If you don't have a whois client (Windows :unamused:), you can query from your web browser at [https://www.radb.net/query](https://www.radb.net/query?keywords=AS14773).
+
+(If you're on Ubuntu/Debian, `sudo apt install whois`)
 
 
 ## Using the IRR
 
-### Publish routing information about your networks
+### Publishing routing information
 
 #### Object types
 
@@ -185,13 +189,106 @@ last-modified:  2022-10-03T15:48:56Z
 source:         ARIN
 ```
 
-### Build route filters using IRR
+#### Example: Checking the state of IRR
 
-For customer networks (like school districts), it is most important to publish your own IRR objects. Filtering received routes using IRR is only necessary when you have customer networks or non-transit peerings.
+**Red Lion Area School District**
+
+Let's find out what IP ranges they have been assigned by ARIN:
+```
+$ whois -h whois.arin.net "o ! >  RLASD" | grep NET
+Red Lion Area School District RLASD-ISP (NET-192-133-103-0-1) 192.133.103.0 - 192.133.103.255
+Red Lion Area School District RED-LION-AREA-SCHOOL-DISTRICT (NET6-2620-73-A000-1) 2620:73:A000:: - 2620:73:A000:FFFF:FFFF:FFFF:FFFF:FFFF
+```
+We found these prefixes:
+- 192.133.103.0/24
+- 2620:73:a000::/48
+
+Let's query the IRR for 192.133.103.0/24:
+```
+$ whois -h rr.arin.net 192.133.103.0/24
+%  No entries found for the selected source(s).
+```
+
+Nothing in ARIN... let's try RADb:
+```
+$ whois -h whois.radb.net 192.133.103.0/24
+route:      192.133.103.0/24
+descr:      Zito Networks
+origin:     AS397737
+mnt-by:     MAINT-AS26801
+changed:    skyler.blumer@zitomedia.com 20220330
+source:     RADB
+```
+
+`descr: Zito Networks` is clearly not accurate, since ARIN says the prefix is allocated to Red Lion! Notice that the maintainer is Zito as well. This is an example of "proxy registration", where a carrier creates IRR on behalf of their customer to make sure the customer's route is accepted upstream.
+
+Red Lion has two ISPs, Zito and FirstLight. What would happen if Red Lion's contract with Zito ended and Zito chose to clean up their IRR records? FirstLight *might* still carry Red Lion's prefix, but their upstream carriers would likely begin filtering it, causing bad routing or even service disruption for the school district!
+
+Don't worry, you don't have to check every IRR database individually!
+
+[IRR Explorer](https://irrexplorer.nlnog.net/) queries all of the IRR databases and displays a column for each database a prefix appears in, with a link to view the underlying whois query and response.
+
+Red Lion: https://irrexplorer.nlnog.net/asn/AS397737
+
+Here we see that Red Lion's prefix appears only in RADb, the same record we discovered above.
+
+![](images/rlasd-irr.png)
+![](images/rlasd-radb.png)
+
+IU13: https://irrexplorer.nlnog.net/asn/AS14773
+
+Notice the ARIN entries maintained by IU13, and RADb entries created in the past by Comcast and Zito. As long as the `origin: AS14773` is correct, it is ok to have those duplicate records. However, if a provider has listed your prefix with a different origin ASN, you should contact the IRR database operator and request that the record be removed (after you publish your own correct IRR records!)
+
+#### Example: Publishing IRR Records
+
+Red Lion should create the following IRR records in the ARIN Dashboard:
+
+**aut-num**
+```
+aut-num:        AS397737
+as-name:        RLASD
+descr:          Red Lion Area School District
+                696 Delta Rd
+                Red Lion PA 17356
+                United States
+mp-export:      afi any.unicast to AS-ANY announce AS397737
+admin-c:        BEARD140-ARIN
+tech-c:         BEARD140-ARIN
+mnt-by:         MNT-RLASD
+```
+
+**route**
+```
+route:          206.82.16.0/20
+origin:         AS397737
+descr:          Red Lion Area School District
+                696 Delta Rd
+                Red Lion PA 17356
+                United States
+admin-c:        BEARD140-ARIN
+tech-c:         BEARD140-ARIN
+mnt-by:         MNT-RLASD
+```
+
+ARIN Dashboard Preview
+
+https://account.arin.net/public/secure/dashboard
+
+![](images/arin-dashboard-1.png)
+![](images/arin-dashboard-2.png)
+![](images/arin-dashboard-aut-num.png)
+![](images/arin-dashboard-3.png)
+![](images/arin-dashboard-route.png)
+
+### Building route filters using IRR
+
+For customer networks (like school districts), it is important to publish your own IRR objects. Filtering received routes using IRR is only necessary when you have customer networks or non-transit peerings. Do not try to filter routes you receive from a full transit provider!
 
 #### bgpq3
 
-[bgpq3](https://github.com/snar/bgpq3) is a utility used to generate router configurations (prefix-lists, extended access-lists, policy-statement terms and as-path lists) based on IRR data.  If you're on Ubuntu, `sudo apt install bgpq3`.
+[bgpq3](https://github.com/snar/bgpq3) is a utility used to generate router configurations (prefix-lists, extended access-lists, policy-statement terms and as-path lists) based on IRR data.
+
+(If you're on Ubuntu/Debian, `sudo apt install bgpq3`)
 
 bgpq3 can generate output formatted for JunOS, IOS, BIRD, generic JSON, and more. ([bgpq3 man page](https://github.com/snar/bgpq3/blob/master/README.md))
 
@@ -255,95 +352,7 @@ replace:
     - Your router will likely crash and burn if you try to use a list that's too large
     - For example, AS-HURRICANE, unsummarized, has over 900,000 IPv4 route entries and over 200,000 IPv6 route entries! Few, if any, hardware routers will handle lists that large
 	- Route server software such as BIRD can handle large filter sets more easily and are commonly deployed in IX peering environments
-
-### Next Steps — Check the state of your IRR (and fix it!)
-
-#### Example: Check the state of your IRR
-
-**Red Lion Area School District**
-
-Let's find out what IP ranges they have been assigned by ARIN:
-```
-$ whois -h whois.arin.net "o ! >  RLASD" | grep NET
-Red Lion Area School District RLASD-ISP (NET-192-133-103-0-1) 192.133.103.0 - 192.133.103.255
-Red Lion Area School District RED-LION-AREA-SCHOOL-DISTRICT (NET6-2620-73-A000-1) 2620:73:A000:: - 2620:73:A000:FFFF:FFFF:FFFF:FFFF:FFFF
-```
-We found these:
-- 192.133.103.0/24
-- 2620:73:a000::/48
-
-Let's look for IRR for 192.133.103.0/24:
-```
-$ whois -h rr.arin.net 192.133.103.0/24
-%  No entries found for the selected source(s).
-```
-
-Nothing in ARIN... let's try RADb:
-```
-$ whois -h whois.radb.net 192.133.103.0/24
-route:      192.133.103.0/24
-descr:      Zito Networks
-origin:     AS397737
-mnt-by:     MAINT-AS26801
-changed:    skyler.blumer@zitomedia.com 20220330
-source:     RADB
-```
-
-`descr: Zito Networks` is clearly not accurate, since ARIN says the prefix is allocated to Red Lion! Notice that the maintainer is Zito as well. This is an example of "proxy registration", where a carrier creates IRR on behalf of their customer to make sure the customer's route is accepted upstream.
-
-Red Lion has two ISPs, Zito and FirstLight. What would happen if Red Lion's contract with Zito ended and Zito chose to clean up their IRR records? FirstLight *might* still carry Red Lion's prefix, but their upstream carriers would likely begin filtering it, causing bad routing or even service disruption for the school district!
-
-Don't worry, you don't have to check every IRR database individually!
-
-[IRR Explorer](https://irrexplorer.nlnog.net/) queries all of the IRR databases and displays a column for each database the prefix appears in, with a link to view the underlying whois query and response.
-
-:link: https://irrexplorer.nlnog.net/asn/AS397737
-
-Here we see that Red Lion's prefix appears only in RADb, the same record we discovered above.
-
-![](images/rlasd-irr.png)
-![](images/rlasd-radb.png)
-
-#### Example: Publishing IRR
-
-Red Lion should create the following IRR records in the ARIN Dashboard:
-
-**aut-num**
-```
-aut-num:        AS397737
-as-name:        RLASD
-descr:          Red Lion Area School District
-                696 Delta Rd
-                Red Lion PA 17356
-                United States
-mp-export:      afi any.unicast to AS-ANY announce AS397737
-admin-c:        BEARD140-ARIN
-tech-c:         BEARD140-ARIN
-mnt-by:         MNT-RLASD
-```
-
-**route**
-```
-route:          206.82.16.0/20
-origin:         AS397737
-descr:          Red Lion Area School District
-                696 Delta Rd
-                Red Lion PA 17356
-                United States
-admin-c:        BEARD140-ARIN
-tech-c:         BEARD140-ARIN
-mnt-by:         MNT-RLASD
-```
-
-ARIN Dashboard Preview
-
-:link: https://account.arin.net/public/secure/dashboard
-
-![](images/arin-dashboard-1.png)
-![](images/arin-dashboard-2.png)
-![](images/arin-dashboard-aut-num.png)
-![](images/arin-dashboard-3.png)
-![](images/arin-dashboard-route.png)
+	- Again, do not try to filter full transit providers! Filter customers and peers only.
 
 ### Problems with IRR
 - IRR data is incomplete — not every organization has published IRR
