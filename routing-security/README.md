@@ -24,7 +24,7 @@
 
 - IRR serves three purposes:
     - provides a means to publish your own routing intentions
-    - provites the information necessary to build route filters
+    - provides the information necessary to build route filters
     - aids in troubleshooting and network management by providing information about other networks
 - RPKI serves two purposes:
     - provides a cryptographic means to publish your own routing intentions
@@ -92,7 +92,7 @@ If you don't have a whois client (Windows :unamused:), you can query from your w
         - Mp Export: multi-protocol export policy
         - Mp Default: multi-protocol default routing policy
         - Remarks: additional comments or notes visible to the public
-- **route-set**: a set of of IPv4 prefixes, IPv6 prefixes, and other route-sets that can be used in aut-num policy specifications
+- **route-set**: a set of IPv4 prefixes, IPv6 prefixes, and other route-sets that can be used in aut-num policy specifications
     - Route Set Name: the unique name of the route-set
     - Description: your organization's name and address, and any additional information about the route-set
     - Members: a list of IPv4 prefixes or route-sets to include
@@ -380,7 +380,7 @@ replace:
 	- End Date: the last date your ROA can be considered valid
 	- Prefixes: a list of prefixes to be included in the ROA
 - **Route Origin Validation**: Comparing route announcements to ROAs to determine whether a route announcement is valid
-	- Valid: a ROA exists for the prefix, and the orgin AS of the route announcement matches the origin AS specified in the ROA (the announcement should be accepted)
+	- Valid: a ROA exists for the prefix, and the origin AS of the route announcement matches the origin AS specified in the ROA (the announcement should be accepted)
 	- Invalid: a ROA exists for the prefix, but the origin AS of the announcement *does not* match the origin AS specified in the ROA (the announcement should be rejected)
 	- Not Found: no ROA exists for the prefix in the announcement (the announcement is usually accepted)
 
