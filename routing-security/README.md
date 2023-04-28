@@ -256,54 +256,88 @@ replace:
     - For example, AS-HURRICANE, unsummarized, has over 900,000 IPv4 route entries and over 200,000 IPv6 route entries! Few, if any, hardware routers will handle lists that large
 	- Route server software such as BIRD can handle large filter sets more easily and are commonly deployed in IX peering environments
 
+### Next Steps
 
----
+#### Checking out the state of your IRR
 
+#### Example: Red Lion Area School District
 
----
+Let's find out what IP ranges they have been assigned by ARIN:
+```
+$ whois -h whois.arin.net "o ! >  RLASD" | grep NET
+Red Lion Area School District RLASD-ISP (NET-192-133-103-0-1) 192.133.103.0 - 192.133.103.255
+Red Lion Area School District RED-LION-AREA-SCHOOL-DISTRICT (NET6-2620-73-A000-1) 2620:73:A000:: - 2620:73:A000:FFFF:FFFF:FFFF:FFFF:FFFF
+```
+We found these:
+- 192.133.103.0/24
+- 2620:73:a000::/48
 
+Let's look for IRR for 192.133.103.0/24:
+```
+$ whois -h rr.arin.net 192.133.103.0/24
+%  No entries found for the selected source(s).
+```
 
+Nothing in ARIN, so let's try RADb:
+```
+$ whois -h whois.radb.net 192.133.103.0/24
+route:      192.133.103.0/24
+descr:      Zito Networks
+origin:     AS397737
+mnt-by:     MAINT-AS26801
+changed:    skyler.blumer@zitomedia.com 20220330
+source:     RADB
+```
 
+`descr: Zito Networks` is clearly not accurate, since ARIN says the prefix is allocated to Red Lion! Notice that the maintainer is Zito as well. This is an example of "proxy registration", where a carrier creates IRR on behalf of their customer to make sure the route is accepted upstream.
 
+Red Lion has two ISPs, Zito and FirstLight. What would happen if Red Lion's contract with Zito ended and Zito chose to clean up their IRR records? FirstLight might still carry Red Lion's prefix, but their upstream carriers would likely begin filtering it, causing bad routing or even service disruption for Red Lion!
 
-#### Common scenarios for school districts connecting to the Internet:
+Don't worry, you don't have to check every IRR database individually!
 
-- Static routing
-    - The school leases a public IP address range from an ISP and uses a static route to send outbound traffic to the ISP
-    - The ISP owns the public IP address range and originates a BGP advertisement to the Internet
-    - Dual-homing is possible with NAT, but failover is bumpy and public-facing services are broken if the main provider is down
-    
-- BGP with provider aggregable (PA) address space
-    - The school leases public IP address range from an ISP and uses BGP to advertise the prefix to the ISP
-    - The ISP owns the public IP address range and likely originates a BGP advertisement for a *larger* prefix to the Internet
-    - Dual-homing with two connections to the *same provider* is possible. Dual-homing with two *different* providers *may* be possible depending on prefix size and the policies of both ISPs
-    
-- BGP with provider independent (PI) address space
-    - The school is assigned an ASN and public IP address range from an RIR and uses BGP to advertise the prefix to the ISP
-    - The school originates the route from the school's ASN
-    - Dual-homing with multiple providers is possible (and required to quality for an ASN and IP allocation)
+The [IRR Explorer](https://irrexplorer.nlnog.net/) queries all of the IRR databases and displays a column for each with a link to view the underlying whois query and response.
 
+https://irrexplorer.nlnog.net/asn/AS397737
 
-#### Common scenarios for large organizations or small ISPs:
+![](images/rlasd-irr.png)
+![](images/rlasd-radb.png)
 
-- Transit
-    - The network operator purchases *full transit* connectivity from one or more larger providers. Full transit means a complete view of the Internet routing table and connectivity to 100% of the Internet
-    - The network operator has its own ASN and public IP allocations which it advertises to upstream carriers, along with customer advertisements
-- Transit and peering
-    - In addition to transit, the operator may establish *peering* with other providers. Peering is the exchange of a limited set of routes and traffic with another network, often a content provider such as Akamai, Netflix, or Google
-    - Peering is often available at no cost when the two networks are present in a common location
-    - 
+##### Next steps
+Red Lion should create the following IRR records in the ARIN Dashboard (information pulled from public ARIN records):
 
+**aut-num**
+```
+aut-num:        AS397737
+as-name:        RLASD
+descr:          Red Lion Area School District
+                696 Delta Rd
+                Red Lion PA 17356
+                United States
+mp-export:      afi any.unicast to AS-ANY announce AS397737
+admin-c:        BEARD140-ARIN
+tech-c:         BEARD140-ARIN
+mnt-by:         MNT-RLASD
+```
 
+**route**
+```
+route:          206.82.16.0/20
+origin:         AS397737
+descr:          Red Lion Area School District
+                696 Delta Rd
+                Red Lion PA 17356
+                United States
+admin-c:        BEARD140-ARIN
+tech-c:         BEARD140-ARIN
+mnt-by:         MNT-RLASD
+```
 
+##### ARIN Dashboard
 
-- Common types of BGP relationships:
-    - Transit provider
-        - Transit or "full transit" means the network operator purchases a complete view of the Internet routing table and connectivity to 100% of the Internet from a larger provider
-        - The network operator has its own ASN and public IP allocations which it advertises to upstream carriers, along with customer advertisements
-    - Peering
-        - Peering is the exchange of a limited set of routes and traffic with another network, frequently a content provider such as Akamai, Netflix, or Google
-        - Peering is often available at no cost when the two networks are present in a common location
-        - Peering helps to reduce transit bandwidth demands
-    - Customer
-        - A customer peering is wh
+https://account.arin.net/public/secure/dashboard
+
+![](images/arin-dashboard-1.png)
+![](images/arin-dashboard-2.png)
+![](images/arin-dashboard-aut-num.png)
+![](images/arin-dashboard-3.png)
+![](images/arin-dashboard-route.png)
