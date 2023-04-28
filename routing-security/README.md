@@ -428,16 +428,19 @@ You can preview this process using the ARIN Test environment before making chang
 		- If you need to remove a prefix from a ROA with multiple prefixes, you would need to delete the entire ROA and recreate it
 		- Best practice is to create your ROAs with exactly one prefix each
 
-![](images/arin-rpki-1.png)
+	![](images/arin-rpki-1.png)
 
-- When creating a ROA in ARIN, you need to provide your private key
-	- The private key is used client-side to sign the ROA, which is then submitted to ARIN
-	- The private key is **not** submitted to ARIN, and should *never be shared or uploaded* anywhere
-	- If you lose your private key, you will need to submit a ticket to ARIN to have your RPKI records deleted and start over with a new resource certificate
+	- When creating a ROA in ARIN, you need to provide your private key
+		- The private key is used client-side to sign the ROA, which is then submitted to ARIN
+		- The private key is **not** submitted to ARIN, and should *never be shared or uploaded* anywhere
+		- If you lose your private key, you will need to submit a ticket to ARIN to have your RPKI records deleted and start over with a new resource certificate
 
-![](images/arin-rpki-2.png)
+	![](images/arin-rpki-2.png)
 
-- Enter the required information, attach your private key, and click Next Step
-- The web page will generate the ROA signed by your private key and then provide a validation screen where you can confirm or cancel ROA creation
+	- Enter the required information, attach your private key, and click Next Step
+	- The web page will generate the ROA signed by your private key and then provide a validation screen where you can confirm or cancel ROA creation
+
+- Monitor ROAs and resource certificate for expiration
+	- ARIN does not currently have a means to automatically renew expiring ROAs, but will likely release one in the future
 
 ### Validating received routes
