@@ -406,7 +406,7 @@ A ROA exists for 206.82.16.0/20 to be announced by AS14773. The ROA is signed by
 ### Publishing routing information (ARIN Hosted RPKI)
 Official documentation: https://www.arin.net/resources/manage/rpki/hosted/
 
-You can preview this process using the ARIN Test environment before making changes to production! Log in at https://www.ote.arin.net
+You can preview this process using the ARIN Operational Test and Evaluation environment (OT&E) before making changes to production! Log in at https://www.ote.arin.net
 
 - Create an RSA keypair to use to sign ROAs (store private key in a secure location!)
     - `OpenSSL> genrsa -out orgkeypair.pem 2048`
@@ -414,10 +414,15 @@ You can preview this process using the ARIN Test environment before making chang
     - `OpenSSL> rsa -in orgkeypair.pem -pubout -outform PEM -out org_pubkey.pem`
 - Request a resource certificate from ARIN
 	- Log in to ARIN Online and navigate to Routing Security > RPKI
-	- Click "View Details" for your organization
-	- In the top bar of the Manage RPKI page, select "Hosted Certificate" from the top line menu
+	- Click "Sign up for RPKI" for your organization
+	![](images/arin-rpki-signup.png)
+	- Choose "Configure Hosted"
+	![](images/arin-rpki-signup-2.png)
 	- Paste your public key that you created into the Public Key field
+	![](images/arin-rpki-signup-3.png)
 	- Submit the form and wait for ARIN to email you saying they have issue the resource certificate
+	![](images/arin-rpki-signup-4.png)
+		- If you are working in the test environment (OT&E), you should open a ticket in the production environment referencing your OT&E ticket number, as OT&E tickets are not monitored regularly.
 - Create a ROA for each prefix you advertise in BGP
 	- Do not create ROAs for prefixes you do not plan to advertise!
 		- This creates an opportunity for a BGP hijack
@@ -427,17 +432,13 @@ You can preview this process using the ARIN Test environment before making chang
 		- It is not possible to remove a prefix from an existing ROA
 		- If you need to remove a prefix from a ROA with multiple prefixes, you would need to delete the entire ROA and recreate it
 		- Best practice is to create your ROAs with exactly one prefix each
-
-	![](images/arin-rpki-1.png)
-
 	- When creating a ROA in ARIN, you need to provide your private key
 		- The private key is used client-side to sign the ROA, which is then submitted to ARIN
 		- The private key is **not** submitted to ARIN, and should *never be shared or uploaded* anywhere
 		- If you lose your private key, you will need to submit a ticket to ARIN to have your RPKI records deleted and start over with a new resource certificate
-
-	![](images/arin-rpki-2.png)
-
 	- Enter the required information, attach your private key, and click Next Step
+	![](images/arin-rpki-1.png)
+	![](images/arin-rpki-2.png)
 	- The web page will generate the ROA signed by your private key and then provide a validation screen where you can confirm or cancel ROA creation
 
 - Monitor ROAs and resource certificate for expiration
