@@ -392,7 +392,7 @@ RPKI records are hosted in public repositories. The easiest way to query them is
 A ROA exists for 206.82.16.0/20 to be announced by AS14773. The ROA is signed by the ARIN Trust Anchor because the IP prefix was assigned by ARIN.
 
 ## RPKI Models
-- Hosted RPKI
+- Hosted RPKI — Recommended
     - Each RIR hosts a Certificate Authority (CA) and signs Route Origin Authorizations (ROAs) for resources within the RIR region
 	- Downstream organizations must have their upstream provider submit ROAs on their behalf
 	- Infrastructure is maintained by the RIR
@@ -437,7 +437,7 @@ You can preview this process using the ARIN Test environment before making chang
 
 ![](images/arin-rpki-2.png)
 
-- Enter the required information, attack your private key, and click Next Step
+- Enter the required information, attach your private key, and click Next Step
 - The web page will generate the ROA signed by your private key and then provide a validation screen where you can confirm or cancel ROA creation
 
 ### Validating received routes
