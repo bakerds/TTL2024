@@ -573,3 +573,8 @@ set policy-options policy-statement Import-from-Transit term RPKI-Invalid from v
 set policy-options policy-statement Import-from-Transit term RPKI-Invalid then validation-state invalid
 set policy-options policy-statement Import-from-Transit term RPKI-Invalid then reject
 ```
+
+### Test your network
+https://isbgpsafeyet.com/
+
+### Questions about RPKI?
