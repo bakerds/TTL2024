@@ -10,5 +10,5 @@ hide:
 
 ---
 
-## [Routing Security — BGP, IRR, and RPKI](Routing Security — BGP, IRR, and RPKI/000-intro.md)
+## [Routing Security — BGP, IRR, and RPKI](routing-security/index.md)
 :clock8: Wednesday, May 3, 2023; 8:00 - 8:50 am

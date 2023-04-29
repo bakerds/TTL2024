@@ -1,5 +1,14 @@
 site_name: TechTalk Live 2023
 site_url: https://ttl.iu13.net/
+nav:
+  - index.md
+  - Introduction to IPv6:
+    - 'ipv6/index.md'
+  - Routing Security — BGP, IRR, and RPKI:
+    - 'routing-security/index.md'
+    - 'routing-security/100-irr.md'
+    - 'routing-security/200-rpki.md'
+  - about.md
 theme:
   name: material
   features:
@@ -23,6 +32,9 @@ theme:
         name: Switch to light mode
 extra:
   generator: false
+  social:
+    - icon: fontawesome/brands/linkedin 
+      link: https://www.linkedin.com/in/dsbaker1/
 copyright: "Copyright © 2023 Dan Baker"
 markdown_extensions:
   - admonition
