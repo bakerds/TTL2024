@@ -1,0 +1,857 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://example.com/Routing%20Security%20%E2%80%94%20BGP%2C%20IRR%2C%20and%20RPKI/200-rpki/">
+      
+      
+        <link rel="prev" href="../100-irr/">
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.4.2, mkdocs-material-9.1.8">
+    
+    
+      
+        <title>RPKI — Resource Public Key Infrastructure - TechTalk Live 2023</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.ded33207.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.a0c5b2b5.min.css">
+      
+      
+
+    
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+   <link href="../../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
+        html.glightbox-open { overflow: initial; height: 100%; }
+        .gslide-title { margin-top: 0px; user-select: text; }
+        .gslide-desc { color: #666; user-select: text; }
+        .gslide-image img { background: white; }
+        
+            .gscrollbar-fixer { padding-right: 15px; }
+            .gdesc-inner { font-size: 0.75rem; }
+            body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color);}
+            body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color);}
+            body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color);}
+            </style> <script src="../../assets/javascripts/glightbox.min.js"></script></head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&"object"==typeof palette.color)for(var key of Object.keys(palette.color))document.body.setAttribute("data-md-color-"+key,palette.color[key])</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#rpki-resource-public-key-infrastructure" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="TechTalk Live 2023" class="md-header__button md-logo" aria-label="TechTalk Live 2023" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            TechTalk Live 2023
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              RPKI — Resource Public Key Infrastructure
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+          
+            
+            
+            
+            <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_1">
+            
+              <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_2" hidden>
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69Z"/></svg>
+              </label>
+            
+          
+            
+            
+            
+            <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_2">
+            
+              <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_1" hidden>
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12c0-2.42-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69Z"/></svg>
+              </label>
+            
+          
+        </form>
+      
+    
+    
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="../.." class="md-tabs__link">
+      Home
+    </a>
+  </li>
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../Introduction%20to%20IPv6/" class="md-tabs__link">
+        Introduction to IPv6
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+    
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../000-intro/" class="md-tabs__link md-tabs__link--active">
+        Routing Security — BGP, IRR, and RPKI
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+  
+
+
+  
+
+<nav class="md-nav md-nav--primary md-nav--lifted md-nav--integrated" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="TechTalk Live 2023" class="md-nav__button md-logo" aria-label="TechTalk Live 2023" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    TechTalk Live 2023
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        Home
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+          Introduction to IPv6
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_2">
+          <span class="md-nav__icon md-icon"></span>
+          Introduction to IPv6
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Introduction%20to%20IPv6/" class="md-nav__link">
+        Introduction to IPv6
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+          Routing Security — BGP, IRR, and RPKI
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
+        <label class="md-nav__title" for="__nav_3">
+          <span class="md-nav__icon md-icon"></span>
+          Routing Security — BGP, IRR, and RPKI
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../000-intro/" class="md-nav__link">
+        Introduction
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../100-irr/" class="md-nav__link">
+        IRR — Internet Routing Registry
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          RPKI — Resource Public Key Infrastructure
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        RPKI — Resource Public Key Infrastructure
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#viewing-rpki-records" class="md-nav__link">
+    Viewing RPKI records
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#rpki-models" class="md-nav__link">
+    RPKI Models
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#using-the-rpki" class="md-nav__link">
+    Using the RPKI
+  </a>
+  
+    <nav class="md-nav" aria-label="Using the RPKI">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#publishing-routing-information-arin-hosted-rpki" class="md-nav__link">
+    Publishing routing information (ARIN Hosted RPKI)
+  </a>
+  
+    <nav class="md-nav" aria-label="Publishing routing information (ARIN Hosted RPKI)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#request-a-resource-certificate" class="md-nav__link">
+    Request a resource certificate
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#create-roas" class="md-nav__link">
+    Create ROAs
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#validating-received-routes" class="md-nav__link">
+    Validating received routes
+  </a>
+  
+    <nav class="md-nav" aria-label="Validating received routes">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#feeding-rpki-data-to-routers" class="md-nav__link">
+    Feeding RPKI data to routers
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#relying-party" class="md-nav__link">
+    Relying Party
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#rtr-server" class="md-nav__link">
+    RTR Server
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#router-configuration" class="md-nav__link">
+    Router Configuration
+  </a>
+  
+    <nav class="md-nav" aria-label="Router Configuration">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#junos-example" class="md-nav__link">
+    JunOS Example
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#verifying-your-rpki-filtering-configuration" class="md-nav__link">
+    Verifying your RPKI filtering configuration
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#questions-about-rpki" class="md-nav__link">
+    Questions about RPKI?
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+<h1 id="rpki-resource-public-key-infrastructure">RPKI — Resource Public Key Infrastructure</h1>
+<ul>
+<li>RPKI uses cryptographically verifiable statements to ensure that Internet number resources are certifiably linked to the stated holders of those resources</li>
+<li>Each Regional Internet Registry (RIR) is responsible for providing resource certificates to resource holders (customer organizations)</li>
+<li>The resource certificate verifies the IP resources allocated to the organization</li>
+<li>Resource certificates are available only to organizations who have contractual relationships with one or more RIRs and have been allocated number resources (IP addresses)</li>
+</ul>
+<p><strong>RPKI Terminology</strong></p>
+<ul>
+<li><strong>Resource Certificate</strong>: A certificate issued by an RIR that lists a the Internet number resources (IPv4 addresses, IPv6 addresses, and Autonomous System Numbers) that are associated with an organization</li>
+<li><strong>Route Origin Authorization (ROA)</strong>: A cryptographically signed object that states which Autonomous System (AS) is authorized to originate a particular IP address prefix or set of prefixes<ul>
+<li>ROA Name: a descriptive name for the ROA</li>
+<li>Origin AS: the ASN that will originate the prefix</li>
+<li>Start Date: the first date your ROA can be considered valid</li>
+<li>End Date: the last date your ROA can be considered valid</li>
+<li>Prefixes: a list of prefixes to be included in the ROA</li>
+</ul>
+</li>
+<li><strong>Route Origin Validation</strong>: Comparing route announcements to ROAs to determine whether a route announcement is valid<ul>
+<li>Valid: a ROA exists for the prefix, and the origin AS of the route announcement matches the origin AS specified in the ROA (the announcement should be accepted)</li>
+<li>Invalid: a ROA exists for the prefix, but the origin AS of the announcement <em>does not</em> match the origin AS specified in the ROA (the announcement should be rejected)</li>
+<li>Not Found: no ROA exists for the prefix in the announcement (the announcement is usually accepted)</li>
+</ul>
+</li>
+</ul>
+<h2 id="viewing-rpki-records">Viewing RPKI records</h2>
+<p>RPKI records are hosted in public repositories. The easiest way to query them is using a web service such as the <a href="https://rpki.cloudflare.com/" target="_blank">Cloudflare RPKI Portal</a> or the <a href="https://rpki-validator.ripe.net/ui/" target="_blank">RIPE Routinator</a></p>
+<p><strong>Example ROAs</strong></p>
+<p><a href="https://rpki.cloudflare.com/?view=explorer&amp;prefix=206.82.16.0%2F20&amp;explorerTab=list" target="_blank">206.82.16.0/20</a></p>
+<p><a class="glightbox" href="../images/cloudflare-roa.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="" src="../images/cloudflare-roa.png" /></a></p>
+<p>A ROA exists for 206.82.16.0/20 to be announced by AS14773. The ROA is signed by the ARIN Trust Anchor because the IP prefix was assigned by ARIN.</p>
+<h2 id="rpki-models">RPKI Models</h2>
+<ul>
+<li>Hosted RPKI — Recommended<ul>
+<li>Each RIR hosts a Certificate Authority (CA) and signs Route Origin Authorizations (ROAs) for resources within the RIR region</li>
+<li>Downstream organizations must have their upstream provider submit ROAs on their behalf</li>
+<li>Infrastructure is maintained by the RIR</li>
+</ul>
+</li>
+<li>Delegated RPKI<ul>
+<li>You can run your own RPKI Certification Authority (CA), manage your Route Origin Authorizations (ROAs) and publish them in your own repository</li>
+<li>You can delegate subordinate CAs to downstream organization</li>
+<li>Infrastructure is maintained by the organization</li>
+</ul>
+</li>
+</ul>
+<div class="admonition info">
+<p class="admonition-title">Info</p>
+<p>ROAs cannot be created by third parties! (unlike IRR proxy registration)</p>
+</div>
+<h2 id="using-the-rpki">Using the RPKI</h2>
+<h3 id="publishing-routing-information-arin-hosted-rpki">Publishing routing information (ARIN Hosted RPKI)</h3>
+<p>Official documentation: <a href="https://www.arin.net/resources/manage/rpki/hosted/" target="_blank">https://www.arin.net/resources/manage/rpki/hosted/</a></p>
+<p>You can preview this process using the ARIN Operational Test and Evaluation environment (OT&amp;E) before making changes to production! Log in at <a href="https://www.ote.arin.net" target="_blank">https://www.ote.arin.net</a></p>
+<h4 id="request-a-resource-certificate">Request a resource certificate</h4>
+<ul>
+<li>Create an RSA keypair to use to sign ROAs (store private key in a secure location!)<ul>
+<li><code>OpenSSL&gt; genrsa -out orgkeypair.pem 2048</code></li>
+</ul>
+</li>
+<li>Extract public key<ul>
+<li><code>OpenSSL&gt; rsa -in orgkeypair.pem -pubout -outform PEM -out org_pubkey.pem</code></li>
+</ul>
+</li>
+<li>Request a resource certificate from ARIN<ul>
+<li>Log in to ARIN Online and navigate to Routing Security &gt; RPKI</li>
+<li>Click "Sign up for RPKI" for your organization
+<a class="glightbox" href="../images/arin-rpki-signup.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="" src="../images/arin-rpki-signup.png" /></a></li>
+<li>Choose "Configure Hosted"
+<a class="glightbox" href="../images/arin-rpki-signup-2.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="" src="../images/arin-rpki-signup-2.png" /></a></li>
+<li>Paste your public key that you created into the Public Key field
+<a class="glightbox" href="../images/arin-rpki-signup-3.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="" src="../images/arin-rpki-signup-3.png" /></a></li>
+<li>Submit the form and wait for ARIN to email you saying they have issue the resource certificate
+<a class="glightbox" href="../images/arin-rpki-signup-4.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="" src="../images/arin-rpki-signup-4.png" /></a><ul>
+<li>If you are working in the test environment (OT&amp;E), you should open a ticket in the production environment referencing your OT&amp;E ticket number, as OT&amp;E tickets are not monitored regularly.</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h4 id="create-roas">Create ROAs</h4>
+<ul>
+<li>
+<p>Create a ROA for each prefix you advertise in BGP</p>
+<ul>
+<li>Do not create ROAs for prefixes you do not plan to advertise!<ul>
+<li>This creates an opportunity for a BGP hijack</li>
+</ul>
+</li>
+<li>Do not use the max-length field to permit more-specific advertisements!<ul>
+<li>This creates an opportunity for a BGP hijack</li>
+</ul>
+</li>
+<li>Do not include multiple prefixes in a single ROA<ul>
+<li>It is not possible to remove a prefix from an existing ROA</li>
+<li>If you need to remove a prefix from a ROA with multiple prefixes, you would need to delete the entire ROA and recreate it</li>
+<li>Best practice is to create your ROAs with exactly one prefix each</li>
+</ul>
+</li>
+<li>When creating a ROA in ARIN, you need to provide your private key<ul>
+<li>The private key is used client-side to sign the ROA, which is then submitted to ARIN</li>
+<li>The private key is <strong>not</strong> submitted to ARIN, and should <em>never be shared or uploaded</em> anywhere</li>
+<li>If you lose your private key, you will need to submit a ticket to ARIN to have your RPKI records deleted and start over with a new resource certificate</li>
+</ul>
+</li>
+<li>To create a ROA, navigate to Routing Security &gt; RPKI and click "Manage ROAs"
+<a class="glightbox" href="../images/arin-rpki-1.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="" src="../images/arin-rpki-1.png" /></a></li>
+<li>Enter the required information, attach your private key, and click Next Step
+<a class="glightbox" href="../images/arin-rpki-2.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="" src="../images/arin-rpki-2.png" /></a></li>
+<li>The web page will generate the ROA signed by your private key and then provide a validation screen where you can confirm or cancel ROA creation</li>
+</ul>
+</li>
+<li>
+<p>Monitor ROAs and resource certificate for expiration</p>
+<ul>
+<li>ARIN does not currently have a means to automatically renew expiring ROAs, but will likely release one in the future</li>
+</ul>
+</li>
+</ul>
+<h3 id="validating-received-routes">Validating received routes</h3>
+<p>RPKI validation is appropriate on BGP sessions where you <strong>do not accept a default route</strong>. It should be used with customers, non-transit peerings, and full transit providers supplying the full DFZ routing table. </p>
+<div class="admonition info">
+<p class="admonition-title">Info</p>
+<p>If you accept a default route from any neighbor, RPKI validation serves no purpose.</p>
+</div>
+<h4 id="feeding-rpki-data-to-routers">Feeding RPKI data to routers</h4>
+<p><strong>Relying Party</strong></p>
+<p>RPKI data lives in various repositories — one for each of the RIR Trust Anchors. The repositories and delegated sub-repositories (for organizations that choose to self-host delegated RPKI) must be fetched by a Relying Party software. When all of the data has been retrieved, the Relying Party software parses it into a list of ROAs.</p>
+<p><strong>RPKI-to-Router (RTR) Protocol</strong></p>
+<p>Once the data has been processed by a Relying Party, then it can be sent to a router using the RPKI-to-Router (RTR) protocol, standardized in RFC 6810 and RFC 8210. Once the router is receiving RPKI data, you can apply policy actions based on validation state.</p>
+<h4 id="relying-party">Relying Party</h4>
+<p>Cloudflare has released a Relying Party software called <a href="https://github.com/cloudflare/cfrpki" target="_blank">OctoRPKI</a>. OctoRPKI powers the <a href="https://rpki.cloudflare.com/" target="_blank">Cloudflare RPKI Portal</a> and generates a json file of all ROAs, hosted in Cloudflare's CDN (<a href="https://rpki.cloudflare.com/rpki.json" target="_blank">https://rpki.cloudflare.com/rpki.json</a> — warning: may crash your browser if you try to view it).</p>
+<p>Other Relying Party software options include <a href="https://github.com/NLnetLabs/routinator/" target="_blank">Routinator</a> and <a href="https://github.com/NICMx/FORT-validator/" target="_blank">FORT Validator</a>. Both include an RPKI-to-Router (RTR) server.</p>
+<h4 id="rtr-server">RTR Server</h4>
+<p>Cloudflare has released an RTR server written in Go called <a href="https://github.com/cloudflare/gortr" target="_blank">GoRTR</a>. GoRTR consumes a json file of ROAs produced by OctoRPKI or a compatible validator. By default, it uses the rpki.json hosted by Cloudflare as its input.</p>
+<p>Cloudflare also provides a public RTR server at rtr.rpki.cloudflare.com:8282, however it is not well documented and should not be your only RTR server, should you choose to use it at all.</p>
+<p>IU13 maintains two GoRTR servers which are used by our Internet routers and are available for WAN members use.</p>
+<h4 id="router-configuration">Router Configuration</h4>
+<p>Juniper, Cisco, Arista, BIRD, and several other types of routers have native support for the RTR protocol.</p>
+<h5 id="junos-example">JunOS Example</h5>
+<p>Configuring and verifying RTR functionality</p>
+<pre><code>routing-options {
+    validation {
+        group RPKI {
+            max-sessions 4;
+            /* rtr.rpki.cloudflare.com */
+            session 172.65.0.2 {
+                preference 80;
+                port 8282;
+            }
+            session 2606:4700:60::2 {
+                preference 90;
+                port 8282;
+            }
+            /* IU13 WAN GoRTR servers */
+            session 2620:1d5:xyz::123 {
+                port 8282;
+            }
+            session 2620:1d5:xyz::abc {
+                port 8282;
+            }
+        }
+    }
+}
+</code></pre>
+<pre><code>set routing-options validation group RPKI max-sessions 4
+set routing-options validation group RPKI session 172.65.0.2 preference 80
+set routing-options validation group RPKI session 172.65.0.2 port 8282
+set routing-options validation group RPKI session 2606:4700:60::2 preference 90
+set routing-options validation group RPKI session 2606:4700:60::2 port 8282
+set routing-options validation group RPKI session 2620:1d5:xyz::123 port 8282
+set routing-options validation group RPKI session 2620:1d5:xyz::abc port 8282
+</code></pre>
+<pre><code>JunOS&gt; show validation session
+Session                 State   Flaps       Uptime   #IPv4/IPv6 records
+172.65.0.2              Up          0  2d 00:06:23   349613/74477
+2606:4700:60::2         Up          1  1d 08:48:00   349615/74476
+2620:1d5:xyz::123       Up          0  1d 23:29:27   349613/74477
+2620:1d5:xyz::abc       Up          0  1d 23:28:51   349615/74476
+</code></pre>
+<pre><code>JunOS&gt; show validation database
+RV database for instance master
+
+Prefix          Origin-AS Session                State   Mismatch
+1.0.0.0/24-24       13335 172.65.0.2             valid
+1.0.0.0/24-24       13335 2606:4700:60::2        valid
+1.0.0.0/24-24       13335 2620:1d5:xyz::123      valid
+1.0.0.0/24-24       13335 2620:1d5:xyz::abc      valid
+1.0.4.0/22-22       38803 172.65.0.2             valid
+1.0.4.0/22-22       38803 2606:4700:60::2        valid
+1.0.4.0/22-22       38803 2620:1d5:xyz::123      valid
+1.0.4.0/22-22       38803 2620:1d5:xyz::abc      valid
+...
+</code></pre>
+<p>Using RPKI validation in route policy</p>
+<pre><code>term RPKI-Valid {
+    from {
+        protocol bgp;
+        validation-database valid;
+    }
+    then {
+        validation-state valid;
+        next term;
+    }
+}
+term RPKI-Invalid {
+    from {
+        protocol bgp;
+        validation-database invalid;
+    }
+    then {
+        validation-state invalid;
+        reject;
+    }
+}
+</code></pre>
+<pre><code>set policy-options policy-statement Import-from-Transit term RPKI-Valid from protocol bgp
+set policy-options policy-statement Import-from-Transit term RPKI-Valid from validation-database valid
+set policy-options policy-statement Import-from-Transit term RPKI-Valid then validation-state valid
+set policy-options policy-statement Import-from-Transit term RPKI-Valid then next term
+
+set policy-options policy-statement Import-from-Transit term RPKI-Invalid from protocol bgp
+set policy-options policy-statement Import-from-Transit term RPKI-Invalid from validation-database invalid
+set policy-options policy-statement Import-from-Transit term RPKI-Invalid then validation-state invalid
+set policy-options policy-statement Import-from-Transit term RPKI-Invalid then reject
+</code></pre>
+<h4 id="verifying-your-rpki-filtering-configuration">Verifying your RPKI filtering configuration</h4>
+<p>Cloudflare provides <a href="https://isbgpsafeyet.com/" target="_blank">https://isbgpsafeyet.com/</a> to test whether your network is accepting or rejecting RPKI-Invalid routes. Try it from the IU13Guest Wi-Fi network, and from your district network!</p>
+<h3 id="questions-about-rpki">Questions about RPKI?</h3>
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Footer" >
+        
+          
+          <a href="../100-irr/" class="md-footer__link md-footer__link--prev" aria-label="Previous: IRR — Internet Routing Registry" rel="prev">
+            <div class="md-footer__button md-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              <div class="md-ellipsis">
+                IRR — Internet Routing Registry
+              </div>
+            </div>
+          </a>
+        
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright © 2023 Dan Baker
+    </div>
+  
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.tabs", "navigation.sections", "toc.integrate", "navigation.footer"], "search": "../../assets/javascripts/workers/search.208ed371.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.51198bba.min.js"></script>
+      
+    
+  <script>document$.subscribe(() => {const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});})</script></body>
+</html>

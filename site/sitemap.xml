@@ -2,12 +2,27 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
          <loc>https://example.com/</loc>
-         <lastmod>2023-04-28</lastmod>
+         <lastmod>2023-04-29</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://example.com/security/</loc>
-         <lastmod>2023-04-28</lastmod>
+         <loc>https://example.com/Introduction%20to%20IPv6/</loc>
+         <lastmod>2023-04-29</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://example.com/Routing%20Security%20%E2%80%94%20BGP%2C%20IRR%2C%20and%20RPKI/000-intro/</loc>
+         <lastmod>2023-04-29</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://example.com/Routing%20Security%20%E2%80%94%20BGP%2C%20IRR%2C%20and%20RPKI/100-irr/</loc>
+         <lastmod>2023-04-29</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://example.com/Routing%20Security%20%E2%80%94%20BGP%2C%20IRR%2C%20and%20RPKI/200-rpki/</loc>
+         <lastmod>2023-04-29</lastmod>
          <changefreq>daily</changefreq>
     </url>
 </urlset>
