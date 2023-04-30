@@ -37,6 +37,7 @@ extra:
       link: https://www.linkedin.com/in/dsbaker1/
 copyright: "Copyright © 2023 Dan Baker"
 markdown_extensions:
+  - footnotes
   - admonition
   - attr_list
   - pymdownx.emoji:
