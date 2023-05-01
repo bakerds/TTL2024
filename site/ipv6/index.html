@@ -14,7 +14,7 @@
         <link rel="prev" href="..">
       
       
-        <link rel="next" href="../routing-security/">
+        <link rel="next" href="100-design/">
       
       <link rel="icon" href="../assets/images/favicon.png">
       <meta name="generator" content="mkdocs-1.4.2, mkdocs-material-9.1.8">
@@ -320,10 +320,76 @@
         
       
       
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Introduction
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
       <a href="./" class="md-nav__link md-nav__link--active">
         Introduction
       </a>
       
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#what-is-ipv6" class="md-nav__link">
+    What is IPv6?
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#comparison-of-ipv4-and-ipv6" class="md-nav__link">
+    Comparison of IPv4 and IPv6
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#problems-with-ipv4" class="md-nav__link">
+    Problems with IPv4
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#improvements-with-ipv6" class="md-nav__link">
+    Improvements with IPv6
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="100-design/" class="md-nav__link">
+        Network Design
+      </a>
     </li>
   
 
@@ -443,6 +509,116 @@
 
 
 <h1 id="introduction">Introduction</h1>
+<h2 id="what-is-ipv6">What is IPv6?</h2>
+<p>IPv6 is the next generation of the Internet Protocol after IPv4, first formalized in RFC 1883 published in 1995</p>
+<h2 id="comparison-of-ipv4-and-ipv6">Comparison of IPv4 and IPv6</h2>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>IPv4</th>
+<th>IPv6</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Address length</td>
+<td>32 bits</td>
+<td>128 bits</td>
+</tr>
+<tr>
+<td>Number of unique addresses</td>
+<td>4.3 billion</td>
+<td>340 billion billion billion billion</td>
+</tr>
+<tr>
+<td>Address notation</td>
+<td>Decimal, with a <code>.</code> between bytes<br><code>192.0.2.2</code></td>
+<td>Hexadecimal, with a <code>:</code> between two-byte words<br><code>2001:0db8:0000:0000:0000:0000:0000:0123</code><br>May be abbreviated/compressed<sup id="fnref:1"><a class="footnote-ref" href="#fn:1">1</a></sup><br><code>2001:db8::123</code></td>
+</tr>
+<tr>
+<td>Subnet notation</td>
+<td>Network ID and subnet mask<br><code>192.0.2.0</code>, <code>255.255.255.0</code><br>CIDR notation<br><code>192.0.2.0/24</code></td>
+<td>Prefix/prefix length<br><code>2001:db8::/64</code></td>
+</tr>
+<tr>
+<td>Subnetting</td>
+<td>Variable Length Subnet Mask (VLSM):<br>Subnet size is based on expected number of clients</td>
+<td>Standard subnet size:<br>/64</td>
+</tr>
+<tr>
+<td>Fragmentation</td>
+<td>Packets may be fragmented in-flight by routers</td>
+<td>Packets must be sized correctly by the sender</td>
+</tr>
+<tr>
+<td>Number of header fields</td>
+<td>12</td>
+<td>8</td>
+</tr>
+<tr>
+<td>Header Length</td>
+<td>20 bytes, variable</td>
+<td>40 bytes, plus optional extensions</td>
+</tr>
+<tr>
+<td>Header checksum</td>
+<td>Yes</td>
+<td>No</td>
+</tr>
+<tr>
+<td>Host configuration</td>
+<td>Static, DHCP, or APIPA (link-local)</td>
+<td>Static, DHCP, or SLAAC, and link-local</td>
+</tr>
+<tr>
+<td>IP to MAC address resolution</td>
+<td>Address Resolution Protocol (ARP) (broadcast)</td>
+<td>Neighbor Discovery Protocol (NDP) (multicast)</td>
+</tr>
+</tbody>
+</table>
+<h2 id="problems-with-ipv4">Problems with IPv4</h2>
+<ul>
+<li>Address exhaustion<ul>
+<li>Difficult/expensive to get IPv4 addresses</li>
+<li>Need for NAT</li>
+</ul>
+</li>
+<li>Internet routing table disaggregation<ul>
+<li>Large blocks are being split up and sold off as demand for IPv4 increases</li>
+</ul>
+</li>
+<li>Forwarding inefficiencies<ul>
+<li>Packet checksum must be recalculated every time the packet is forwaded by a routers due to TTL decrement</li>
+<li>Header length is variable, making it more complicated to identify the fields </li>
+</ul>
+</li>
+<li>Reliance on broadcast for ARP and DHCP</li>
+</ul>
+<h2 id="improvements-with-ipv6">Improvements with IPv6</h2>
+<ul>
+<li>Virtually unlimited address space and subnet size<ul>
+<li>IPv6 addresses are free</li>
+<li>No need for NAT! Native communication between unique IPv6 addresses</li>
+</ul>
+</li>
+<li>No reason not to assign aggregable prefixes</li>
+<li>Forwarding efficiency<ul>
+<li>No packet checksum, and no calculation for the router to perform</li>
+<li>Header length is fixed, so fields are always in the same place</li>
+</ul>
+</li>
+<li>MAC address discovery and host configuration use multicast instead of broadcast</li>
+</ul>
+<div class="footnote">
+<hr />
+<ol>
+<li id="fn:1">
+<p>Address compression rules: a single run of sequential zeroes can be replaced with a <code>::</code> and leading zeroes may be dropped in each address chunk&#160;<a class="footnote-backref" href="#fnref:1" title="Jump back to footnote 1 in the text">&#8617;</a></p>
+</li>
+</ol>
+</div>
 
 
 
@@ -480,13 +656,13 @@
         
         
           
-          <a href="../routing-security/" class="md-footer__link md-footer__link--next" aria-label="Next: Introduction" rel="next">
+          <a href="100-design/" class="md-footer__link md-footer__link--next" aria-label="Next: Network Design" rel="next">
             <div class="md-footer__title">
               <span class="md-footer__direction">
                 Next
               </span>
               <div class="md-ellipsis">
-                Introduction
+                Network Design
               </div>
             </div>
             <div class="md-footer__button md-icon">

@@ -4,6 +4,7 @@ nav:
   - index.md
   - Introduction to IPv6:
     - 'ipv6/index.md'
+    - 'ipv6/100-design.md'
   - Routing Security — BGP, IRR, and RPKI:
     - 'routing-security/index.md'
     - 'routing-security/100-irr.md'
