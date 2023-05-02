@@ -31,6 +31,7 @@ IPv6 is the next generation of the Internet Protocol after IPv4, first formalize
 	- Packet checksum must be recalculated every time the packet is forwaded by a routers due to TTL decrement
 	- Header length is variable, making it more complicated to identify the fields 
 - Reliance on broadcast for ARP and DHCP
+- Server infrastructure required for host configuration
 
 ## Improvements with IPv6
 
@@ -42,7 +43,37 @@ IPv6 is the next generation of the Internet Protocol after IPv4, first formalize
 	- No packet checksum, and no calculation for the router to perform
 	- Header length is fixed, so fields are always in the same place
 - MAC address discovery and host configuration use multicast instead of broadcast
+- Very simple host autoconfiguration
 
+## Why deploy IPv6?
+
+- IPv6 is becoming the dominant protocol - adoption in the US is approaching 50%
+	- [Google IPv6 statistics](https://www.google.com/intl/en/ipv6/statistics.html){:target="_blank"}
+		- May 2020: 32%
+		- May 2021: 35%
+		- May 2022: 40%
+		- May 2023: 43%
+	- IPv4 will become the minority of traffic
+- Providers are prioritizing IPv6 deployements
+	- New investments into IPv6, less in IPv4
+	- Facebook - 100% native IPv6 servers, IPv4 services through proxies/load balancers
+	- T-Mobile - 100% native IPv6 cellular network, IPv4 services via 464XLAT translation
+	- Most major content providers support IPv6 (Google, Cloudflare, Akamai, Apple, Microsoft, Facebook)
+- IPv6 is marginally faster
+	- Less routing overhead
+	- Easier forwarding
+- No NAT required
+	- NAT breaks or cripples many peer-to-peer protocols
+		- Voice/video calling
+		- Gaming
+		- VPN
+	- NAT makes network administration more complicated by obscuring addresses
+- IPv6 is supported by all major carriers
+- Running dual-stack reduces the impact of a problem with one protocol
+	- "Happy Eyeballs" ([RFC 6555](https://datatracker.ietf.org/doc/html/rfc6555){:target="_blank"}) is a mechanism used by the client OS to choose IPv6 or IPv4 for a particular connection
+	- If IPv6 is working, hosts will choose IPv6
+	- If IPv6 is broken, hosts will pick IPv4
+- IPv6 is very easy to deploy
 
 [^1]:
     Address compression rules: a single run of sequential zeroes can be replaced with a `::` and leading zeroes may be dropped in each address chunk

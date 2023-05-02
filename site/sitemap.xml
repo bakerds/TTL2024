@@ -2,37 +2,62 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
          <loc>https://ttl.iu13.net/</loc>
-         <lastmod>2023-05-01</lastmod>
+         <lastmod>2023-05-02</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://ttl.iu13.net/about/</loc>
-         <lastmod>2023-05-01</lastmod>
+         <lastmod>2023-05-02</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://ttl.iu13.net/ipv6/</loc>
-         <lastmod>2023-05-01</lastmod>
+         <lastmod>2023-05-02</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://ttl.iu13.net/ipv6/100-design/</loc>
-         <lastmod>2023-05-01</lastmod>
+         <lastmod>2023-05-02</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://ttl.iu13.net/ipv6/200-routing/</loc>
+         <lastmod>2023-05-02</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://ttl.iu13.net/ipv6/300-host-configuration/</loc>
+         <lastmod>2023-05-02</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://ttl.iu13.net/ipv6/400-implementing/</loc>
+         <lastmod>2023-05-02</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://ttl.iu13.net/ipv6/500-configuring/</loc>
+         <lastmod>2023-05-02</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://ttl.iu13.net/ipv6/lab/</loc>
+         <lastmod>2023-05-02</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://ttl.iu13.net/routing-security/</loc>
-         <lastmod>2023-05-01</lastmod>
+         <lastmod>2023-05-02</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://ttl.iu13.net/routing-security/100-irr/</loc>
-         <lastmod>2023-05-01</lastmod>
+         <lastmod>2023-05-02</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://ttl.iu13.net/routing-security/200-rpki/</loc>
-         <lastmod>2023-05-01</lastmod>
+         <lastmod>2023-05-02</lastmod>
          <changefreq>daily</changefreq>
     </url>
 </urlset>

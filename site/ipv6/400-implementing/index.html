@@ -8,27 +8,27 @@
       
       
       
-        <link rel="canonical" href="https://ttl.iu13.net/ipv6/">
+        <link rel="canonical" href="https://ttl.iu13.net/ipv6/400-implementing/">
       
       
-        <link rel="prev" href="..">
+        <link rel="prev" href="../300-host-configuration/">
       
       
-        <link rel="next" href="100-design/">
+        <link rel="next" href="../500-configuring/">
       
-      <link rel="icon" href="../assets/images/favicon.png">
+      <link rel="icon" href="../../assets/images/favicon.png">
       <meta name="generator" content="mkdocs-1.4.2, mkdocs-material-9.1.8">
     
     
       
-        <title>Introduction - Tech Talk Live 2023</title>
+        <title>Implementing IPv6 - Tech Talk Live 2023</title>
       
     
     
-      <link rel="stylesheet" href="../assets/stylesheets/main.ded33207.min.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/main.ded33207.min.css">
       
         
-        <link rel="stylesheet" href="../assets/stylesheets/palette.a0c5b2b5.min.css">
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.a0c5b2b5.min.css">
       
       
 
@@ -44,14 +44,14 @@
       
     
     
-    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
 
     
     
     
-   <link href="../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
+   <link href="../../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
         html.glightbox-open { overflow: initial; height: 100%; }
         .gslide-title { margin-top: 0px; user-select: text; }
         .gslide-desc { color: #666; user-select: text; }
@@ -62,7 +62,7 @@
             body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color);}
             body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color);}
             body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color);}
-            </style> <script src="../assets/javascripts/glightbox.min.js"></script></head>
+            </style> <script src="../../assets/javascripts/glightbox.min.js"></script></head>
   
   
     
@@ -84,7 +84,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#introduction" class="md-skip">
+        <a href="#implementing-ipv6" class="md-skip">
           Skip to content
         </a>
       
@@ -98,7 +98,7 @@
 
 <header class="md-header" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href=".." title="Tech Talk Live 2023" class="md-header__button md-logo" aria-label="Tech Talk Live 2023" data-md-component="logo">
+    <a href="../.." title="Tech Talk Live 2023" class="md-header__button md-logo" aria-label="Tech Talk Live 2023" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
@@ -117,7 +117,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Introduction
+              Implementing IPv6
             
           </span>
         </div>
@@ -173,7 +173,7 @@
 
 
   <li class="md-tabs__item">
-    <a href=".." class="md-tabs__link">
+    <a href="../.." class="md-tabs__link">
       Home
     </a>
   </li>
@@ -190,7 +190,7 @@
   
   
     <li class="md-tabs__item">
-      <a href="./" class="md-tabs__link md-tabs__link--active">
+      <a href="../" class="md-tabs__link md-tabs__link--active">
         Introduction to IPv6
       </a>
     </li>
@@ -206,7 +206,7 @@
   
   
     <li class="md-tabs__item">
-      <a href="../routing-security/" class="md-tabs__link">
+      <a href="../../routing-security/" class="md-tabs__link">
         Routing Security — BGP, IRR, and RPKI
       </a>
     </li>
@@ -219,7 +219,7 @@
 
 
   <li class="md-tabs__item">
-    <a href="../about/" class="md-tabs__link">
+    <a href="../../about/" class="md-tabs__link">
       About the presenter
     </a>
   </li>
@@ -248,7 +248,7 @@
 
 <nav class="md-nav md-nav--primary md-nav--lifted md-nav--integrated" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href=".." title="Tech Talk Live 2023" class="md-nav__button md-logo" aria-label="Tech Talk Live 2023" data-md-component="logo">
+    <a href="../.." title="Tech Talk Live 2023" class="md-nav__button md-logo" aria-label="Tech Talk Live 2023" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
@@ -267,7 +267,7 @@
   
   
     <li class="md-nav__item">
-      <a href=".." class="md-nav__link">
+      <a href="../.." class="md-nav__link">
         Home
       </a>
     </li>
@@ -309,6 +309,62 @@
               
   
   
+  
+    <li class="md-nav__item">
+      <a href="../" class="md-nav__link">
+        Introduction
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../100-design/" class="md-nav__link">
+        Network Design - Segmentation
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../200-routing/" class="md-nav__link">
+        Routing
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../300-host-configuration/" class="md-nav__link">
+        Host Configuration
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
     
   
   
@@ -321,12 +377,12 @@
       
       
         <label class="md-nav__link md-nav__link--active" for="__toc">
-          Introduction
+          Implementing IPv6
           <span class="md-nav__icon md-icon"></span>
         </label>
       
       <a href="./" class="md-nav__link md-nav__link--active">
-        Introduction
+        Implementing IPv6
       </a>
       
         
@@ -345,36 +401,15 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#what-is-ipv6" class="md-nav__link">
-    What is IPv6?
+  <a href="#transition" class="md-nav__link">
+    Transition
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#comparison-of-ipv4-and-ipv6" class="md-nav__link">
-    Comparison of IPv4 and IPv6
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#problems-with-ipv4" class="md-nav__link">
-    Problems with IPv4
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#improvements-with-ipv6" class="md-nav__link">
-    Improvements with IPv6
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#why-deploy-ipv6" class="md-nav__link">
-    Why deploy IPv6?
+  <a href="#dual-stack" class="md-nav__link">
+    Dual-Stack
   </a>
   
 </li>
@@ -394,63 +429,7 @@
   
   
     <li class="md-nav__item">
-      <a href="100-design/" class="md-nav__link">
-        Network Design - Segmentation
-      </a>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="200-routing/" class="md-nav__link">
-        Routing
-      </a>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="300-host-configuration/" class="md-nav__link">
-        Host Configuration
-      </a>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="400-implementing/" class="md-nav__link">
-        Implementing IPv6
-      </a>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="500-configuring/" class="md-nav__link">
+      <a href="../500-configuring/" class="md-nav__link">
         Configuring IPv6
       </a>
     </li>
@@ -464,7 +443,7 @@
   
   
     <li class="md-nav__item">
-      <a href="lab/" class="md-nav__link">
+      <a href="../lab/" class="md-nav__link">
         Lab
       </a>
     </li>
@@ -513,7 +492,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../routing-security/" class="md-nav__link">
+      <a href="../../routing-security/" class="md-nav__link">
         Introduction
       </a>
     </li>
@@ -527,7 +506,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../routing-security/100-irr/" class="md-nav__link">
+      <a href="../../routing-security/100-irr/" class="md-nav__link">
         IRR — Internet Routing Registry
       </a>
     </li>
@@ -541,7 +520,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../routing-security/200-rpki/" class="md-nav__link">
+      <a href="../../routing-security/200-rpki/" class="md-nav__link">
         RPKI — Resource Public Key Infrastructure
       </a>
     </li>
@@ -563,7 +542,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../about/" class="md-nav__link">
+      <a href="../../about/" class="md-nav__link">
         About the presenter
       </a>
     </li>
@@ -585,160 +564,44 @@
                   
 
 
-<h1 id="introduction">Introduction</h1>
-<h2 id="what-is-ipv6">What is IPv6?</h2>
-<p>IPv6 is the next generation of the Internet Protocol after IPv4, first formalized in RFC 1883 published in 1995</p>
-<h2 id="comparison-of-ipv4-and-ipv6">Comparison of IPv4 and IPv6</h2>
-<table>
-<thead>
-<tr>
-<th></th>
-<th>IPv4</th>
-<th>IPv6</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Address length</td>
-<td>32 bits</td>
-<td>128 bits</td>
-</tr>
-<tr>
-<td>Number of unique addresses</td>
-<td>4.3 billion</td>
-<td>340 billion billion billion billion</td>
-</tr>
-<tr>
-<td>Address notation</td>
-<td>Decimal, with a <code>.</code> between bytes<br><code>192.0.2.2</code></td>
-<td>Hexadecimal, with a <code>:</code> between two-byte words<br><code>2001:0db8:0000:0000:0000:0000:0000:0123</code><br>May be abbreviated/compressed<sup id="fnref:1"><a class="footnote-ref" href="#fn:1">1</a></sup><br><code>2001:db8::123</code></td>
-</tr>
-<tr>
-<td>Subnet notation</td>
-<td>Network ID and subnet mask<br><code>192.0.2.0</code>, <code>255.255.255.0</code><br>CIDR notation<br><code>192.0.2.0/24</code></td>
-<td>Prefix/prefix length<br><code>2001:db8::/64</code></td>
-</tr>
-<tr>
-<td>Subnetting</td>
-<td>Variable Length Subnet Mask (VLSM):<br>Subnet size is based on expected number of clients</td>
-<td>Standard subnet size:<br>/64</td>
-</tr>
-<tr>
-<td>Fragmentation</td>
-<td>Packets may be fragmented in-flight by routers</td>
-<td>Packets must be sized correctly by the sender</td>
-</tr>
-<tr>
-<td>Number of header fields</td>
-<td>12</td>
-<td>8</td>
-</tr>
-<tr>
-<td>Header Length</td>
-<td>20 bytes, variable</td>
-<td>40 bytes, plus optional extensions</td>
-</tr>
-<tr>
-<td>Header checksum</td>
-<td>Yes</td>
-<td>No</td>
-</tr>
-<tr>
-<td>Host configuration</td>
-<td>Static, DHCP, or APIPA (link-local)</td>
-<td>Static, DHCP, or SLAAC, and link-local</td>
-</tr>
-<tr>
-<td>IP to MAC address resolution</td>
-<td>Address Resolution Protocol (ARP) (broadcast)</td>
-<td>Neighbor Discovery Protocol (NDP) (multicast)</td>
-</tr>
-</tbody>
-</table>
-<h2 id="problems-with-ipv4">Problems with IPv4</h2>
+<h1 id="implementing-ipv6">Implementing IPv6</h1>
+<h2 id="transition">Transition</h2>
 <ul>
-<li>Address exhaustion<ul>
-<li>Difficult/expensive to get IPv4 addresses</li>
-<li>Need for NAT</li>
+<li>IPv6 is not backward-compatible with IPv4 - the two protocols cannot natively communicate</li>
+<li>Transition mechanisms allow IPv6-only devices to communicate with IPv4-only devices and vice-versa<ul>
+<li>6in4 and Teredo tunneling - tunneling IPv6 traffic across IPv4-only intrastructure</li>
+<li>6rd and 6to4 - stateless tunneling between special endpoints</li>
+<li>NAT64 - allows IPv6 clients to reach IPv4 servers through a NAT64 gateway router<ul>
+<li>DNS64 - works in conjunction with NAT64 to help IPv6 clients reach IPv4 servers using an IPv6 address</li>
+<li>464XLAT<sup id="fnref:1"><a class="footnote-ref" href="#fn:1">1</a></sup> - allows IPv6 clients to reach IPv4 servers using stateless translation at the client and NAT64 router (T-Mobile)</li>
 </ul>
 </li>
-<li>Internet routing table disaggregation<ul>
-<li>Large blocks are being split up and sold off as demand for IPv4 increases</li>
 </ul>
 </li>
-<li>Forwarding inefficiencies<ul>
-<li>Packet checksum must be recalculated every time the packet is forwaded by a routers due to TTL decrement</li>
-<li>Header length is variable, making it more complicated to identify the fields </li>
+<li>There are limitations with every transition technology</li>
 </ul>
-</li>
-<li>Reliance on broadcast for ARP and DHCP</li>
-<li>Server infrastructure required for host configuration</li>
-</ul>
-<h2 id="improvements-with-ipv6">Improvements with IPv6</h2>
+<h2 id="dual-stack">Dual-Stack</h2>
+<p><strong>For the forseeable future, networks should run both IPv4 and IPv6</strong></p>
 <ul>
-<li>Virtually unlimited address space and subnet size<ul>
-<li>IPv6 addresses are free</li>
-<li>No need for NAT! Native communication between unique IPv6 addresses</li>
+<li>Keeping IPv4<ul>
+<li>IPv4 works well inside the LAN</li>
+<li>Natively reach networks/websites that are still IPv4-only</li>
+<li>Some devices only support IPv4 (IOT)</li>
 </ul>
 </li>
-<li>No reason not to assign aggregable prefixes</li>
-<li>Forwarding efficiency<ul>
-<li>No packet checksum, and no calculation for the router to perform</li>
-<li>Header length is fixed, so fields are always in the same place</li>
+<li>Adding IPv6<ul>
+<li>IPv6 is more efficient over the Internet</li>
+<li>Natively reach networks/websites that are IPv6-enabled</li>
+<li>All modern operating systems support and <em>prefer</em> IPv6</li>
+<li>Adding IPv6 will dramatically reduce the amount of IPv4 traffic leaving the network</li>
 </ul>
 </li>
-<li>MAC address discovery and host configuration use multicast instead of broadcast</li>
-<li>Very simple host autoconfiguration</li>
-</ul>
-<h2 id="why-deploy-ipv6">Why deploy IPv6?</h2>
-<ul>
-<li>IPv6 is becoming the dominant protocol - adoption in the US is approaching 50%<ul>
-<li><a href="https://www.google.com/intl/en/ipv6/statistics.html" target="_blank">Google IPv6 statistics</a><ul>
-<li>May 2020: 32%</li>
-<li>May 2021: 35%</li>
-<li>May 2022: 40%</li>
-<li>May 2023: 43%</li>
-</ul>
-</li>
-<li>IPv4 will become the minority of traffic</li>
-</ul>
-</li>
-<li>Providers are prioritizing IPv6 deployements<ul>
-<li>New investments into IPv6, less in IPv4</li>
-<li>Facebook - 100% native IPv6 servers, IPv4 services through proxies/load balancers</li>
-<li>T-Mobile - 100% native IPv6 cellular network, IPv4 services via 464XLAT translation</li>
-<li>Most major content providers support IPv6 (Google, Cloudflare, Akamai, Apple, Microsoft, Facebook)</li>
-</ul>
-</li>
-<li>IPv6 is marginally faster<ul>
-<li>Less routing overhead</li>
-<li>Easier forwarding</li>
-</ul>
-</li>
-<li>No NAT required<ul>
-<li>NAT breaks or cripples many peer-to-peer protocols<ul>
-<li>Voice/video calling</li>
-<li>Gaming</li>
-<li>VPN</li>
-</ul>
-</li>
-<li>NAT makes network administration more complicated by obscuring addresses</li>
-</ul>
-</li>
-<li>IPv6 is supported by all major carriers</li>
-<li>Running dual-stack reduces the impact of a problem with one protocol<ul>
-<li>"Happy Eyeballs" (<a href="https://datatracker.ietf.org/doc/html/rfc6555" target="_blank">RFC 6555</a>) is a mechanism used by the client OS to choose IPv6 or IPv4 for a particular connection</li>
-<li>If IPv6 is working, hosts will choose IPv6</li>
-<li>If IPv6 is broken, hosts will pick IPv4</li>
-</ul>
-</li>
-<li>IPv6 is very easy to deploy</li>
 </ul>
 <div class="footnote">
 <hr />
 <ol>
 <li id="fn:1">
-<p>Address compression rules: a single run of sequential zeroes can be replaced with a <code>::</code> and leading zeroes may be dropped in each address chunk&#160;<a class="footnote-backref" href="#fnref:1" title="Jump back to footnote 1 in the text">&#8617;</a></p>
+<p>Widely deployed in mobile LTE networks. This is currently the best choice if you need to run a single protocol on a client access network.&#160;<a class="footnote-backref" href="#fnref:1" title="Jump back to footnote 1 in the text">&#8617;</a></p>
 </li>
 </ol>
 </div>
@@ -763,7 +626,7 @@
       <nav class="md-footer__inner md-grid" aria-label="Footer" >
         
           
-          <a href=".." class="md-footer__link md-footer__link--prev" aria-label="Previous: Home" rel="prev">
+          <a href="../300-host-configuration/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Host Configuration" rel="prev">
             <div class="md-footer__button md-icon">
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
             </div>
@@ -772,20 +635,20 @@
                 Previous
               </span>
               <div class="md-ellipsis">
-                Home
+                Host Configuration
               </div>
             </div>
           </a>
         
         
           
-          <a href="100-design/" class="md-footer__link md-footer__link--next" aria-label="Next: Network Design - Segmentation" rel="next">
+          <a href="../500-configuring/" class="md-footer__link md-footer__link--next" aria-label="Next: Configuring IPv6" rel="next">
             <div class="md-footer__title">
               <span class="md-footer__direction">
                 Next
               </span>
               <div class="md-ellipsis">
-                Network Design - Segmentation
+                Configuring IPv6
               </div>
             </div>
             <div class="md-footer__button md-icon">
@@ -831,10 +694,10 @@
       <div class="md-dialog__inner md-typeset"></div>
     </div>
     
-    <script id="__config" type="application/json">{"base": "..", "features": ["navigation.tabs", "navigation.sections", "toc.integrate", "navigation.footer"], "search": "../assets/javascripts/workers/search.208ed371.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.tabs", "navigation.sections", "toc.integrate", "navigation.footer"], "search": "../../assets/javascripts/workers/search.208ed371.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
     
     
-      <script src="../assets/javascripts/bundle.51198bba.min.js"></script>
+      <script src="../../assets/javascripts/bundle.51198bba.min.js"></script>
       
     
   <script>document$.subscribe(() => {const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});})</script></body>

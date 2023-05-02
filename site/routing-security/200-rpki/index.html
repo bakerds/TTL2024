@@ -21,7 +21,7 @@
     
     
       
-        <title>RPKI — Resource Public Key Infrastructure - TechTalk Live 2023</title>
+        <title>RPKI — Resource Public Key Infrastructure - Tech Talk Live 2023</title>
       
     
     
@@ -98,7 +98,7 @@
 
 <header class="md-header" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href="../.." title="TechTalk Live 2023" class="md-header__button md-logo" aria-label="TechTalk Live 2023" data-md-component="logo">
+    <a href="../.." title="Tech Talk Live 2023" class="md-header__button md-logo" aria-label="Tech Talk Live 2023" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
@@ -111,7 +111,7 @@
       <div class="md-header__ellipsis">
         <div class="md-header__topic">
           <span class="md-ellipsis">
-            TechTalk Live 2023
+            Tech Talk Live 2023
           </span>
         </div>
         <div class="md-header__topic" data-md-component="header-topic">
@@ -248,13 +248,13 @@
 
 <nav class="md-nav md-nav--primary md-nav--lifted md-nav--integrated" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="../.." title="TechTalk Live 2023" class="md-nav__button md-logo" aria-label="TechTalk Live 2023" data-md-component="logo">
+    <a href="../.." title="Tech Talk Live 2023" class="md-nav__button md-logo" aria-label="Tech Talk Live 2023" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
 
     </a>
-    TechTalk Live 2023
+    Tech Talk Live 2023
   </label>
   
   <ul class="md-nav__list" data-md-scrollfix>
@@ -324,7 +324,77 @@
   
     <li class="md-nav__item">
       <a href="../../ipv6/100-design/" class="md-nav__link">
-        Network Design
+        Network Design - Segmentation
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ipv6/200-routing/" class="md-nav__link">
+        Routing
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ipv6/300-host-configuration/" class="md-nav__link">
+        Host Configuration
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ipv6/400-implementing/" class="md-nav__link">
+        Implementing IPv6
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ipv6/500-configuring/" class="md-nav__link">
+        Configuring IPv6
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ipv6/lab/" class="md-nav__link">
+        Lab
       </a>
     </li>
   
@@ -742,8 +812,8 @@
 <h4 id="router-configuration">Router Configuration</h4>
 <p>Juniper, Cisco, Arista, BIRD, and several other types of routers have native support for the RTR protocol.</p>
 <h5 id="junos-example">JunOS Example</h5>
-<p>Configuring and verifying RTR functionality</p>
-<pre><code>routing-options {
+<p>Configuring and verifying RTR functionality
+<div class="highlight"><pre><span></span><code>routing-options {
     validation {
         group RPKI {
             max-sessions 4;
@@ -766,23 +836,23 @@
         }
     }
 }
-</code></pre>
-<pre><code>set routing-options validation group RPKI max-sessions 4
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>set routing-options validation group RPKI max-sessions 4
 set routing-options validation group RPKI session 172.65.0.2 preference 80
 set routing-options validation group RPKI session 172.65.0.2 port 8282
 set routing-options validation group RPKI session 2606:4700:60::2 preference 90
 set routing-options validation group RPKI session 2606:4700:60::2 port 8282
 set routing-options validation group RPKI session 2620:1d5:xyz::123 port 8282
 set routing-options validation group RPKI session 2620:1d5:xyz::abc port 8282
-</code></pre>
-<pre><code>JunOS&gt; show validation session
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>JunOS&gt; show validation session
 Session                 State   Flaps       Uptime   #IPv4/IPv6 records
 172.65.0.2              Up          0  2d 00:06:23   349613/74477
 2606:4700:60::2         Up          1  1d 08:48:00   349615/74476
 2620:1d5:xyz::123       Up          0  1d 23:29:27   349613/74477
 2620:1d5:xyz::abc       Up          0  1d 23:28:51   349615/74476
-</code></pre>
-<pre><code>JunOS&gt; show validation database
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>JunOS&gt; show validation database
 RV database for instance master
 
 Prefix          Origin-AS Session                State   Mismatch
@@ -795,9 +865,9 @@ Prefix          Origin-AS Session                State   Mismatch
 1.0.4.0/22-22       38803 2620:1d5:xyz::123      valid
 1.0.4.0/22-22       38803 2620:1d5:xyz::abc      valid
 ...
-</code></pre>
-<p>Using RPKI validation in route policy</p>
-<pre><code>term RPKI-Valid {
+</code></pre></div></p>
+<p>Using RPKI validation in route policy
+<div class="highlight"><pre><span></span><code>term RPKI-Valid {
     from {
         protocol bgp;
         validation-database valid;
@@ -817,8 +887,8 @@ term RPKI-Invalid {
         reject;
     }
 }
-</code></pre>
-<pre><code>set policy-options policy-statement Import-from-Transit term RPKI-Valid from protocol bgp
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>set policy-options policy-statement Import-from-Transit term RPKI-Valid from protocol bgp
 set policy-options policy-statement Import-from-Transit term RPKI-Valid from validation-database valid
 set policy-options policy-statement Import-from-Transit term RPKI-Valid then validation-state valid
 set policy-options policy-statement Import-from-Transit term RPKI-Valid then next term
@@ -827,7 +897,7 @@ set policy-options policy-statement Import-from-Transit term RPKI-Invalid from p
 set policy-options policy-statement Import-from-Transit term RPKI-Invalid from validation-database invalid
 set policy-options policy-statement Import-from-Transit term RPKI-Invalid then validation-state invalid
 set policy-options policy-statement Import-from-Transit term RPKI-Invalid then reject
-</code></pre>
+</code></pre></div></p>
 <h4 id="verifying-your-rpki-filtering-configuration">Verifying your RPKI filtering configuration</h4>
 <p>Cloudflare provides <a href="https://isbgpsafeyet.com/" target="_blank">https://isbgpsafeyet.com/</a> to test whether your network is accepting or rejecting RPKI-Invalid routes. Try it from the IU13Guest Wi-Fi network, and from your district network!</p>
 <h3 id="questions-about-rpki">Questions about RPKI?</h3>

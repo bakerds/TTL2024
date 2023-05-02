@@ -1,8 +1,6 @@
-# Network Design
+# Network Design - Segmentation
 
-## Segmentation
-
-### Why is segmentation important?
+## Why is segmentation important?
 
 **Efficiency and reliability**
 
@@ -29,7 +27,7 @@
 - Segmentation helps to keep the network organized
 - Grouping similar devices or users together makes it easier to apply the correct policies
 
-### How to segment?
+## How to segment?
 
 **Layer 2 – VLAN**
 
@@ -45,7 +43,7 @@
 - A unique IP subnet is defined and assigned to each layer 2 segment
 - A router is required for communication between subnets
 
-### What to segment?
+## What to segment?
 
 Functions that should be segmented:
 
@@ -71,7 +69,7 @@ Functions that should be segmented:
 
 **Each building/campus should be segmented from the others**
 
-### IP Address Management / Subnet Planning
+## IP Address Management / Subnet Planning
 
 **Subnet size**
 
@@ -156,3 +154,4 @@ How much IP address space should be allocated to each building and to the distri
 |1400 | Staff Wireless         | `10.95.90.0/22`  | `2620:1d5:9501:1400::/64` |
 |1401 | Student Wireless       | `10.95.96.0/20`  | `2620:1d5:9501:1401::/64` |
 |1402 | Guest Wireless         | `10.95.112.0/20` | `2620:1d5:9501:1402::/64` |
+

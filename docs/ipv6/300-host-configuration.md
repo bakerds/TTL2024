@@ -1,0 +1,29 @@
+# Host Configuration
+
+- Static
+	- The user can manually configure address details
+	- Not user-friendly
+	- Usually necessary for infrastructure components – network equipment, servers, printers, cameras
+	- Works the same in IPv4 and IPv6
+- DHCP (dynamic host configuration protocol)
+	- DHCP server is configured with subnet information and a pool of addresses to "lease" to clients
+	- Allows clients to move from one network to another easily
+	- Does not require user intervention
+	- Client IPs may change over time based on available addresses in the DHCP server's lease pool
+	- DHCP server can provide additional information, like DNS server addresses, using DHCP options
+	- Works in IPv6 on most operation systems
+- SLAAC (stateless address autoconfiguration)
+	- IPv6-only
+	- No DHCP server is required
+	- Router is configured to send router advertisements containing subnet information
+	- Router advertisement may also contain DNS server addresses and local domain names
+	- Additional information may also be requested from a DHCPv6 server without using the DHCPv6 server for address assignment
+	- SLAAC process:
+		- Client sends a multicast router solicitation message to all routers: “I’m looking for a router.”
+		- Router(s) respond with a router advertisement: “I am a router. The subnet for this segment is 2001:db8:beef:cafe::/64, and you should autoconfigure an address using that prefix.”
+		- Client picks an address to use and performs duplicate address detection: “Is anybody using the address 2001:db8:beef:cafe::1234/64?”
+		- If radio silence, the address is available to use. If somebody responds that the address is already in use, the client generates a new one and tries again.
+		- The router advertisement may also contain DNS server addresses and local domain names. Or, these options may be requested from a DHCPv6 server without using the DHCPv6 server for address assignment.
+- Link-local
+	- In IPv4, link-local addressing (or APIPA) is used when DHCP fails, and does not really provide any useful connectivity
+	- In IPv6, every interface has a link-local address starting with `fe80::`, which is used for network-layer functions such as neighbor discovery.

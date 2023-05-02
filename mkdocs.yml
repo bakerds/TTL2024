@@ -1,10 +1,15 @@
-site_name: TechTalk Live 2023
+site_name: Tech Talk Live 2023
 site_url: https://ttl.iu13.net/
 nav:
   - index.md
   - Introduction to IPv6:
     - 'ipv6/index.md'
     - 'ipv6/100-design.md'
+    - 'ipv6/200-routing.md'
+    - 'ipv6/300-host-configuration.md'
+    - 'ipv6/400-implementing.md'
+    - 'ipv6/500-configuring.md'
+    - 'ipv6/lab.md'
   - Routing Security — BGP, IRR, and RPKI:
     - 'routing-security/index.md'
     - 'routing-security/100-irr.md'
@@ -38,11 +43,22 @@ extra:
       link: https://www.linkedin.com/in/dsbaker1/
 copyright: "Copyright © 2023 Dan Baker"
 markdown_extensions:
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_code_format
+  - pymdownx.tabbed:
+      alternate_style: true 
   - footnotes
   - admonition
   - attr_list
   - pymdownx.emoji:
       emoji_index: !!python/name:materialx.emoji.twemoji
       emoji_generator: !!python/name:materialx.emoji.to_svg
+  - pymdownx.tasklist:
+      custom_checkbox: true
+  - pymdownx.critic
+
 plugins:
   - glightbox
