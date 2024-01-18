@@ -2,7 +2,7 @@ site_name: Tech Talk Live 2024
 site_url: https://ttl.iu13.net/
 nav:
   - index.md
-  - Making NPS Logs Useful with Graylog:
+  - 'Making NPS Logs Useful with Graylog':
     - 'graylog/index.md'
   - TTL2023:
     - 'Introduction to IPv6':
@@ -21,9 +21,9 @@ nav:
 theme:
   name: material
   features:
-    - navigation.instant
+#    - navigation.instant
 #    - navigation.tabs
-    - navigation.sections
+#    - navigation.sections
     - toc.integrate
     - navigation.footer
     - navigation.tracking
