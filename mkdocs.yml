@@ -27,6 +27,7 @@ theme:
     - toc.integrate
     - navigation.footer
     - navigation.tracking
+    - navigation.prune
   palette:
     # Palette toggle for light mode
     - media: "(prefers-color-scheme: light)"
