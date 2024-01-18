@@ -3,17 +3,18 @@ site_url: https://ttl.iu13.net/
 nav:
   - index.md
   - Introduction to IPv6:
-    - 'ipv6/index.md'
-    - 'ipv6/100-design.md'
-    - 'ipv6/200-routing.md'
-    - 'ipv6/300-host-configuration.md'
-    - 'ipv6/400-implementing.md'
-    - 'ipv6/500-configuring.md'
-    - 'ipv6/lab.md'
-  - Routing Security — BGP, IRR, and RPKI:
-    - 'routing-security/index.md'
-    - 'routing-security/100-irr.md'
-    - 'routing-security/200-rpki.md'
+    - '2023/ipv6/index.md'
+    - '2023/ipv6/100-design.md'
+    - '2023/ipv6/200-routing.md'
+    - '2023/ipv6/300-host-configuration.md'
+    - '2023/ipv6/400-implementing.md'
+    - '2023/ipv6/500-configuring.md'
+    - '2023/ipv6/lab.md'
+  - TTL2023:
+    - Routing Security — BGP, IRR, and RPKI:
+      - '2023/routing-security/index.md'
+      - '2023/routing-security/100-irr.md'
+      - '2023/routing-security/200-rpki.md'
   - about.md
 theme:
   name: material
@@ -41,7 +42,7 @@ extra:
   social:
     - icon: fontawesome/brands/linkedin 
       link: https://www.linkedin.com/in/dsbaker1/
-copyright: "Copyright © 2023 Dan Baker"
+copyright: "Copyright © 2024 Dan Baker"
 markdown_extensions:
   - pymdownx.superfences:
       custom_fences:
@@ -54,8 +55,8 @@ markdown_extensions:
   - admonition
   - attr_list
   - pymdownx.emoji:
-      emoji_index: !!python/name:materialx.emoji.twemoji
-      emoji_generator: !!python/name:materialx.emoji.to_svg
+      emoji_index: !!python/name:material.extensions.emoji.twemoji
+      emoji_generator: !!python/name:material.extensions.emoji.to_svg
   - pymdownx.tasklist:
       custom_checkbox: true
   - pymdownx.critic
