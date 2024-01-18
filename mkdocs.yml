@@ -5,6 +5,7 @@ nav:
   - 'Making NPS Logs Useful with Graylog':
     - 'graylog/index.md'
   - TTL2023:
+    - '2023/index.md'
     - 'Introduction to IPv6':
       - '2023/ipv6/index.md'
       - '2023/ipv6/100-design.md'
