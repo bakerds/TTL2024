@@ -10,5 +10,3 @@ hide:
 
 ---
 
-## [Routing Security — BGP, IRR, and RPKI](2023/routing-security/index.md)
-:clock8: Wednesday, May 3, 2023; 8:00 - 8:50 am, Room 104
