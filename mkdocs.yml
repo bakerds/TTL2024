@@ -2,16 +2,18 @@ site_name: Tech Talk Live 2024
 site_url: https://ttl.iu13.net/
 nav:
   - index.md
-  - Introduction to IPv6:
-    - '2023/ipv6/index.md'
-    - '2023/ipv6/100-design.md'
-    - '2023/ipv6/200-routing.md'
-    - '2023/ipv6/300-host-configuration.md'
-    - '2023/ipv6/400-implementing.md'
-    - '2023/ipv6/500-configuring.md'
-    - '2023/ipv6/lab.md'
+  - Making NPS Logs Useful with Graylog:
+    - 'graylog/index.md'
   - TTL2023:
-    - Routing Security — BGP, IRR, and RPKI:
+    - 'Introduction to IPv6':
+      - '2023/ipv6/index.md'
+      - '2023/ipv6/100-design.md'
+      - '2023/ipv6/200-routing.md'
+      - '2023/ipv6/300-host-configuration.md'
+      - '2023/ipv6/400-implementing.md'
+      - '2023/ipv6/500-configuring.md'
+      - '2023/ipv6/lab.md'
+    - 'Routing Security — BGP, IRR, and RPKI':
       - '2023/routing-security/index.md'
       - '2023/routing-security/100-irr.md'
       - '2023/routing-security/200-rpki.md'
@@ -19,10 +21,12 @@ nav:
 theme:
   name: material
   features:
+    - navigation.instant
     - navigation.tabs
     - navigation.sections
     - toc.integrate
     - navigation.footer
+    - navigation.tracking
   palette:
     # Palette toggle for light mode
     - media: "(prefers-color-scheme: light)"
