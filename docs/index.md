@@ -1,14 +1,14 @@
 ---
 hide:
-#  - navigation
+  - navigation
 ---
 
 # Home
 
-## [Introduction to IPv6](ipv6/index.md)
-:clock9: Tuesday, May 2, 2023; 9:00 - 11:30 am, Room 104
+## [Making NPS Logs Useful with Graylog](graylog/index.md)
+:clock9: Xday, May X, 2024; x:xx - x:xx am, Room x
 
 ---
 
-## [Routing Security — BGP, IRR, and RPKI](routing-security/index.md)
+## [Routing Security — BGP, IRR, and RPKI](2023/routing-security/index.md)
 :clock8: Wednesday, May 3, 2023; 8:00 - 8:50 am, Room 104
