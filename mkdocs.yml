@@ -4,6 +4,13 @@ nav:
   - index.md
   - 'Making NPS Logs Useful with Graylog':
     - 'graylog/index.md'
+    - 'graylog/100-prerequisites.md'
+    - 'graylog/200-nps.md'
+    - 'graylog/220-ingest.md'
+    - 'graylog/230-process.md'
+    - 'graylog/240-aggregate.md'
+  - 'Internet Exchange Peering':
+    - 'peering/index.md'
   - TTL2023:
     - '2023/index.md'
     - 'Introduction to IPv6':
@@ -29,6 +36,8 @@ theme:
     - navigation.footer
     - navigation.tracking
     - navigation.prune
+    - content.code.copy
+    - content.code.annotate
   palette:
     # Palette toggle for light mode
     - media: "(prefers-color-scheme: light)"
@@ -43,6 +52,8 @@ theme:
       toggle:
         icon: material/brightness-4
         name: Switch to light mode
+  icon:
+    annotation: material/information
 extra:
   generator: false
   social:
@@ -60,12 +71,14 @@ markdown_extensions:
   - footnotes
   - admonition
   - attr_list
+  - md_in_html
   - pymdownx.emoji:
       emoji_index: !!python/name:material.extensions.emoji.twemoji
       emoji_generator: !!python/name:material.extensions.emoji.to_svg
   - pymdownx.tasklist:
       custom_checkbox: true
   - pymdownx.critic
+  - tables
 
 plugins:
   - glightbox
