@@ -9,6 +9,7 @@ nav:
     - 'graylog/220-ingest.md'
     - 'graylog/230-process.md'
     - 'graylog/240-aggregate.md'
+    - 'graylog/300-conclusion.md'
   - 'Internet Exchange Peering':
     - 'peering/index.md'
   - TTL2023:
@@ -79,6 +80,7 @@ markdown_extensions:
       custom_checkbox: true
   - pymdownx.critic
   - tables
+  - pymdownx.details
 
 plugins:
   - glightbox

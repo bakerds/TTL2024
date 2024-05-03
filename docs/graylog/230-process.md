@@ -113,11 +113,11 @@ Graylog can consume these CSV files using a Data Adapter, and make them availabl
 We need to create a Data Adapter for each field we want to translate using a lookup table.
 
 - Navigate to System > Lookup Tables
-- Click on the Data Adapters Tab
+- Click on the Data Adapters tab
 - Click *Create data adapter*
 	- Choose "DSV File from HTTP" for the *Data Adapter Type*
 	- Enter the field name in the *Title*
-	- Enter the *File URL*
+	- Enter the *File URL* (see links just below)
 	- Set *Refresh interval* to a reasonable value -- `86400` (once a day) is sufficient
 	- Set *Separator* to `,`
 	- Set *Line Separator* to `\n`
@@ -265,7 +265,7 @@ NPS uses a non-standard time format that looks like this: `04/05/2023 10:08:50.9
 - Click *Create Rule*
 - Click *Use Source Code Editor*
 - Give the rule a helpful description
-- In the *Rule Source* field, paste the following code
+- In the *Rule Source* field, paste the following code:
 	```javascript
 	rule "Convert NPS Timestamp"
 	when

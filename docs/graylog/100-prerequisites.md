@@ -12,7 +12,7 @@
 
 - [ ] **Configure**: configure NPS to log to disk
 - [ ] **Ingest**: use Graylog Sidecar filebeat collector to read the log files and send messages to Graylog
-- [ ] **Process**: parse log messages using Graylog Extractors
+- [ ] **Process**: parse log messages using Graylog Extractors and Pipelines
 - [ ] **Aggregate**: make log data useful for meaningful viewing
 
 **Takeaway**: be able to apply a similar process to other sources of log messages and make use of more data from your environment
