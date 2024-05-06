@@ -1,0 +1,1267 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://ttl.iu13.net/graylog/230-process/">
+      
+      
+        <link rel="prev" href="../220-ingest/">
+      
+      
+        <link rel="next" href="../240-aggregate/">
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.0, mkdocs-material-9.5.21">
+    
+    
+      
+        <title>Processing Logs - Tech Talk Live 2024</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.66ac8b77.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+  
+  
+  
+  
+  <style>:root{--md-annotation-icon:url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 9h-2V7h2m0 10h-2v-6h2m-1-9A10 10 0 0 0 2 12a10 10 0 0 0 10 10 10 10 0 0 0 10-10A10 10 0 0 0 12 2Z"/></svg>');}</style>
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+   <link href="../../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
+    html.glightbox-open { overflow: initial; height: 100%; }
+    .gslide-title { margin-top: 0px; user-select: text; }
+    .gslide-desc { color: #666; user-select: text; }
+    .gslide-image img { background: white; }
+    .gscrollbar-fixer { padding-right: 15px; }
+    .gdesc-inner { font-size: 0.75rem; }
+    body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color);}
+    body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color);}
+    body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color);}</style> <script src="../../assets/javascripts/glightbox.min.js"></script></head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#processing-logs" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="Tech Talk Live 2024" class="md-header__button md-logo" aria-label="Tech Talk Live 2024" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Tech Talk Live 2024
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Processing Logs
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69Z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12c0-2.42-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69Z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var media,input,key,value,palette=__md_get("__palette");if(palette&&palette.color){"(prefers-color-scheme)"===palette.color.media&&(media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']"),palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent"));for([key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../.." class="md-tabs__link">
+        
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../" class="md-tabs__link">
+          
+  
+  Making NPS Logs Useful with Graylog
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../peering/" class="md-tabs__link">
+          
+  
+  Internet Exchange Peering
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../2023/" class="md-tabs__link">
+          
+  
+  TTL2023
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../about/" class="md-tabs__link">
+        
+  
+    
+  
+  About the presenter
+
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+  
+
+<nav class="md-nav md-nav--primary md-nav--lifted md-nav--integrated" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Tech Talk Live 2024" class="md-nav__button md-logo" aria-label="Tech Talk Live 2024" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    Tech Talk Live 2024
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Home
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+      
+        
+        
+      
+      
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    Making NPS Logs Useful with Graylog
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            Making NPS Logs Useful with Graylog
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Introduction
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../100-prerequisites/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Scope
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../200-nps/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Configuring NPS
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../220-ingest/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Ingesting Logs
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Processing Logs
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    Processing Logs
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#log-processing-flowchart" class="md-nav__link">
+    <span class="md-ellipsis">
+      Log Processing Flowchart
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#processing-stages" class="md-nav__link">
+    <span class="md-ellipsis">
+      Processing Stages
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#raw-message" class="md-nav__link">
+    <span class="md-ellipsis">
+      Raw Message
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#enriching-the-data" class="md-nav__link">
+    <span class="md-ellipsis">
+      Enriching the Data
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Enriching the Data">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#data-adapter" class="md-nav__link">
+    <span class="md-ellipsis">
+      Data Adapter
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cache" class="md-nav__link">
+    <span class="md-ellipsis">
+      Cache
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#lookup-tables" class="md-nav__link">
+    <span class="md-ellipsis">
+      Lookup Tables
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#extractors" class="md-nav__link">
+    <span class="md-ellipsis">
+      Extractors
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#pipeline-processing" class="md-nav__link">
+    <span class="md-ellipsis">
+      Pipeline Processing
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#test" class="md-nav__link">
+    <span class="md-ellipsis">
+      Test
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../240-aggregate/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Aggregating and Viewing Logs
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../300-conclusion/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Conclusion
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../peering/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Internet Exchange Peering
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../2023/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    TTL2023
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../about/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    About the presenter
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+<h1 id="processing-logs">Processing Logs</h1>
+<h3 id="log-processing-flowchart">Log Processing Flowchart</h3>
+<pre class="mermaid"><code>graph LR
+  subgraph gl ["Graylog Server"]
+    direction LR
+    grayloginput("Graylog Input")
+    pipeline("Pipeline
+    Processing")
+    subgraph extractors ["Extractors"]
+      direction BT
+      regex("Regex/Grok Patterns")
+      lut("Lookup Tables")
+      da("Data Adapters")
+    end
+    logs("Processed Logs")
+  end
+
+  grayloginput --&gt; extractors -- Stream --&gt; pipeline
+  pipeline --&gt; logs;
+  regex -. (when needed) .-&gt; lut;
+  lut --&gt; da;</code></pre>
+<h3 id="processing-stages">Processing Stages</h3>
+<p>The order of message processing is configurable in System &gt; Configurations &gt; Message Processors.</p>
+<p>In this example, the order of processing is:</p>
+<ol>
+<li>Message Filter Chain (Extractors)<ul>
+<li>Extractors help parse log message data into useful fields</li>
+</ul>
+</li>
+<li>Stream Rule Processor<ul>
+<li>Messages can match multiple streams based on message source and other criteria</li>
+<li>Streams route messages to index sets or forward to outputs</li>
+<li>Different index sets may have different retention policies</li>
+</ul>
+</li>
+<li>Pipeline Processor<ul>
+<li>Pipelines consist of Stages, Rules and Functions</li>
+<li>Rules define which messages should be processed by a Stage, and what Functions should be applied</li>
+<li>Pipeline Functions can transform and manipulate message contents and parse message data into useful fields</li>
+</ul>
+</li>
+</ol>
+<p>I am using both extractors and pipeline rules. It would be possible, and maybe more computationally efficient, to do everything with pipeline rules, but a bit more difficult to configure (see also: <em>"if it ain't broke"</em>).</p>
+<h3 id="raw-message">Raw Message</h3>
+<div class="highlight"><pre><span></span><code><span class="nt">&lt;Event&gt;</span>
+<span class="w">  </span><span class="nt">&lt;Timestamp</span><span class="w"> </span><span class="na">data_type=</span><span class="s">&quot;4&quot;</span><span class="nt">&gt;</span>05/02/2024<span class="w"> </span>11:23:13.729<span class="nt">&lt;/Timestamp&gt;</span>
+<span class="w">  </span><span class="nt">&lt;Computer-Name</span><span class="w"> </span><span class="na">data_type=</span><span class="s">&quot;1&quot;</span><span class="nt">&gt;</span>dan-nps-1<span class="nt">&lt;/Computer-Name&gt;</span>
+<span class="w">  </span><span class="nt">&lt;Event-Source</span><span class="w"> </span><span class="na">data_type=</span><span class="s">&quot;1&quot;</span><span class="nt">&gt;</span>IAS<span class="nt">&lt;/Event-Source&gt;</span>
+<span class="w">  </span><span class="nt">&lt;Acct-Status-Type</span><span class="w"> </span><span class="na">data_type=</span><span class="s">&quot;0&quot;</span><span class="nt">&gt;</span>1<span class="nt">&lt;/Acct-Status-Type&gt;</span>
+<span class="w">  </span><span class="nt">&lt;Acct-Authentic</span><span class="w"> </span><span class="na">data_type=</span><span class="s">&quot;0&quot;</span><span class="nt">&gt;</span>1<span class="nt">&lt;/Acct-Authentic&gt;</span>
+<span class="w">  </span><span class="nt">&lt;User-Name</span><span class="w"> </span><span class="na">data_type=</span><span class="s">&quot;1&quot;</span><span class="nt">&gt;</span>john_doe@iu13.org<span class="nt">&lt;/User-Name&gt;</span>
+<span class="w">  </span><span class="nt">&lt;Called-Station-Id</span><span class="w"> </span><span class="na">data_type=</span><span class="s">&quot;1&quot;</span><span class="nt">&gt;</span>AC-23-16-F2-15-11:IU13Employee<span class="nt">&lt;/Called-Station-Id&gt;</span>
+<span class="w">  </span><span class="nt">&lt;NAS-Port-Type</span><span class="w"> </span><span class="na">data_type=</span><span class="s">&quot;0&quot;</span><span class="nt">&gt;</span>19<span class="nt">&lt;/NAS-Port-Type&gt;</span>
+<span class="w">  </span><span class="nt">&lt;Service-Type</span><span class="w"> </span><span class="na">data_type=</span><span class="s">&quot;0&quot;</span><span class="nt">&gt;</span>2<span class="nt">&lt;/Service-Type&gt;</span>
+<span class="w">  </span><span class="nt">&lt;Calling-Station-Id</span><span class="w"> </span><span class="na">data_type=</span><span class="s">&quot;1&quot;</span><span class="nt">&gt;</span>52-F6-D8-CB-01-2D<span class="nt">&lt;/Calling-Station-Id&gt;</span>
+<span class="w">  </span><span class="nt">&lt;Connect-Info</span><span class="w"> </span><span class="na">data_type=</span><span class="s">&quot;1&quot;</span><span class="nt">&gt;</span>CONNECT<span class="w"> </span>0Mbps<span class="w"> </span>802.11b<span class="nt">&lt;/Connect-Info&gt;</span>
+<span class="w">  </span><span class="nt">&lt;Acct-Session-Id</span><span class="w"> </span><span class="na">data_type=</span><span class="s">&quot;1&quot;</span><span class="nt">&gt;</span>26ECD9A769A00227<span class="nt">&lt;/Acct-Session-Id&gt;</span>
+<span class="w">  </span><span class="nt">&lt;Acct-Multi-Session-Id</span><span class="w"> </span><span class="na">data_type=</span><span class="s">&quot;1&quot;</span><span class="nt">&gt;</span>A64281482EF1BDCD<span class="nt">&lt;/Acct-Multi-Session-Id&gt;</span>
+<span class="w">  </span><span class="nt">&lt;Class</span><span class="w"> </span><span class="na">data_type=</span><span class="s">&quot;1&quot;</span><span class="nt">&gt;</span>311<span class="w"> </span>1<span class="w"> </span>10.10.10.10<span class="w"> </span>12/29/2023<span class="w"> </span>21:55:52<span class="w"> </span>6903028<span class="nt">&lt;/Class&gt;</span>
+<span class="w">  </span><span class="nt">&lt;Event-Timestamp</span><span class="w"> </span><span class="na">data_type=</span><span class="s">&quot;4&quot;</span><span class="nt">&gt;</span>05/02/2024<span class="w"> </span>15:23:13<span class="nt">&lt;/Event-Timestamp&gt;</span>
+<span class="w">  </span><span class="nt">&lt;Acct-Delay-Time</span><span class="w"> </span><span class="na">data_type=</span><span class="s">&quot;0&quot;</span><span class="nt">&gt;</span>0<span class="nt">&lt;/Acct-Delay-Time&gt;</span>
+<span class="w">  </span><span class="nt">&lt;NAS-IP-Address</span><span class="w"> </span><span class="na">data_type=</span><span class="s">&quot;3&quot;</span><span class="nt">&gt;</span>10.13.41.33<span class="nt">&lt;/NAS-IP-Address&gt;</span>
+<span class="w">  </span><span class="nt">&lt;Client-IP-Address</span><span class="w"> </span><span class="na">data_type=</span><span class="s">&quot;3&quot;</span><span class="nt">&gt;</span>10.13.41.33<span class="nt">&lt;/Client-IP-Address&gt;</span>
+<span class="w">  </span><span class="nt">&lt;Client-Vendor</span><span class="w"> </span><span class="na">data_type=</span><span class="s">&quot;0&quot;</span><span class="nt">&gt;</span>0<span class="nt">&lt;/Client-Vendor&gt;</span>
+<span class="w">  </span><span class="nt">&lt;Client-Friendly-Name</span><span class="w"> </span><span class="na">data_type=</span><span class="s">&quot;1&quot;</span><span class="nt">&gt;</span>IU13<span class="w"> </span>APs<span class="nt">&lt;/Client-Friendly-Name&gt;</span>
+<span class="w">  </span><span class="nt">&lt;Proxy-Policy-Name</span><span class="w"> </span><span class="na">data_type=</span><span class="s">&quot;1&quot;</span><span class="nt">&gt;</span>Staff<span class="w"> </span>Wireless<span class="nt">&lt;/Proxy-Policy-Name&gt;</span>
+<span class="w">  </span><span class="nt">&lt;Packet-Type</span><span class="w"> </span><span class="na">data_type=</span><span class="s">&quot;0&quot;</span><span class="nt">&gt;</span>4<span class="nt">&lt;/Packet-Type&gt;</span>
+<span class="w">  </span><span class="nt">&lt;Reason-Code</span><span class="w"> </span><span class="na">data_type=</span><span class="s">&quot;0&quot;</span><span class="nt">&gt;</span>0<span class="nt">&lt;/Reason-Code&gt;</span>
+<span class="nt">&lt;/Event&gt;</span>
+</code></pre></div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The message is really on a single line -- here I added line breaks for readability.</p>
+</div>
+<p>Since the data is already structured, we simply need to extract the contents of each XML element to a field in Graylog.</p>
+<h3 id="enriching-the-data">Enriching the Data</h3>
+<p>Some fields such as <code>Packet-Type</code> and <code>Reason-Code</code> are enumerated types that are coded as integers:</p>
+<div class="highlight"><pre><span></span><code><span class="nt">&lt;Packet-Type</span><span class="w"> </span><span class="na">data_type=</span><span class="s">&quot;0&quot;</span><span class="nt">&gt;</span>4<span class="nt">&lt;/Packet-Type&gt;</span>
+<span class="nt">&lt;Reason-Code</span><span class="w"> </span><span class="na">data_type=</span><span class="s">&quot;0&quot;</span><span class="nt">&gt;</span>0<span class="nt">&lt;/Reason-Code&gt;</span>
+</code></pre></div>
+<p>What does a <code>Packet-Type</code> of <code>4</code> indicate? We can transform these to human-readable values using lookup tables.</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: right;">Packet-Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: right;">1</td>
+<td>Access-Request</td>
+</tr>
+<tr>
+<td style="text-align: right;">2</td>
+<td>Access-Accept</td>
+</tr>
+<tr>
+<td style="text-align: right;">3</td>
+<td>Access-Reject</td>
+</tr>
+<tr>
+<td style="text-align: right;">4</td>
+<td>Accounting-Request</td>
+</tr>
+<tr>
+<td style="text-align: right;">5</td>
+<td>Accounting-Response</td>
+</tr>
+<tr>
+<td style="text-align: right;">11</td>
+<td>Access-Challenge</td>
+</tr>
+<tr>
+<td style="text-align: right;">12</td>
+<td>Status-Server (experimental)</td>
+</tr>
+<tr>
+<td style="text-align: right;">13</td>
+<td>Status-Client (experimental)</td>
+</tr>
+<tr>
+<td style="text-align: right;">255</td>
+<td>Reserved</td>
+</tr>
+</tbody>
+</table>
+<p>I have created CSV files with mappings for seven enum fields. They are available at <a href="https://github.com/bakerds/NPS-Log-Parsing" target="blank">https://github.com/bakerds/NPS-Log-Parsing</a></p>
+<p>Graylog can consume these CSV files using a Data Adapter, and make them available for use as a Lookup Table.</p>
+<div style="clear: both; padding: 5px 0; overflow: hidden">
+<h4 id="data-adapter">Data Adapter</h4>
+<p><a class="glightbox" href="../images/data-adapter-create.png" data-type="image" data-width="auto" data-height="auto" data-description="Create a Data Adapter for each enum field" data-desc-position="bottom"><img _=";" alt="" data-description="Create a Data Adapter for each enum field" src="../images/data-adapter-create.png" style="float: right; clear: both; padding: 5px; width: 400px" /></a>
+<a class="glightbox" href="../images/data-adapter-list.png" data-type="image" data-width="auto" data-height="auto" data-description="Completed Data Adapters" data-desc-position="bottom"><img _=";" alt="" data-description="Completed Data Adapters" src="../images/data-adapter-list.png" style="float: right; clear: both; padding: 5px; width: 400px" /></a></p>
+<p>We need to create a Data Adapter for each field we want to translate using a lookup table.</p>
+<ul>
+<li>Navigate to System &gt; Lookup Tables</li>
+<li>Click on the Data Adapters tab</li>
+<li>Click <em>Create data adapter</em><ul>
+<li>Choose "DSV File from HTTP" for the <em>Data Adapter Type</em></li>
+<li>Enter the field name in the <em>Title</em></li>
+<li>Enter the <em>File URL</em> (see links just below)</li>
+<li>Set <em>Refresh interval</em> to a reasonable value -- <code>86400</code> (once a day) is sufficient</li>
+<li>Set <em>Separator</em> to <code>,</code></li>
+<li>Set <em>Line Separator</em> to <code>\n</code></li>
+<li>Click <em>Create adapter</em></li>
+</ul>
+</li>
+<li>Repeat for each field you wish to translate, plus one for translating boolean values:<ul>
+<li><a href="https://raw.githubusercontent.com/bakerds/NPS-Log-Parsing/main/Authentication-Type.csv" target="blank"><code>Authentication-Type</code></a></li>
+<li><a href="https://raw.githubusercontent.com/bakerds/NPS-Log-Parsing/main/NAS-Port-Type.csv" target="blank"><code>NAS-Port-Type</code></a></li>
+<li><a href="https://raw.githubusercontent.com/bakerds/NPS-Log-Parsing/main/Packet-Type.csv" target="blank"><code>Packet-Type</code></a></li>
+<li><a href="https://raw.githubusercontent.com/bakerds/NPS-Log-Parsing/main/Provider-Type.csv" target="blank"><code>Provider-Type</code></a></li>
+<li><a href="https://raw.githubusercontent.com/bakerds/NPS-Log-Parsing/main/Reason-Code.csv" target="blank"><code>Reason-Code</code></a></li>
+<li><a href="https://raw.githubusercontent.com/bakerds/NPS-Log-Parsing/main/Service-Type.csv" target="blank"><code>Service-Type</code></a></li>
+<li><a href="https://raw.githubusercontent.com/bakerds/NPS-Log-Parsing/main/Vendor.csv" target="blank"><code>Vendor</code></a></li>
+<li><a href="https://raw.githubusercontent.com/bakerds/NPS-Log-Parsing/main/boolean.csv" target="blank"><code>Boolean</code></a></li>
+</ul>
+</li>
+</ul>
+</div>
+<div style="clear: both; padding: 5px 0; overflow: hidden">
+<h4 id="cache">Cache</h4>
+<p><a class="glightbox" href="../images/create-cache.png" data-type="image" data-width="auto" data-height="auto" data-description="Create a Lookup Table Cache" data-desc-position="bottom"><img _=";" alt="" data-description="Create a Lookup Table Cache" src="../images/create-cache.png" style="float: right; clear: both; padding: 5px; width: 400px" /></a></p>
+<p>To use a Data Adapter in a Lookup Table, we must first create a Cache. </p>
+<ul>
+<li>Navigate to System &gt; Lookup Tables</li>
+<li>Click on the Caches Tab</li>
+<li>Click <em>Create cache</em><ul>
+<li>For <em>Cache Type</em>, choose "Node-local, in-memory cache"</li>
+<li>Enter a Title</li>
+<li>Set a reasonable value for <em>Maximum entries</em> -- we are dealing with a small set of values (&lt; 200), so we can afford to cache them all</li>
+<li>Uncheck <em>Expire after access</em> -- again, we have relatively few entries to cache and don't need to expire them</li>
+<li>Click <em>Create cache</em></li>
+</ul>
+</li>
+</ul>
+</div>
+<div style="clear: both; padding: 5px 0; overflow: hidden">
+<h4 id="lookup-tables">Lookup Tables</h4>
+<p><a class="glightbox" href="../images/create-lut.png" data-type="image" data-width="auto" data-height="auto" data-description="Create a Lookup Table for each field" data-desc-position="bottom"><img _=";" alt="" data-description="Create a Lookup Table for each field" src="../images/create-lut.png" style="float: right; clear: both; padding: 5px; width: 400px" /></a>
+<a class="glightbox" href="../images/lut-list.png" data-type="image" data-width="auto" data-height="auto" data-description="Completed Lookup Tables" data-desc-position="bottom"><img _=";" alt="" data-description="Completed Lookup Tables" src="../images/lut-list.png" style="float: right; clear: both; padding: 5px; width: 400px" /></a></p>
+<ul>
+<li>Navigate to System &gt; Lookup Tables</li>
+<li>Create a Lookup Table for each field:<ul>
+<li>Click <em>Create lookup table</em></li>
+<li>Enter the field name in <em>Title</em> and <em>Name</em></li>
+<li>Select the Data Adapter for the field</li>
+<li>Select the Cache</li>
+<li>Click <em>Create lookup table</em></li>
+<li>Repeat for each field that needs translation</li>
+</ul>
+</li>
+</ul>
+</div>
+<div style="clear: both; padding: 5px 0">
+<h3 id="extractors">Extractors</h3>
+<p><a class="glightbox" href="../images/create-extractors.png" data-type="image" data-width="auto" data-height="auto" data-description="Click &quot;Create extractor&quot;" data-desc-position="bottom"><img _=";" alt="" data-description="Click &quot;Create extractor&quot;" src="../images/create-extractors.png" style="float: right; clear: both; padding: 5px; width: 400px" /></a>
+<a class="glightbox" href="../images/create-extractors-2.png" data-type="image" data-width="auto" data-height="auto" data-description="For the message field, Select extractor type: Regular expression" data-desc-position="bottom"><img _=";" alt="" data-description="For the message field, Select extractor type: Regular expression" src="../images/create-extractors-2.png" style="float: right; clear: both; padding: 5px; width: 400px" /></a></p>
+<ul>
+<li>Navigate to System &gt; Inputs</li>
+<li>Locate the input you created earlier and click <em>Manage extractors</em></li>
+<li>Click <em>Create extractor</em></li>
+<li>Click <em>Load Message</em> to load a recent message from the input. This message will be used to test your new extractor</li>
+<li>Next to the <em>message</em> field, click <em>Select extractor Type</em></li>
+<li>Choose <em>Regular expression</em></li>
+</ul>
+</div>
+<div style="clear: both; padding: 5px 0">
+<p><a class="glightbox" href="../images/create-extractors-3.png" data-type="image" data-width="auto" data-height="auto" data-description="Configure new extractor" data-desc-position="bottom"><img _=";" alt="" data-description="Configure new extractor" src="../images/create-extractors-3.png" style="float: right; clear: both; padding: 5px; width: 400px" /></a></p>
+<ul>
+<li>
+<p>In this example, we will extract the <code>Packet-Type</code> field value
+    <div class="highlight"><pre><span></span><code><span class="nt">&lt;Packet-Type</span><span class="w"> </span><span class="na">data_type=</span><span class="s">&quot;0&quot;</span><span class="nt">&gt;</span>4<span class="nt">&lt;/Packet-Type&gt;</span>
+</code></pre></div></p>
+</li>
+<li>
+<p>To extract the value <code>4</code> from this part of the message, we'll use this regular expression:
+    <div class="highlight"><pre><span></span><code><span class="nt">&lt;Packet-Type</span><span class="w"> </span><span class="na">data_type=</span><span class="s">&quot;0&quot;</span><span class="nt">&gt;</span>(\d+)<span class="nt">&lt;/Packet-Type&gt;</span>
+</code></pre></div></p>
+</li>
+<li>Click the <em>Try</em> button to see if it works</li>
+<li>We only want the extractor to run if the <code>Packet-Type</code> tag is present in the message, so select <em>Only attempt extraction if field contains string</em> and enter <code>Packet-Type</code> in the <em>Field contains string</em> textbox</li>
+<li>
+<p>Enter <code>PacketType</code> in <em>Store as field</em></p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The field name cannot contain a hyphen -- only alphanumeric characters and underscores are allowed</p>
+</div>
+</li>
+<li>
+<p>Enter <code>Packet-Type</code> in the <em>Extractor title</em> textbox</p>
+</li>
+<li>Next to <em>Add converter</em>, select "Lookup Table" and click the <em>Add</em> button<ul>
+<li>Next to <em>Lookup Table</em>, select the "Packet-Type" lookup table</li>
+</ul>
+</li>
+<li>Click <em>Create Extractor</em></li>
+</ul>
+<p>You can create extractors for every field that's present in the logs. Most can be handled with a simple regex string. </p>
+<p>Here are the fields I chose to extract:</p>
+<details class="abstract">
+<summary>Field List</summary>
+<ul>
+<li><code>Acct-Multi-Session-Id</code></li>
+<li><code>Acct-Session-Id</code></li>
+<li><code>Authentication-Type</code></li>
+<li><code>Called-Station-Id</code></li>
+<li><code>Calling-Station-Id</code></li>
+<li><code>Class</code></li>
+<li><code>Client-Friendly-Name</code></li>
+<li><code>Client-IP-Address</code></li>
+<li><code>Client-Vendor</code></li>
+<li><code>Computer-Name</code></li>
+<li><code>Connect-Info</code><ul>
+<li><code>DataRate</code></li>
+<li><code>IEEEStandard</code></li>
+<li><code>RSSI</code></li>
+<li><code>Channel</code></li>
+</ul>
+</li>
+<li><code>EAP-Friendly-Name</code></li>
+<li><code>Event-Source</code></li>
+<li><code>Framed-IP-Address</code></li>
+<li><code>Framed-MTU</code></li>
+<li><code>Fully-Qualifed-User-Name</code></li>
+<li><code>NAS-IP-Address</code></li>
+<li><code>NAS-IPv6-Address</code></li>
+<li><code>NAS-Port-Type</code></li>
+<li><code>NP-Policy-Name</code></li>
+<li><code>Timestamp</code></li>
+<li><code>Packet-Type</code></li>
+<li><code>Provider-Type</code></li>
+<li><code>Proxy-Policy-Name</code></li>
+<li><code>Quarantine-Update-Non-Compliant</code></li>
+<li><code>Reason-Code</code></li>
+<li><code>SAM-Account-Name</code></li>
+<li><code>Service-Type</code></li>
+<li><code>Session-Timeout</code></li>
+<li><code>User-Name</code></li>
+</ul>
+</details>
+</div>
+<div style="clear: both; padding: 5px 0">
+<p><a class="glightbox" href="../images/import-extractors.png" data-type="image" data-width="auto" data-height="auto" data-description="Click &quot;Import extractors&quot;" data-desc-position="bottom"><img _=";" alt="" data-description="Click &quot;Import extractors&quot;" src="../images/import-extractors.png" style="float: right; clear: both; padding: 5px; width: 400px" /></a></p>
+<p>To save time, you can import the rest of the extractors that I have already created:</p>
+<ul>
+<li>Navigate to System &gt; Inputs</li>
+<li>Locate the input you created earlier and click <em>Manage extractors</em></li>
+<li>Click Actions &gt; Import extractors</li>
+</ul>
+</div>
+<div style="clear: both; padding: 5px 0">
+<p><a class="glightbox" href="../images/import-extractors2.png" data-type="image" data-width="auto" data-height="auto" data-description="Paste and click &quot;Add extractors to input&quot;" data-desc-position="bottom"><img _=";" alt="" data-description="Paste and click &quot;Add extractors to input&quot;" src="../images/import-extractors2.png" style="float: right; clear: both; padding: 5px; width: 400px" /></a></p>
+<ul>
+<li>Paste the contents of <a href="https://raw.githubusercontent.com/bakerds/NPS-Log-Parsing/main/nps-extractors.json" target="blank">this file</a> in the text area and click <em>Add extractors to input</em></li>
+</ul>
+</div>
+<div style="clear: both; padding: 5px 0">
+<p><a class="glightbox" href="../images/extractors-list.png" data-type="image" data-width="auto" data-height="auto" data-description="List of extractors" data-desc-position="bottom"><img _=";" alt="" data-description="List of extractors" src="../images/extractors-list.png" style="float: right; clear: both; padding: 5px; width: 400px" /></a></p>
+<ul>
+<li>Go back to the Extractors page and confirm that the extractors have been imported successfully</li>
+</ul>
+</div>
+<div style="clear: both; padding: 5px 0">
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>For some variety, check out the Connect String Parser extractor. That one uses a Grok pattern to parse multiple sub-fields from the <code>Connect-Info</code> field.</p>
+</div>
+<div class="admonition bug">
+<p class="admonition-title">Bug</p>
+<p><code>Fully-Qualifed-User-Name</code> is misspelled -- by the NPS programmers! I have used their incorrect spelling in the extractor title and field name to keep it consistent with the source log files.</p>
+</div>
+</div>
+<div style="clear: both; padding: 5px 0">
+<h3 id="pipeline-processing">Pipeline Processing</h3>
+<p>We have a timestamping issue with our log messages. Graylog does not know how to read the timestamp field within an NPS log message, so it will record the time when it <em>received</em> the message, not the time the message was generated by NPS.</p>
+<p>We can fix that by using a pipeline rule to parse the NPS timestamp within the log message, and replace the timestamp Graylog recorded when the message was received at the input.</p>
+<p>NPS uses an ISO 8601 time format that looks like this: <code>04/05/2023 10:08:50.910</code></p>
+<div class="admonition warning">
+<p class="admonition-title">Heads up!</p>
+<p>NPS uses the server's local time and does not indicate the timezone, so we must specify a timezone when we parse the timestamp. </p>
+<p>If you have servers in multiple timezones, you will need to handle that somehow.</p>
+</div>
+</div>
+<div style="clear: both; padding: 5px 0">
+<p><a class="glightbox" href="../images/create-pipeline-rule.png" data-type="image" data-width="auto" data-height="auto" data-description="List of extractors" data-desc-position="bottom"><img _=";" alt="" data-description="List of extractors" src="../images/create-pipeline-rule.png" style="float: right; clear: both; padding: 5px; width: 400px" /></a></p>
+<ul>
+<li>Navigate to System &gt; Pipelines and click the <em>Manage rules</em> tab</li>
+<li>Click <em>Create Rule</em></li>
+<li>Click <em>Use Source Code Editor</em></li>
+<li>Give the rule a helpful description</li>
+<li>In the <em>Rule Source</em> field, paste the following code:
+    <div class="highlight"><pre><span></span><code><span class="nx">rule</span><span class="w"> </span><span class="s2">&quot;Convert NPS Timestamp&quot;</span>
+<span class="nx">when</span>
+<span class="w">  </span><span class="nx">has_field</span><span class="p">(</span><span class="s2">&quot;nps_timestamp&quot;</span><span class="p">)</span>
+<span class="nx">then</span>
+<span class="w">  </span><span class="kd">let</span><span class="w"> </span><span class="nx">nps_timestamp</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">$message</span><span class="p">.</span><span class="nx">nps_timestamp</span><span class="p">;</span>
+<span class="w">  </span><span class="kd">let</span><span class="w"> </span><span class="nx">new_timestamp</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">parse_date</span><span class="p">(</span><span class="nx">to_string</span><span class="p">(</span><span class="nx">nps_timestamp</span><span class="p">),</span><span class="w"> </span><span class="s2">&quot;MM/dd/yyyy HH:mm:ss.SSS&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;en-US&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;America/New_York&quot;</span><span class="p">);</span>
+<span class="w">  </span><span class="nx">set_field</span><span class="p">(</span><span class="s2">&quot;timestamp&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">new_timestamp</span><span class="p">);</span>
+<span class="nx">end</span>
+</code></pre></div></li>
+<li>Click <em>Create Rule</em></li>
+</ul>
+</div>
+<div style="clear: both; padding: 5px 0">
+<p><a class="glightbox" href="../images/pipeline-new.png" data-type="image" data-width="auto" data-height="auto" data-description="New pipeline" data-desc-position="bottom"><img _=";" alt="" data-description="New pipeline" src="../images/pipeline-new.png" style="float: right; clear: both; padding: 5px; width: 400px" /></a>
+<a class="glightbox" href="../images/pipeline-complete.png" data-type="image" data-width="auto" data-height="auto" data-description="Completed pipeline" data-desc-position="bottom"><img _=";" alt="" data-description="Completed pipeline" src="../images/pipeline-complete.png" style="float: right; clear: both; padding: 5px; width: 400px" /></a></p>
+<ul>
+<li>Navigate to System &gt; Pipelines and click <em>Add new pipeline</em></li>
+<li>Give the pipeline a name and click <em>Create pipeline</em><ul>
+<li>New pipelines have one stage called "Stage 0" with no rules</li>
+</ul>
+</li>
+<li>Click <em>Edit</em> next to "Stage 0"<ul>
+<li>Under <em>Stage Rules</em>, select the "Convert NPS Timestamp" rule you just created</li>
+<li>Click <em>Update stage</em></li>
+</ul>
+</li>
+<li>Back in the Pipeline details, click <em>Edit connections</em><ul>
+<li>Under <em>Streams</em>, select the "Default Stream"</li>
+<li>Click <em>Update connections</em></li>
+</ul>
+</li>
+</ul>
+</div>
+<div style="clear: both; padding: 5px 0">
+<h3 id="test">Test</h3>
+<p><a class="glightbox" href="../images/sample-message-parsed.png" data-type="image" data-width="auto" data-height="auto" data-description="Parsed message" data-desc-position="bottom"><img _=";" alt="" data-description="Parsed message" src="../images/sample-message-parsed.png" style="float: right; clear: both; padding: 5px; width: 368px" /></a></p>
+<ul>
+<li>Navigate to System &gt; Inputs</li>
+<li>Locate the input you created earlier and click <em>Show received messages</em></li>
+<li>With any luck, you should see some messages in the table -- with data parsed into useful, aggregable, and searchable fields! 🎉</li>
+</ul>
+</div>
+<div style="clear: both; padding: 5px 0">
+<ul class="task-list">
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> <strong>Configure</strong></li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> <strong>Ingest</strong></li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> <strong>Process</strong></li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> <strong>Aggregate</strong></li>
+</ul>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Footer" >
+        
+          
+          <a href="../220-ingest/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Ingesting Logs">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              <div class="md-ellipsis">
+                Ingesting Logs
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../240-aggregate/" class="md-footer__link md-footer__link--next" aria-label="Next: Aggregating and Viewing Logs">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              <div class="md-ellipsis">
+                Aggregating and Viewing Logs
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4Z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright © 2024 Dan Baker
+    </div>
+  
+  
+</div>
+      
+        <div class="md-social">
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://www.linkedin.com/in/dsbaker1/" target="_blank" rel="noopener" title="www.linkedin.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3zM135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5 0 21.3-17.2 38.5-38.5 38.5zm282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9V416z"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.tabs", "toc.integrate", "navigation.footer", "navigation.tracking", "navigation.prune", "content.code.copy", "content.code.annotate"], "search": "../../assets/javascripts/workers/search.b8dbb3d2.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.a7c05c9e.min.js"></script>
+      
+    
+  <script>document$.subscribe(() => {const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});})</script></body>
+</html>

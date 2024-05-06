@@ -1,0 +1,2400 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://ttl.iu13.net/2023/ipv6/lab/">
+      
+      
+        <link rel="prev" href="../500-configuring/">
+      
+      
+        <link rel="next" href="../../routing-security/">
+      
+      
+      <link rel="icon" href="../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.0, mkdocs-material-9.5.21">
+    
+    
+      
+        <title>Lab - Tech Talk Live 2024</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.66ac8b77.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+  
+  
+  
+  
+  <style>:root{--md-annotation-icon:url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 9h-2V7h2m0 10h-2v-6h2m-1-9A10 10 0 0 0 2 12a10 10 0 0 0 10 10 10 10 0 0 0 10-10A10 10 0 0 0 12 2Z"/></svg>');}</style>
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+   <link href="../../../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
+    html.glightbox-open { overflow: initial; height: 100%; }
+    .gslide-title { margin-top: 0px; user-select: text; }
+    .gslide-desc { color: #666; user-select: text; }
+    .gslide-image img { background: white; }
+    .gscrollbar-fixer { padding-right: 15px; }
+    .gdesc-inner { font-size: 0.75rem; }
+    body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color);}
+    body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color);}
+    body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color);}</style> <script src="../../../assets/javascripts/glightbox.min.js"></script></head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#lab" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../.." title="Tech Talk Live 2024" class="md-header__button md-logo" aria-label="Tech Talk Live 2024" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Tech Talk Live 2024
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Lab
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69Z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12c0-2.42-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69Z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var media,input,key,value,palette=__md_get("__palette");if(palette&&palette.color){"(prefers-color-scheme)"===palette.color.media&&(media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']"),palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent"));for([key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../.." class="md-tabs__link">
+        
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../graylog/" class="md-tabs__link">
+          
+  
+  Making NPS Logs Useful with Graylog
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../peering/" class="md-tabs__link">
+          
+  
+  Internet Exchange Peering
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../../" class="md-tabs__link">
+          
+  
+  TTL2023
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../about/" class="md-tabs__link">
+        
+  
+    
+  
+  About the presenter
+
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+  
+
+<nav class="md-nav md-nav--primary md-nav--lifted md-nav--integrated" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="Tech Talk Live 2024" class="md-nav__button md-logo" aria-label="Tech Talk Live 2024" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    Tech Talk Live 2024
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Home
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../../graylog/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Making NPS Logs Useful with Graylog
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../../peering/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Internet Exchange Peering
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+      
+        
+        
+      
+      
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    TTL2023
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            TTL2023
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Home
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_4_2" id="__nav_4_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Introduction to IPv6
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_4_2">
+            <span class="md-nav__icon md-icon"></span>
+            Introduction to IPv6
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Introduction
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../100-design/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Network Design - Segmentation
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../200-routing/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Routing
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../300-host-configuration/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Host Configuration
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../400-implementing/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Implementing IPv6
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../500-configuring/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Configuring IPv6
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Lab
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    Lab
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#lab-objectives" class="md-nav__link">
+    <span class="md-ellipsis">
+      Lab objectives
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#switch-configuration" class="md-nav__link">
+    <span class="md-ellipsis">
+      Switch configuration
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Switch configuration">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#getting-connected-to-the-switch" class="md-nav__link">
+    <span class="md-ellipsis">
+      Getting connected to the switch
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#logging-in-to-the-switch-cli" class="md-nav__link">
+    <span class="md-ellipsis">
+      Logging in to the switch CLI
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-junos-cli" class="md-nav__link">
+    <span class="md-ellipsis">
+      The JunOS CLI
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-lab-network" class="md-nav__link">
+    <span class="md-ellipsis">
+      The lab network
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="The lab network">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#physical-connections" class="md-nav__link">
+    <span class="md-ellipsis">
+      Physical connections
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#transit-vlans-and-routing" class="md-nav__link">
+    <span class="md-ellipsis">
+      Transit VLANs and routing
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#address-allocations" class="md-nav__link">
+    <span class="md-ellipsis">
+      Address allocations
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#summary-table" class="md-nav__link">
+    <span class="md-ellipsis">
+      Summary Table
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#starting-config" class="md-nav__link">
+    <span class="md-ellipsis">
+      Starting config
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#configure-access-ports-for-user-devices" class="md-nav__link">
+    <span class="md-ellipsis">
+      Configure access ports for user devices
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#add-ipv6-to-transit-vlan" class="md-nav__link">
+    <span class="md-ellipsis">
+      Add IPv6 to transit VLAN
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#add-ipv6-connectivity-client-vlans" class="md-nav__link">
+    <span class="md-ellipsis">
+      Add IPv6 connectivity client VLANs
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#create-two-additional-client-vlans-with-ipv4-and-ipv6-connectivity" class="md-nav__link">
+    <span class="md-ellipsis">
+      Create two additional client VLANs with IPv4 and IPv6 connectivity
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Create two additional client VLANs with IPv4 and IPv6 connectivity">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#create-vlans" class="md-nav__link">
+    <span class="md-ellipsis">
+      Create VLANs
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#create-layer-3-routing-interfaces" class="md-nav__link">
+    <span class="md-ellipsis">
+      Create layer 3 routing interfaces
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#add-dhcp-relay-for-ipv4" class="md-nav__link">
+    <span class="md-ellipsis">
+      Add DHCP relay for IPv4
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#configure-a-client-port-and-test" class="md-nav__link">
+    <span class="md-ellipsis">
+      Configure a client port and test
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#connect-an-ap-and-create-a-wireless-network-using-mist" class="md-nav__link">
+    <span class="md-ellipsis">
+      Connect an AP and create a wireless network using Mist
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tools-to-take-home" class="md-nav__link">
+    <span class="md-ellipsis">
+      Tools to take home
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../routing-security/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Routing Security — BGP, IRR, and RPKI
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../about/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    About the presenter
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+<h1 id="lab">Lab</h1>
+<h2 id="lab-objectives">Lab objectives</h2>
+<ul class="task-list">
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Connect to switch and become familiar with basic management operations</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Configure client ports in several VLANs and test IPv4 connectivity</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Add IPv6 connectivity to transit VLAN and ping the Internet</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Add IPv6 connectivity to existing client VLANs</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Create additional client VLANs with IPv4 and IPv6 connectivity</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Verify that both protocols are working by visiting <a href="https://test-ipv6.iu13.net" target="_blank">test-ipv6.iu13.net</a></li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Bonus: Connect an AP and create a wireless network using Mist</li>
+</ul>
+<h2 id="switch-configuration">Switch configuration</h2>
+<h3 id="getting-connected-to-the-switch">Getting connected to the switch</h3>
+<div class="tabbed-set tabbed-alternate" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">Windows</label><label for="__tabbed_1_2">macOS / Linux</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<ul>
+<li>Connect your serial console cable to the switch Console port</li>
+<li>Determine the name of your serial adapter<ul>
+<li>Open Device Manager</li>
+<li>Expand the <strong>Ports (COM &amp; LPT)</strong> section</li>
+<li>Take note of the serial port listed (<strong>COM3</strong>, for example)</li>
+</ul>
+</li>
+<li>Launch your favorite terminal emulator (<strong><a href="https://www.chiark.greenend.org.uk/~sgtatham/putty/latest.html" target="_blank">PuTTY</a></strong>, for example)</li>
+<li>Choose <strong>Serial</strong>, enter your COM port name, and connect at <strong>9600</strong> baud</li>
+</ul>
+</div>
+<div class="tabbed-block">
+<ul>
+<li>Connect your serial console cable to the switch Console port</li>
+<li>Determine the name of your serial adapter<ul>
+<li>Open a terminal</li>
+<li>Type <code>ls /dev/tty.*</code></li>
+<li>Look for a USB tty and note its name (<code>/dev/ttyUSB0</code>, for example)</li>
+</ul>
+</li>
+<li>Launch your favorite terminal emulator (<strong>minicom</strong> or <strong>screen</strong>, for example) and connect to the desired TTY at 9600 baud<ul>
+<li><code>screen /dev/ttyUSB0 9600</code></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<h2 id="logging-in-to-the-switch-cli">Logging in to the switch CLI</h2>
+<ul>
+<li>Hit enter to start a serial session</li>
+<li>Log in to the switch:
+<div class="highlight"><pre><span></span><code>login: admin
+Password: TTL2023!
+
+Last login: Mon May 1 13:09:10
+
+--- JUNOS 21.4R3-S3.4 Kernel 32-bit  JNPR-12.1-20230120.f3fd182_buil
+{master:0}
+admin@TTL-01&gt;
+</code></pre></div></li>
+</ul>
+<h2 id="the-junos-cli">The JunOS CLI</h2>
+<p>Basic commands to run in operational mode (<code>&gt;</code> prompt)</p>
+<ul>
+<li><code>show configuration</code> — show entire running configuration</li>
+<li><code>show interfaces terse</code> — show interface status</li>
+<li><code>configure</code> — enter configuration mode</li>
+</ul>
+<p>Basic commands to use in configuration mode (<code>#</code> prompt)</p>
+<ul>
+<li><code>show</code> — show the configuration at the current hierarchy</li>
+<li><code>set</code> — create an element in the configuration</li>
+<li><code>delete</code> — delete an element from the configuration</li>
+<li><code>commit</code> — commit changes from candidate config to running config</li>
+<li><code>rollback 0</code> — revert candidate config back to running config (undo uncommitted changes)</li>
+<li><code>rollback 1</code> - revert candidate config to previous running config (undo most recently committed changes)</li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">JunOS Config</p>
+<p><code>show</code> commands display the configuration in a json-like format. <code>set</code> and <code>delete</code> commands operate on an element in the configuration tree. Throughout the lag guide, config samples are displayed in both <code>show</code> and <code>set</code> formats:</p>
+<p><code>show</code> format:</p>
+<p><div class="highlight"><pre><span></span><code>system {
+    host-name TTL-01;
+}
+</code></pre></div>
+<code>set</code> format:
+<div class="highlight"><pre><span></span><code>set system host-name TTL-01
+</code></pre></div></p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Commiting Changes</p>
+<p>JunOS uses a two-stage configuration. When editing the configuration, changes are not applied until they are committed. This enables you to prepare config changes without disrupting the current function of the device, and then apply them all at once.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">CLI Help</p>
+<p>Typing <code>?</code> anywhere in the JunOS CLI will enumerate possible commands or completions from your current position.</p>
+</div>
+<p><strong>Objectives completed:</strong></p>
+<ul class="task-list">
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> Connect to switch and become familiar with basic management operations</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Configure client ports in several VLANs and test IPv4 connectivity</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Add IPv6 connectivity to transit VLAN and ping the Internet</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Add IPv6 connectivity to existing client VLANs</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Create additional client VLANs with IPv4 and IPv6 connectivity</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Verify that both protocols are working by visiting <a href="https://test-ipv6.iu13.net" target="_blank">test-ipv6.iu13.net</a></li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Bonus: Connect an AP and create a wireless network using Mist</li>
+</ul>
+<h2 id="the-lab-network">The lab network</h2>
+<h3 id="physical-connections">Physical connections</h3>
+<p>Each "building" (lab group) switch connects to the core via its <code>ge-0/0/0</code> interface.</p>
+<pre class="mermaid"><code>---
+title: Physical Topology
+---
+flowchart TD
+  f(Firewall)---c(Core);
+  c---b1(Building 1);
+  c---b2(Building 2);
+  c---b3(Building 3);</code></pre>
+<h3 id="transit-vlans-and-routing">Transit VLANs and routing</h3>
+<p>Each building has a separate transit VLAN with an IPv4 and IPv6 subnet used for routing. The building will communicate with the core using traffic tagged with its transit VLAN. In the transit subnets, the core is assigned the first host address, and the building switch is assigned the second host address.</p>
+<p>For the subnet <code>10.95.0.4/30</code>, the host addresses are <code>10.95.0.5</code> (core) and <code>10.95.0.6</code> (building).</p>
+<p>For the subnet <code>2620:1d5:9500:1::/127</code>, the host addresses are <code>2620:1d5:9500:1::</code> (core) and <code>2620:1d5:9500:1::1</code> (building).</p>
+<pre class="mermaid"><code>---
+title: Transit Links
+---
+flowchart TD
+  f(Firewall)---c(Core);
+  c-- Vlan 1301&lt;br&gt;10.95.0.4/30&lt;br&gt;2620:1d5:9500:1::/127 ---b1(Building 1);
+  c-- Vlan 1302&lt;br&gt;10.95.0.8/30&lt;br&gt;2620:1d5:9500:2::/127 ---b2(Building 2);
+  c-- Vlan 1303&lt;br&gt;10.95.0.12/30&lt;br&gt;2620:1d5:9500:3::/127 ---b3(Building 3);</code></pre>
+<h3 id="address-allocations">Address allocations</h3>
+<p>Each building has an assigned IPv4 and IPv6 prefix. Each prefix is routed to the corresponding building in the core. Client subnets will be chosen from each building's allocation.</p>
+<pre class="mermaid"><code>---
+title: IP Allocations
+---
+flowchart TD
+  f(Firewall)---c(Core);
+  c---b1(Building 1&lt;br&gt;10.95.16.0/20&lt;br&gt;2620:1d5:9501::/48);
+  c---b2(Building 2&lt;br&gt;10.95.32.0/20&lt;br&gt;2620:1d5:9502::/48);
+  c---b3(Building 3&lt;br&gt;10.95.48.0/20&lt;br&gt;2620:1d5:9503::/48);</code></pre>
+<h3 id="summary-table">Summary Table</h3>
+<table>
+<thead>
+<tr>
+<th>Group/<br>Building</th>
+<th>Transit VLAN</th>
+<th>IPv4 Transit</th>
+<th>IPv6 Transit</th>
+<th>IPv4 Allocation</th>
+<th>IPv6 Allocation</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>3001</td>
+<td><code>10.95.0.4/30</code></td>
+<td><code>2620:1d5:9500:1::/127</code></td>
+<td><code>10.95.16.0/20</code></td>
+<td><code>2620:1d5:9501::/48</code></td>
+</tr>
+<tr>
+<td>2</td>
+<td>3002</td>
+<td><code>10.95.0.8/30</code></td>
+<td><code>2620:1d5:9500:2::/127</code></td>
+<td><code>10.95.32.0/20</code></td>
+<td><code>2620:1d5:9502::/48</code></td>
+</tr>
+<tr>
+<td>3</td>
+<td>3003</td>
+<td><code>10.95.0.12/30</code></td>
+<td><code>2620:1d5:9500:3::/127</code></td>
+<td><code>10.95.48.0/20</code></td>
+<td><code>2620:1d5:9503::/48</code></td>
+</tr>
+<tr>
+<td>4</td>
+<td>3004</td>
+<td><code>10.95.0.16/30</code></td>
+<td><code>2620:1d5:9500:4::/127</code></td>
+<td><code>10.95.64.0/20</code></td>
+<td><code>2620:1d5:9504::/48</code></td>
+</tr>
+<tr>
+<td>5</td>
+<td>3005</td>
+<td><code>10.95.0.20/30</code></td>
+<td><code>2620:1d5:9500:5::/127</code></td>
+<td><code>10.95.80.0/20</code></td>
+<td><code>2620:1d5:9505::/48</code></td>
+</tr>
+<tr>
+<td>6</td>
+<td>3006</td>
+<td><code>10.95.0.24/30</code></td>
+<td><code>2620:1d5:9500:6::/127</code></td>
+<td><code>10.95.96.0/20</code></td>
+<td><code>2620:1d5:9506::/48</code></td>
+</tr>
+<tr>
+<td>7</td>
+<td>3007</td>
+<td><code>10.95.0.28/30</code></td>
+<td><code>2620:1d5:9500:7::/127</code></td>
+<td><code>10.95.112.0/20</code></td>
+<td><code>2620:1d5:9507::/48</code></td>
+</tr>
+<tr>
+<td>8</td>
+<td>3008</td>
+<td><code>10.95.0.32/30</code></td>
+<td><code>2620:1d5:9500:8::/127</code></td>
+<td><code>10.95.128.0/20</code></td>
+<td><code>2620:1d5:9508::/48</code></td>
+</tr>
+<tr>
+<td>9</td>
+<td>3009</td>
+<td><code>10.95.0.36/30</code></td>
+<td><code>2620:1d5:9500:9::/127</code></td>
+<td><code>10.95.144.0/20</code></td>
+<td><code>2620:1d5:9509::/48</code></td>
+</tr>
+<tr>
+<td>10</td>
+<td>3010</td>
+<td><code>10.95.0.40/30</code></td>
+<td><code>2620:1d5:9500:a::/127</code></td>
+<td><code>10.95.160.0/20</code></td>
+<td><code>2620:1d5:950a::/48</code></td>
+</tr>
+<tr>
+<td>11</td>
+<td>3011</td>
+<td><code>10.95.0.44/30</code></td>
+<td><code>2620:1d5:9500:b::/127</code></td>
+<td><code>10.95.176.0/20</code></td>
+<td><code>2620:1d5:950b::/48</code></td>
+</tr>
+</tbody>
+</table>
+<details>
+<summary>Hint: Core static route config</summary>
+
+<div class="highlight"><pre><span></span><code>routing-options {
+    rib inet6.0 {
+        static {
+            route ::/0 next-hop 2620:1d5:fff:9510::;
+            route 2620:1d5:9501::/48 next-hop 2620:1d5:9500:1::1;
+            route 2620:1d5:9502::/48 next-hop 2620:1d5:9500:2::1;
+            route 2620:1d5:9503::/48 next-hop 2620:1d5:9500:3::1;
+            route 2620:1d5:9504::/48 next-hop 2620:1d5:9500:4::1;
+            route 2620:1d5:9505::/48 next-hop 2620:1d5:9500:5::1;
+            route 2620:1d5:9506::/48 next-hop 2620:1d5:9500:6::1;
+            route 2620:1d5:9507::/48 next-hop 2620:1d5:9500:7::1;
+            route 2620:1d5:9508::/48 next-hop 2620:1d5:9500:8::1;
+            route 2620:1d5:9509::/48 next-hop 2620:1d5:9500:9::1;
+            route 2620:1d5:950a::/48 next-hop 2620:1d5:9500:a::1;
+            route 2620:1d5:950b::/48 next-hop 2620:1d5:9500:b::1;
+        }
+    }
+    static {
+        route 0.0.0.0/0 next-hop 10.16.95.1;
+        route 10.95.16.0/20 next-hop 10.95.0.6;
+        route 10.95.32.0/20 next-hop 10.95.0.10;
+        route 10.95.48.0/20 next-hop 10.95.0.14;
+        route 10.95.64.0/20 next-hop 10.95.0.18;
+        route 10.95.80.0/20 next-hop 10.95.0.22;
+        route 10.95.96.0/20 next-hop 10.95.0.26;
+        route 10.95.112.0/20 next-hop 10.95.0.30;
+        route 10.95.128.0/20 next-hop 10.95.0.34;
+        route 10.95.144.0/20 next-hop 10.95.0.38;
+        route 10.95.160.0/20 next-hop 10.95.0.42;
+        route 10.95.176.0/20 next-hop 10.95.0.46;
+    }
+}
+</code></pre></div>
+
+</details>
+
+<h3 id="starting-config">Starting config</h3>
+<p>Each building is pre-configured with the following VLANs already configured for IPv4 connectivity:</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="2:4"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><input id="__tabbed_2_2" name="__tabbed_2" type="radio" /><input id="__tabbed_2_3" name="__tabbed_2" type="radio" /><input id="__tabbed_2_4" name="__tabbed_2" type="radio" /><div class="tabbed-labels"><label for="__tabbed_2_1">Building 1</label><label for="__tabbed_2_2">Building 2</label><label for="__tabbed_2_3">Building 3</label><label for="__tabbed_2_4">Building x</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<table>
+<thead>
+<tr>
+<th>VLAN</th>
+<th>Name</th>
+<th>IPv4</th>
+<th>IPv6</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1100</td>
+<td>Network Management</td>
+<td><code>10.95.16.0/24</code></td>
+<td></td>
+</tr>
+<tr>
+<td>1101</td>
+<td>Wireless Management</td>
+<td><code>10.95.17.0/24</code></td>
+<td></td>
+</tr>
+<tr>
+<td>1300</td>
+<td>Staff Wired</td>
+<td><code>10.95.18.0/24</code></td>
+<td></td>
+</tr>
+<tr>
+<td>1400</td>
+<td>Staff Wireless</td>
+<td><code>10.95.19.0/24</code></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="tabbed-block">
+<table>
+<thead>
+<tr>
+<th>VLAN</th>
+<th>Name</th>
+<th>IPv4</th>
+<th>IPv6</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1100</td>
+<td>Network Management</td>
+<td><code>10.95.32.0/24</code></td>
+<td></td>
+</tr>
+<tr>
+<td>1101</td>
+<td>Wireless Management</td>
+<td><code>10.95.33.0/24</code></td>
+<td></td>
+</tr>
+<tr>
+<td>1300</td>
+<td>Staff Wired</td>
+<td><code>10.95.34.0/24</code></td>
+<td></td>
+</tr>
+<tr>
+<td>1400</td>
+<td>Staff Wireless</td>
+<td><code>10.95.35.0/24</code></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="tabbed-block">
+<table>
+<thead>
+<tr>
+<th>VLAN</th>
+<th>Name</th>
+<th>IPv4</th>
+<th>IPv6</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1100</td>
+<td>Network Management</td>
+<td><code>10.95.48.0/24</code></td>
+<td></td>
+</tr>
+<tr>
+<td>1101</td>
+<td>Wireless Management</td>
+<td><code>10.95.49.0/24</code></td>
+<td></td>
+</tr>
+<tr>
+<td>1300</td>
+<td>Staff Wired</td>
+<td><code>10.95.50.0/24</code></td>
+<td></td>
+</tr>
+<tr>
+<td>1400</td>
+<td>Staff Wireless</td>
+<td><code>10.95.51.0/24</code></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="tabbed-block">
+<table>
+<thead>
+<tr>
+<th>VLAN</th>
+<th>Name</th>
+<th>IPv4</th>
+<th>IPv6</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1100</td>
+<td>Network Management</td>
+<td><code>10.95.[16x].0/24</code></td>
+<td></td>
+</tr>
+<tr>
+<td>1101</td>
+<td>Wireless Management</td>
+<td><code>10.95.[16x+1].0/24</code></td>
+<td></td>
+</tr>
+<tr>
+<td>1300</td>
+<td>Staff Wired</td>
+<td><code>10.95.[16x+2].0/24</code></td>
+<td></td>
+</tr>
+<tr>
+<td>1400</td>
+<td>Staff Wireless</td>
+<td><code>10.95.[16x+3].0/24</code></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<details>
+<summary>Hint: Building 11 Configuration</summary>
+
+<div class="highlight"><pre><span></span><code>interfaces {
+    irb {
+        unit 1100 {
+            family inet {
+                address 10.95.176.1/24;
+            }
+        }
+        unit 1101 {
+            family inet {
+                address 10.95.177.1/24;
+            }
+        }
+        unit 1300 {
+            family inet {
+                address 10.95.178.1/24;
+            }
+        }
+        unit 1400 {
+            family inet {
+                address 10.95.179.1/24;
+            }
+        }
+        unit 3011 {
+            family inet {
+                address 10.95.0.46/30;
+            }
+        }
+    }
+}
+forwarding-options {
+    dhcp-relay {
+        forward-only;
+        server-group {
+            TTL {
+                10.14.14.100;
+            }
+        }
+        group TTL {
+            active-server-group TTL;
+            interface irb.1100;
+            interface irb.1101;
+            interface irb.1300;
+            interface irb.1400;
+        }
+    }
+}
+routing-options {
+    static {
+        route 0.0.0.0/0 next-hop 10.95.0.45;
+    }
+}
+vlans {
+    v1100 {
+        description &quot;Network Management&quot;;
+        vlan-id 1100;
+        l3-interface irb.1100;
+    }
+    v1101 {
+        description &quot;Wireless Management&quot;;
+        vlan-id 1101;
+        l3-interface irb.1101;
+    }
+    v1300 {
+        description &quot;Staff Wired&quot;;
+        vlan-id 1300;
+        l3-interface irb.1300;
+    }
+    v1400 {
+        description &quot;Staff Wireless&quot;;
+        vlan-id 1400;
+        l3-interface irb.1400;
+    }
+    v3011 {
+        vlan-id 3011;
+        l3-interface irb.3011;
+    }
+}
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>set interfaces irb unit 1100 family inet address 10.95.176.1/24
+set interfaces irb unit 1101 family inet address 10.95.177.1/24
+set interfaces irb unit 1300 family inet address 10.95.178.1/24
+set interfaces irb unit 1400 family inet address 10.95.179.1/24
+set interfaces irb unit 3001 family inet address 10.95.0.46/30
+set forwarding-options dhcp-relay forward-only
+set forwarding-options dhcp-relay server-group TTL 10.14.14.100
+set forwarding-options dhcp-relay group TTL active-server-group TTL
+set forwarding-options dhcp-relay group TTL interface irb.1100
+set forwarding-options dhcp-relay group TTL interface irb.1101
+set forwarding-options dhcp-relay group TTL interface irb.1300
+set forwarding-options dhcp-relay group TTL interface irb.1400
+set routing-options static route 0.0.0.0/0 next-hop 10.95.0.45
+set vlans v1100 description &quot;Network Management&quot;
+set vlans v1100 vlan-id 1100
+set vlans v1100 l3-interface irb.1100
+set vlans v1101 description &quot;Wireless Management&quot;
+set vlans v1101 vlan-id 1101
+set vlans v1101 l3-interface irb.1101
+set vlans v1300 description &quot;Staff Wired&quot;
+set vlans v1300 vlan-id 1300
+set vlans v1300 l3-interface irb.1300
+set vlans v1400 description &quot;Staff Wireless&quot;
+set vlans v1400 vlan-id 1400
+set vlans v1400 l3-interface irb.1400
+set vlans v3011 vlan-id 3011
+set vlans v3011 l3-interface irb.3011
+</code></pre></div>
+</details>
+
+<p><strong>All DHCPv4 scopes needed for the lab already exist on the DHCP server at 10.14.14.100</strong></p>
+<h3 id="configure-access-ports-for-user-devices">Configure access ports for user devices</h3>
+<div class="highlight"><pre><span></span><code>interfaces {
+    ge-0/0/2 {
+        description &quot;Network Management&quot;;
+        unit 0 {
+            family ethernet-switching {
+                interface-mode access;
+                vlan {
+                    members 1100;
+                }
+            }
+        }
+    }
+    ge-0/0/3 {
+        description &quot;Wireless Management&quot;;
+        unit 0 {
+            family ethernet-switching {
+                interface-mode access;
+                vlan {
+                    members 1101;
+                }
+            }
+        }
+    }
+    ge-0/0/4 {
+        description &quot;Staff Wired&quot;;
+        unit 0 {
+            family ethernet-switching {
+                interface-mode access;
+                vlan {
+                    members 1300;
+                }
+            }
+        }
+    }
+}
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>set interfaces ge-0/0/2 description &quot;Network Management&quot;
+set interfaces ge-0/0/2 unit 0 family ethernet-switching interface-mode access
+set interfaces ge-0/0/2 unit 0 family ethernet-switching vlan members 1100
+set interfaces ge-0/0/3 description &quot;Wireless Management&quot;
+set interfaces ge-0/0/3 unit 0 family ethernet-switching interface-mode access
+set interfaces ge-0/0/3 unit 0 family ethernet-switching vlan members 1101
+set interfaces ge-0/0/4 description &quot;Staff Wired&quot;
+set interfaces ge-0/0/4 unit 0 family ethernet-switching interface-mode access
+set interfaces ge-0/0/4 unit 0 family ethernet-switching vlan members 1300
+</code></pre></div>
+<p>Connect a computer to <code>ge-0/0/2</code> and verify whether you get an IP address in the correct range and if you have IPv4 and/or IPv6 connectivity. (Be sure to turn off your Wi-Fi first!)</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="3:2"><input checked="checked" id="__tabbed_3_1" name="__tabbed_3" type="radio" /><input id="__tabbed_3_2" name="__tabbed_3" type="radio" /><div class="tabbed-labels"><label for="__tabbed_3_1">Windows</label><label for="__tabbed_3_2">macOS / Linux</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<ul>
+<li>Launch <code>cmd.exe</code> and run <code>ipconfig</code></li>
+<li>Look for an IPv4 address in the expected range for Vlan 1100</li>
+<li>Browse to <a href="https://test-ipv6.iu13.net" target="_blank">test-ipv6.iu13.net</a> and check for IPv4 and IPv6 Internet connectivity</li>
+</ul>
+</div>
+<div class="tabbed-block">
+<ul>
+<li>Launch a terminal and run <code>ip a</code></li>
+<li>Look for an IPv4 address in the expected range for Vlan 1100</li>
+<li>Browse to <a href="https://test-ipv6.iu13.net" target="_blank">test-ipv6.iu13.net</a> and check for IPv4 and IPv6 Internet connectivity</li>
+</ul>
+</div>
+</div>
+</div>
+<p><strong>Objectives completed:</strong></p>
+<ul class="task-list">
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> Connect to switch and become familiar with basic management operations</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> Configure client ports in several VLANs and test IPv4 connectivity</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Add IPv6 connectivity to transit VLAN and ping the Internet</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Add IPv6 connectivity to existing client VLANs</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Create additional client VLANs with IPv4 and IPv6 connectivity</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Verify that both protocols are working by visiting <a href="https://test-ipv6.iu13.net" target="_blank">test-ipv6.iu13.net</a></li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Bonus: Connect an AP and create a wireless network using Mist</li>
+</ul>
+<h3 id="add-ipv6-to-transit-vlan">Add IPv6 to transit VLAN</h3>
+<p>Example config for building 11 below. Adjust as necessary for your building/group number, referring to the summary table above for the relevant information.</p>
+<div class="highlight"><pre><span></span><code>interfaces {
+    irb {
+        unit 3011 {
+            family inet {
+                address 10.95.0.46/30;              ## IPv4 transit address (already configured)
+            }
+            family inet6 {
+                address 2620:1d5:9500:b::1/127;     ## IPv6 transit subnet
+            }
+        }
+    }
+}
+routing-options {
+    rib inet6.0 {
+        static {
+            route ::/0 next-hop 2620:1d5:9500:b::;  ## IPv6 default route
+        }
+    }
+    static {
+        route 0.0.0.0/0 next-hop 10.95.0.45;        ## IPv4 default route (already configured)
+    }
+}
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>set interfaces irb unit 3011 family inet6 address 2620:1d5:9500:b::1/127
+set routing-options rib inet6.0 static route ::/0 next-hop 2620:1d5:9500:b::
+</code></pre></div>
+<p>After committing, test whether the switch can reach its gateway and the Internet:
+<div class="highlight"><pre><span></span><code>{master:0}
+admin@TTL-11&gt; ping 2620:1d5:9500:b:: count 4
+PING6(56=40+8+8 bytes) 2620:1d5:9500:1::1 --&gt; 2620:1d5:9500:b::
+16 bytes from 2620:1d5:9500:b::, icmp_seq=0 hlim=64 time=9.844 ms
+16 bytes from 2620:1d5:9500:b::, icmp_seq=1 hlim=64 time=10.051 ms
+16 bytes from 2620:1d5:9500:b::, icmp_seq=2 hlim=64 time=10.012 ms
+16 bytes from 2620:1d5:9500:b::, icmp_seq=3 hlim=64 time=5.855 ms
+
+--- 2620:1d5:9500:b:: ping6 statistics ---
+4 packets transmitted, 4 packets received, 0% packet loss
+round-trip min/avg/max/std-dev = 5.855/8.941/10.051/1.783 ms
+
+{master:0}
+admin@TTL-11&gt; ping 2600:: count 4
+PING6(56=40+8+8 bytes) 2620:1d5:9500:1::1 --&gt; 2600::
+16 bytes from 2600::, icmp_seq=0 hlim=53 time=183.059 ms
+16 bytes from 2600::, icmp_seq=1 hlim=53 time=183.607 ms
+16 bytes from 2600::, icmp_seq=2 hlim=53 time=197.228 ms
+16 bytes from 2600::, icmp_seq=3 hlim=53 time=197.185 ms
+
+--- 2600:: ping6 statistics ---
+4 packets transmitted, 4 packets received, 0% packet loss
+round-trip min/avg/max/std-dev = 183.059/190.270/197.228/6.939 ms
+</code></pre></div></p>
+<p><strong>Objectives completed:</strong></p>
+<ul class="task-list">
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> Connect to switch and become familiar with basic management operations</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> Configure client ports in several VLANs and test IPv4 connectivity</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> Add IPv6 connectivity to transit VLAN and ping the Internet</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Add IPv6 connectivity to existing client VLANs</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Create additional client VLANs with IPv4 and IPv6 connectivity</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Verify that both protocols are working by visiting <a href="https://test-ipv6.iu13.net" target="_blank">test-ipv6.iu13.net</a></li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Bonus: Connect an AP and create a wireless network using Mist</li>
+</ul>
+<h3 id="add-ipv6-connectivity-client-vlans">Add IPv6 connectivity client VLANs</h3>
+<p>Configure each VLAN with the appropriate IPv6 prefix and enable router advertisements</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="4:4"><input checked="checked" id="__tabbed_4_1" name="__tabbed_4" type="radio" /><input id="__tabbed_4_2" name="__tabbed_4" type="radio" /><input id="__tabbed_4_3" name="__tabbed_4" type="radio" /><input id="__tabbed_4_4" name="__tabbed_4" type="radio" /><div class="tabbed-labels"><label for="__tabbed_4_1">Building 1</label><label for="__tabbed_4_2">Building 2</label><label for="__tabbed_4_3">Building 3</label><label for="__tabbed_4_4">Building x</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<table>
+<thead>
+<tr>
+<th>VLAN</th>
+<th>Name</th>
+<th>IPv4</th>
+<th>IPv6</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1100</td>
+<td>Network Management</td>
+<td><code>10.95.16.0/24</code></td>
+<td><code>2620:1d5:9501:1100::/64</code></td>
+</tr>
+<tr>
+<td>1101</td>
+<td>Wireless Management</td>
+<td><code>10.95.17.0/24</code></td>
+<td><code>2620:1d5:9501:1101::/64</code></td>
+</tr>
+<tr>
+<td>1300</td>
+<td>Staff Wired</td>
+<td><code>10.95.18.0/24</code></td>
+<td><code>2620:1d5:9501:1300::/64</code></td>
+</tr>
+<tr>
+<td>1400</td>
+<td>Staff Wireless</td>
+<td><code>10.95.19.0/24</code></td>
+<td><code>2620:1d5:9501:1400::/64</code></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="tabbed-block">
+<table>
+<thead>
+<tr>
+<th>VLAN</th>
+<th>Name</th>
+<th>IPv4</th>
+<th>IPv6</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1100</td>
+<td>Network Management</td>
+<td><code>10.95.32.0/24</code></td>
+<td><code>2620:1d5:9502:1100::/64</code></td>
+</tr>
+<tr>
+<td>1101</td>
+<td>Wireless Management</td>
+<td><code>10.95.33.0/24</code></td>
+<td><code>2620:1d5:9502:1101::/64</code></td>
+</tr>
+<tr>
+<td>1300</td>
+<td>Staff Wired</td>
+<td><code>10.95.34.0/24</code></td>
+<td><code>2620:1d5:9502:1300::/64</code></td>
+</tr>
+<tr>
+<td>1400</td>
+<td>Staff Wireless</td>
+<td><code>10.95.35.0/24</code></td>
+<td><code>2620:1d5:9502:1400::/64</code></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="tabbed-block">
+<table>
+<thead>
+<tr>
+<th>VLAN</th>
+<th>Name</th>
+<th>IPv4</th>
+<th>IPv6</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1100</td>
+<td>Network Management</td>
+<td><code>10.95.48.0/24</code></td>
+<td><code>2620:1d5:9503:1100::/64</code></td>
+</tr>
+<tr>
+<td>1101</td>
+<td>Wireless Management</td>
+<td><code>10.95.49.0/24</code></td>
+<td><code>2620:1d5:9503:1101::/64</code></td>
+</tr>
+<tr>
+<td>1300</td>
+<td>Staff Wired</td>
+<td><code>10.95.50.0/24</code></td>
+<td><code>2620:1d5:9503:1300::/64</code></td>
+</tr>
+<tr>
+<td>1400</td>
+<td>Staff Wireless</td>
+<td><code>10.95.51.0/24</code></td>
+<td><code>2620:1d5:9503:1400::/64</code></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="tabbed-block">
+<table>
+<thead>
+<tr>
+<th>VLAN</th>
+<th>Name</th>
+<th>IPv4</th>
+<th>IPv6</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1100</td>
+<td>Network Management</td>
+<td><code>10.95.[16x].0/24</code></td>
+<td><code>2620:1d5:950[x]:1100::/64</code></td>
+</tr>
+<tr>
+<td>1101</td>
+<td>Wireless Management</td>
+<td><code>10.95.[16x+1].0/24</code></td>
+<td><code>2620:1d5:950[x]:1101::/64</code></td>
+</tr>
+<tr>
+<td>1300</td>
+<td>Staff Wired</td>
+<td><code>10.95.[16x+2].0/24</code></td>
+<td><code>2620:1d5:950[x]:1300::/64</code></td>
+</tr>
+<tr>
+<td>1400</td>
+<td>Staff Wireless</td>
+<td><code>10.95.[16x+3].0/24</code></td>
+<td><code>2620:1d5:950[x]:1400::/64</code></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<p>Example config for building 11 below. Adjust as necessary for your building/group number, referring to the summary table above for the relevant information.</p>
+<div class="highlight"><pre><span></span><code>interfaces {
+    irb {
+        unit 1100 {
+            family inet {
+                address 10.95.176.1/24;             ## IPv4 address (already configured)
+            }
+            family inet6 {
+                address 2620:1d5:950b:1100::1/64 {  ## IPv6 address
+                    subnet-router-anycast;          ## Bind subnet router anycast address to receive router solicitations
+                }
+            }
+        }
+        unit 1101 {
+            family inet {
+                address 10.95.177.1/24;             ## IPv4 address (already configured)
+            }
+            family inet6 {
+                address 2620:1d5:950b:1101::1/64 {  ## IPv6 address
+                    subnet-router-anycast;          ## Bind subnet router anycast address to receive router solicitations
+                }
+            }
+        }
+        unit 1300 {
+            family inet {
+                address 10.95.178.1/24;             ## IPv4 address (already configured)
+            }
+            family inet6 {
+                address 2620:1d5:950b:1300::1/64 {  ## IPv6 address
+                    subnet-router-anycast;          ## Bind subnet router anycast address to receive router solicitations
+                }
+            }
+        }
+        unit 1400 {
+            family inet {
+                address 10.95.179.1/24;             ## IPv4 address (already configured)
+            }
+            family inet6 {
+                address 2620:1d5:950b:1400::1/64 {  ## IPv6 address
+                    subnet-router-anycast;          ## Bind subnet router anycast address to receive router solicitations
+                }
+            }
+        }
+    }
+}
+protocols {
+    router-advertisement {
+        interface irb.1100 {
+            prefix 2620:1d5:950b:1100::/64;
+        }
+        interface irb.1101 {
+            prefix 2620:1d5:950b:1101::/64;
+        }
+        interface irb.1300 {
+            prefix 2620:1d5:950b:1300::/64;
+        }
+        interface irb.1400 {
+            prefix 2620:1d5:950b:1400::/64;
+        }
+    }
+}
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>set interfaces irb unit 1100 family inet6 address 2620:1d5:950b:1100::1/64 subnet-router-anycast
+set interfaces irb unit 1101 family inet6 address 2620:1d5:950b:1101::1/64 subnet-router-anycast
+set interfaces irb unit 1300 family inet6 address 2620:1d5:950b:1300::1/64 subnet-router-anycast
+set interfaces irb unit 1400 family inet6 address 2620:1d5:950b:1400::1/64 subnet-router-anycast
+set protocols router-advertisement interface irb.1100 prefix 2620:1d5:950b:1100::/64
+set protocols router-advertisement interface irb.1101 prefix 2620:1d5:950b:1101::/64
+set protocols router-advertisement interface irb.1300 prefix 2620:1d5:950b:1300::/64
+set protocols router-advertisement interface irb.1400 prefix 2620:1d5:950b:1400::/64
+</code></pre></div>
+<div class="admonition note">
+<p class="admonition-title">Tip</p>
+<p><code>irb unit 1100</code> and <code>irb.1100</code> are equivalent</p>
+</div>
+<p>After committing, once again connect a computer to <code>ge-0/0/2</code> and verify whether you get both IPv4 and IPv6 addresses in the correct range and if you have IPv4 and IPv6 connectivity. (Be sure to turn off your Wi-Fi first!)</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="5:2"><input checked="checked" id="__tabbed_5_1" name="__tabbed_5" type="radio" /><input id="__tabbed_5_2" name="__tabbed_5" type="radio" /><div class="tabbed-labels"><label for="__tabbed_5_1">Windows</label><label for="__tabbed_5_2">macOS / Linux</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<ul>
+<li>Launch <code>cmd.exe</code> and run <code>ipconfig</code></li>
+<li>Look for an IPv4 address in the expected range for Vlan 1100</li>
+<li>Look for an IPv6 address in the expected range for Vlan 1100</li>
+<li>Browse to <a href="https://test-ipv6.iu13.net" target="_blank">test-ipv6.iu13.net</a> and check for IPv4 and IPv6 Internet connectivity</li>
+</ul>
+</div>
+<div class="tabbed-block">
+<ul>
+<li>Launch a terminal and run <code>ip a</code></li>
+<li>Look for an IPv4 address in the expected range for Vlan 1100</li>
+<li>Look for an IPv6 address in the expected range for Vlan 1100<ul>
+<li>No IPv6 addresses displayed? Try <code>ip -6 a</code></li>
+</ul>
+</li>
+<li>Browse to <a href="https://test-ipv6.iu13.net" target="_blank">test-ipv6.iu13.net</a> and check for IPv4 and IPv6 Internet connectivity</li>
+</ul>
+</div>
+</div>
+</div>
+<p><strong>Objectives completed:</strong></p>
+<ul class="task-list">
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> Connect to switch and become familiar with basic management operations</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> Configure client ports in several VLANs and test IPv4 connectivity</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> Add IPv6 connectivity to transit VLAN and ping the Internet</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> Add IPv6 connectivity to existing client VLANs</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Create additional client VLANs with IPv4 and IPv6 connectivity</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Verify that both protocols are working by visiting <a href="https://test-ipv6.iu13.net" target="_blank">test-ipv6.iu13.net</a></li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Bonus: Connect an AP and create a wireless network using Mist</li>
+</ul>
+<h3 id="create-two-additional-client-vlans-with-ipv4-and-ipv6-connectivity">Create two additional client VLANs with IPv4 and IPv6 connectivity</h3>
+<p>Create VLANs 1401-1402 as shown below, configure IRB interfaces for IPv4 and IPv6, and configure a client port in each VLAN for testing</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="6:4"><input checked="checked" id="__tabbed_6_1" name="__tabbed_6" type="radio" /><input id="__tabbed_6_2" name="__tabbed_6" type="radio" /><input id="__tabbed_6_3" name="__tabbed_6" type="radio" /><input id="__tabbed_6_4" name="__tabbed_6" type="radio" /><div class="tabbed-labels"><label for="__tabbed_6_1">Building 1</label><label for="__tabbed_6_2">Building 2</label><label for="__tabbed_6_3">Building 3</label><label for="__tabbed_6_4">Building x</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<table>
+<thead>
+<tr>
+<th>VLAN</th>
+<th>Name</th>
+<th>IPv4</th>
+<th>IPv6</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1100</td>
+<td>Network Management</td>
+<td><code>10.95.16.0/24</code></td>
+<td><code>2620:1d5:9501:1100::/64</code></td>
+</tr>
+<tr>
+<td>1101</td>
+<td>Wireless Management</td>
+<td><code>10.95.17.0/24</code></td>
+<td><code>2620:1d5:9501:1101::/64</code></td>
+</tr>
+<tr>
+<td>1300</td>
+<td>Staff Wired</td>
+<td><code>10.95.18.0/24</code></td>
+<td><code>2620:1d5:9501:1300::/64</code></td>
+</tr>
+<tr>
+<td>1400</td>
+<td>Staff Wireless</td>
+<td><code>10.95.19.0/24</code></td>
+<td><code>2620:1d5:9501:1400::/64</code></td>
+</tr>
+<tr>
+<td><mark class="critic">1401</mark></td>
+<td><mark class="critic">Student Wireless</mark></td>
+<td><code>10.95.20.0/24</code></td>
+<td><code>2620:1d5:9501:1401::/64</code></td>
+</tr>
+<tr>
+<td><mark class="critic">1402</mark></td>
+<td><mark class="critic">Guest Wireless</mark></td>
+<td><code>10.95.21.0/24</code></td>
+<td><code>2620:1d5:9501:1402::/64</code></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="tabbed-block">
+<table>
+<thead>
+<tr>
+<th>VLAN</th>
+<th>Name</th>
+<th>IPv4</th>
+<th>IPv6</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1100</td>
+<td>Network Management</td>
+<td><code>10.95.32.0/24</code></td>
+<td><code>2620:1d5:9502:1100::/64</code></td>
+</tr>
+<tr>
+<td>1101</td>
+<td>Wireless Management</td>
+<td><code>10.95.33.0/24</code></td>
+<td><code>2620:1d5:9502:1101::/64</code></td>
+</tr>
+<tr>
+<td>1300</td>
+<td>Staff Wired</td>
+<td><code>10.95.34.0/24</code></td>
+<td><code>2620:1d5:9502:1300::/64</code></td>
+</tr>
+<tr>
+<td>1400</td>
+<td>Staff Wireless</td>
+<td><code>10.95.35.0/24</code></td>
+<td><code>2620:1d5:9502:1400::/64</code></td>
+</tr>
+<tr>
+<td><mark class="critic">1401</mark></td>
+<td><mark class="critic">Student Wireless</mark></td>
+<td><code>10.95.36.0/24</code></td>
+<td><code>2620:1d5:9502:1401::/64</code></td>
+</tr>
+<tr>
+<td><mark class="critic">1402</mark></td>
+<td><mark class="critic">Guest Wireless</mark></td>
+<td><code>10.95.37.0/24</code></td>
+<td><code>2620:1d5:9502:1402::/64</code></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="tabbed-block">
+<table>
+<thead>
+<tr>
+<th>VLAN</th>
+<th>Name</th>
+<th>IPv4</th>
+<th>IPv6</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1100</td>
+<td>Network Management</td>
+<td><code>10.95.48.0/24</code></td>
+<td><code>2620:1d5:9503:1100::/64</code></td>
+</tr>
+<tr>
+<td>1101</td>
+<td>Wireless Management</td>
+<td><code>10.95.49.0/24</code></td>
+<td><code>2620:1d5:9503:1101::/64</code></td>
+</tr>
+<tr>
+<td>1300</td>
+<td>Staff Wired</td>
+<td><code>10.95.50.0/24</code></td>
+<td><code>2620:1d5:9503:1300::/64</code></td>
+</tr>
+<tr>
+<td>1400</td>
+<td>Staff Wireless</td>
+<td><code>10.95.51.0/24</code></td>
+<td><code>2620:1d5:9503:1400::/64</code></td>
+</tr>
+<tr>
+<td><mark class="critic">1401</mark></td>
+<td><mark class="critic">Student Wireless</mark></td>
+<td><code>10.95.52.0/24</code></td>
+<td><code>2620:1d5:9503:1401::/64</code></td>
+</tr>
+<tr>
+<td><mark class="critic">1402</mark></td>
+<td><mark class="critic">Guest Wireless</mark></td>
+<td><code>10.95.53.0/24</code></td>
+<td><code>2620:1d5:9503:1402::/64</code></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="tabbed-block">
+<table>
+<thead>
+<tr>
+<th>VLAN</th>
+<th>Name</th>
+<th>IPv4</th>
+<th>IPv6</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1100</td>
+<td>Network Management</td>
+<td><code>10.95.[16x].0/24</code></td>
+<td><code>2620:1d5:950[x]:1100::/64</code></td>
+</tr>
+<tr>
+<td>1101</td>
+<td>Wireless Management</td>
+<td><code>10.95.[16x+1].0/24</code></td>
+<td><code>2620:1d5:950[x]:1101::/64</code></td>
+</tr>
+<tr>
+<td>1300</td>
+<td>Staff Wired</td>
+<td><code>10.95.[16x+2].0/24</code></td>
+<td><code>2620:1d5:950[x]:1300::/64</code></td>
+</tr>
+<tr>
+<td>1400</td>
+<td>Staff Wireless</td>
+<td><code>10.95.[16x+3].0/24</code></td>
+<td><code>2620:1d5:950[x]:1400::/64</code></td>
+</tr>
+<tr>
+<td><mark class="critic">1401</mark></td>
+<td><mark class="critic">Student Wireless</mark></td>
+<td><code>10.95.[16x+4].0/24</code></td>
+<td><code>2620:1d5:950[x]:1401::/64</code></td>
+</tr>
+<tr>
+<td><mark class="critic">1402</mark></td>
+<td><mark class="critic">Guest Wireless</mark></td>
+<td><code>10.95.[16x+5].0/24</code></td>
+<td><code>2620:1d5:950[x]:1402::/64</code></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<p>Example config for building 11 below. Adjust as necessary for your building/group number, referring to the table above for the relevant information.</p>
+<h4 id="create-vlans">Create VLANs</h4>
+<div class="highlight"><pre><span></span><code>vlans {
+    v1401 {                    ## Name of the VLAN
+        vlan-id 1401;          ## VLAN ID
+        l3-interface irb.1401; ## Create a layer 3 routing interface for this VLAN
+    }
+    v1402 {                    ## Name of the VLAN
+        vlan-id 1402;          ## VLAN ID
+        l3-interface irb.1402; ## Create a layer 3 routing interface for this VLAN
+    }
+}
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>set vlans v1401 vlan-id 1401
+set vlans v1402 vlan-id 1402
+set vlans v1401 l3-interface irb.1401
+set vlans v1402 l3-interface irb.1402
+</code></pre></div>
+<div class="admonition warning">
+<p class="admonition-title">Note</p>
+<p>In <code>set vlans v1401 l3-interface irb.1401</code>, <code>l3-interface</code> is spelled with a lowercase L, as in "layer 3 interface"</p>
+</div>
+<h4 id="create-layer-3-routing-interfaces">Create layer 3 routing interfaces</h4>
+<div class="highlight"><pre><span></span><code>interfaces {
+    irb {
+        unit 1401 {
+            family inet {
+                address 10.95.180.1/24;
+            }
+            family inet6 {
+                address 2620:1d5:950b:1401::1/64 {
+                    subnet-router-anycast;
+                }
+            }
+        }
+        unit 1402 {
+            family inet {
+                address 10.95.181.1/24;
+            }
+            family inet6 {
+                address 2620:1d5:950b:1402::1/64 {
+                    subnet-router-anycast;
+                }
+            }
+        }
+    }
+}
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>set interfaces irb unit 1401 family inet address 10.95.180.1/24
+set interfaces irb unit 1402 family inet address 10.95.181.1/24
+set interfaces irb unit 1401 family inet6 address 2620:1d5:950b:1401::1/64 subnet-router-anycast
+set interfaces irb unit 1402 family inet6 address 2620:1d5:950b:1402::1/64 subnet-router-anycast
+</code></pre></div>
+<h4 id="add-dhcp-relay-for-ipv4">Add DHCP relay for IPv4</h4>
+<p><div class="highlight"><pre><span></span><code>forwarding-options {
+    dhcp-relay {                       ## Already configured
+        forward-only;                  ## Already configured
+        server-group {                 ## Already configured
+            TTL {                      ## Already configured
+                10.14.14.100;          ## Already configured
+            }                          
+        }                              
+        group TTL {                    ## Already configured
+            active-server-group TTL;   ## Already configured
+            interface irb.1401;
+            interface irb.1402;
+        }
+    }
+}
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>set forwarding-options dhcp-relay group TTL interface irb.1401
+set forwarding-options dhcp-relay group TTL interface irb.1402
+</code></pre></div></p>
+<h4 id="configure-a-client-port-and-test">Configure a client port and test</h4>
+<p>Refer to previous objective "Configure access ports for user devices" for example commands.</p>
+<p>After configuring a port, connect your client machine and visit <a href="https://test-ipv6.iu13.net" target="_blank">test-ipv6.iu13.net</a> to confirm IPv4 and IPv6 connectivity and verify IPv6 address is in the expected range.</p>
+<p><strong>Objectives completed:</strong></p>
+<ul class="task-list">
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> Connect to switch and become familiar with basic management operations</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> Configure client ports in several VLANs and test IPv4 connectivity</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> Add IPv6 connectivity to transit VLAN and ping the Internet</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> Add IPv6 connectivity to existing client VLANs</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> Create additional client VLANs with IPv4 and IPv6 connectivity</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> Verify that both protocols are working by visiting <a href="https://test-ipv6.iu13.net" target="_blank">test-ipv6.iu13.net</a></li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Bonus: Connect an AP and create a wireless network using Mist</li>
+</ul>
+<h4 id="connect-an-ap-and-create-a-wireless-network-using-mist">Connect an AP and create a wireless network using Mist</h4>
+<p>Configure a port for a Mist AP using the configuration below, then ask the presenter for an AP. Once the AP is online, configure an SSID using VLAN tagging in the Mist UI.</p>
+<p><div class="highlight"><pre><span></span><code>interfaces {
+    ge-0/0/4 {
+        native-vlan-id 1101;
+        unit 0 {
+            family ethernet-switching {
+                interface-mode trunk;
+                vlan {
+                    members [ v1101 v1400 v1401 v1402 ];
+                }
+            }
+        }
+    }
+}
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>set interfaces ge-0/0/4 native-vlan-id 1101
+set interfaces ge-0/0/4.0 family ethernet-switching interface-mode trunk 
+set interfaces ge-0/0/4.0 family ethernet-switching vlan members [ v1101 v1400 v1401 v1402 ]
+</code></pre></div></p>
+<p><strong>Objectives completed:</strong></p>
+<ul class="task-list">
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> Connect to switch and become familiar with basic management operations</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> Configure client ports in several VLANs and test IPv4 connectivity</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> Add IPv6 connectivity to transit VLAN and ping the Internet</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> Add IPv6 connectivity to existing client VLANs</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> Create additional client VLANs with IPv4 and IPv6 connectivity</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> Verify that both protocols are working by visiting <a href="https://test-ipv6.iu13.net" target="_blank">test-ipv6.iu13.net</a></li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> Bonus: Connect an AP and create a wireless network using Mist</li>
+</ul>
+<h3 id="tools-to-take-home">Tools to take home</h3>
+<p>Sites to visit:</p>
+<ul>
+<li><a href="https://test-ipv6.iu13.net" target="_blank">test-ipv6.iu13.net</a></li>
+<li><a href="https://ipv6.google.com" target="_blank">ipv6.google.com</a></li>
+<li><a href="https://www.google.com/intl/en/ipv6/statistics.html" target="_blank">Google IPv6 Statistics</a></li>
+</ul>
+<p>Check out the browser extension <em>IPvFoo</em> to get visual feedback on each website about which resources are loaded over IPv4 or IPv6</p>
+<ul>
+<li><a href="https://chrome.google.com/webstore/detail/ipvfoo/ecanpcehffngcegjmadlcijfolapggal?hl=en" target="_blank">Chrome Extension</a></li>
+<li><a href="https://addons.mozilla.org/en-US/firefox/addon/ipvfoo-pmarks/" target="_blank">Firefox Extension</a></li>
+</ul>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Footer" >
+        
+          
+          <a href="../500-configuring/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Configuring IPv6">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              <div class="md-ellipsis">
+                Configuring IPv6
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../../routing-security/" class="md-footer__link md-footer__link--next" aria-label="Next: Introduction">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              <div class="md-ellipsis">
+                Introduction
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4Z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright © 2024 Dan Baker
+    </div>
+  
+  
+</div>
+      
+        <div class="md-social">
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://www.linkedin.com/in/dsbaker1/" target="_blank" rel="noopener" title="www.linkedin.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3zM135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5 0 21.3-17.2 38.5-38.5 38.5zm282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9V416z"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.tabs", "toc.integrate", "navigation.footer", "navigation.tracking", "navigation.prune", "content.code.copy", "content.code.annotate"], "search": "../../../assets/javascripts/workers/search.b8dbb3d2.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.a7c05c9e.min.js"></script>
+      
+    
+  <script>document$.subscribe(() => {const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});})</script></body>
+</html>

@@ -1,0 +1,1234 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://ttl.iu13.net/2023/routing-security/100-irr/">
+      
+      
+        <link rel="prev" href="../">
+      
+      
+        <link rel="next" href="../200-rpki/">
+      
+      
+      <link rel="icon" href="../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.0, mkdocs-material-9.5.21">
+    
+    
+      
+        <title>IRR — Internet Routing Registry - Tech Talk Live 2024</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.66ac8b77.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+  
+  
+  
+  
+  <style>:root{--md-annotation-icon:url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 9h-2V7h2m0 10h-2v-6h2m-1-9A10 10 0 0 0 2 12a10 10 0 0 0 10 10 10 10 0 0 0 10-10A10 10 0 0 0 12 2Z"/></svg>');}</style>
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+   <link href="../../../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
+    html.glightbox-open { overflow: initial; height: 100%; }
+    .gslide-title { margin-top: 0px; user-select: text; }
+    .gslide-desc { color: #666; user-select: text; }
+    .gslide-image img { background: white; }
+    .gscrollbar-fixer { padding-right: 15px; }
+    .gdesc-inner { font-size: 0.75rem; }
+    body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color);}
+    body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color);}
+    body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color);}</style> <script src="../../../assets/javascripts/glightbox.min.js"></script></head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#irr-internet-routing-registry" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../.." title="Tech Talk Live 2024" class="md-header__button md-logo" aria-label="Tech Talk Live 2024" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Tech Talk Live 2024
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              IRR — Internet Routing Registry
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69Z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12c0-2.42-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69Z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var media,input,key,value,palette=__md_get("__palette");if(palette&&palette.color){"(prefers-color-scheme)"===palette.color.media&&(media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']"),palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent"));for([key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../.." class="md-tabs__link">
+        
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../graylog/" class="md-tabs__link">
+          
+  
+  Making NPS Logs Useful with Graylog
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../peering/" class="md-tabs__link">
+          
+  
+  Internet Exchange Peering
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../../" class="md-tabs__link">
+          
+  
+  TTL2023
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../about/" class="md-tabs__link">
+        
+  
+    
+  
+  About the presenter
+
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+  
+
+<nav class="md-nav md-nav--primary md-nav--lifted md-nav--integrated" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="Tech Talk Live 2024" class="md-nav__button md-logo" aria-label="Tech Talk Live 2024" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    Tech Talk Live 2024
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Home
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../../graylog/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Making NPS Logs Useful with Graylog
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../../peering/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Internet Exchange Peering
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+      
+        
+        
+      
+      
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    TTL2023
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            TTL2023
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Home
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../ipv6/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Introduction to IPv6
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_3" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_4_3" id="__nav_4_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Routing Security — BGP, IRR, and RPKI
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_4_3">
+            <span class="md-nav__icon md-icon"></span>
+            Routing Security — BGP, IRR, and RPKI
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Introduction
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    IRR — Internet Routing Registry
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    IRR — Internet Routing Registry
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#using-the-irr" class="md-nav__link">
+    <span class="md-ellipsis">
+      Using the IRR
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Using the IRR">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#publishing-routing-information" class="md-nav__link">
+    <span class="md-ellipsis">
+      Publishing routing information
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Publishing routing information">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#object-types" class="md-nav__link">
+    <span class="md-ellipsis">
+      Object types
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#example-objects" class="md-nav__link">
+    <span class="md-ellipsis">
+      Example objects
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#example-checking-the-state-of-irr" class="md-nav__link">
+    <span class="md-ellipsis">
+      Example: Checking the state of IRR
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#example-publishing-irr-records" class="md-nav__link">
+    <span class="md-ellipsis">
+      Example: Publishing IRR Records
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Example: Publishing IRR Records">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#arin-dashboard" class="md-nav__link">
+    <span class="md-ellipsis">
+      ARIN Dashboard
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#building-route-filters-using-irr" class="md-nav__link">
+    <span class="md-ellipsis">
+      Building route filters using IRR
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Building route filters using IRR">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#bgpq3" class="md-nav__link">
+    <span class="md-ellipsis">
+      bgpq3
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#examples-junos" class="md-nav__link">
+    <span class="md-ellipsis">
+      Examples (JunOS)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#problems-with-irr" class="md-nav__link">
+    <span class="md-ellipsis">
+      Problems with IRR
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#questions-about-irr" class="md-nav__link">
+    <span class="md-ellipsis">
+      Questions about IRR?
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../200-rpki/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    RPKI — Resource Public Key Infrastructure
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../about/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    About the presenter
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+<h1 id="irr-internet-routing-registry">IRR — Internet Routing Registry</h1>
+<p>The IRR is not a single database — there are several routing registries to choose from:</p>
+<ul>
+<li>ARIN (most likely choice) - rr.arin.net</li>
+<li>RADb (pay to list) - whois.radb.net</li>
+<li>Level3 - rr.level3.net</li>
+<li>NTT - rr.ntt.net</li>
+</ul>
+<p>Most IRR databases mirror the others.</p>
+<p>The IRR can be queried using whois: <code>whois -h rr.arin.net AS14773</code></p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>If you don't have a whois client (Windows <img alt="😒" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@15.0.3/assets/svg/1f612.svg" title=":unamused:" />), you can query from your web browser at <a href="https://www.radb.net/query?keywords=AS14773" target="_blank">https://www.radb.net/query</a>.</p>
+<p>If you're on Ubuntu/Debian, <code>sudo apt install whois</code></p>
+</div>
+<h2 id="using-the-irr">Using the IRR</h2>
+<h3 id="publishing-routing-information">Publishing routing information</h3>
+<h4 id="object-types">Object types</h4>
+<ul>
+<li><strong>route/route6</strong>: describes a prefix that you will originate<ul>
+<li>Maintained By: links the record to your ARIN organization</li>
+<li>Prefix: the prefix you plan to announce</li>
+<li>Origin: the ASN that will originate the prefix</li>
+<li>Description: your organization's name and address, and any additional information about the prefix</li>
+</ul>
+</li>
+<li><strong>as-set</strong>: specifies a set of Autonomous System Numbers (ASNs) through which traffic can be routed. Useful if you have downstream ASNs (customers)<ul>
+<li>AS Set Name: the unique name of the as-set</li>
+<li>Description: your organization's name and address, and any additional information about the as-set</li>
+<li>Members: ASNs and as-set names that are included in the as-set</li>
+</ul>
+</li>
+<li><strong>aut-num</strong>: specifies an ASN and its routing policies<ul>
+<li>Maintained By: links the record to your ARIN organization</li>
+<li>ASN: the ASN described by this object</li>
+<li>AS Name: a human-readable nickname for the ASN</li>
+<li>Description: your organization's name and address, and any additional information about the autonomous system</li>
+<li>Routing Policy Specifications:<ul>
+<li>Import: IPv4 import policy</li>
+<li>Export: IPv4 export policy</li>
+<li>Default: IPv4 default routing policy</li>
+<li>Mp Import: multi-protocol import policy (multi-protocol support added later for IPv6)</li>
+<li>Mp Export: multi-protocol export policy</li>
+<li>Mp Default: multi-protocol default routing policy</li>
+<li>Remarks: additional comments or notes visible to the public</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><strong>route-set</strong>: a set of IPv4 prefixes, IPv6 prefixes, and other route-sets that can be used in aut-num policy specifications<ul>
+<li>Route Set Name: the unique name of the route-set</li>
+<li>Description: your organization's name and address, and any additional information about the route-set</li>
+<li>Members: a list of IPv4 prefixes or route-sets to include</li>
+<li>Mp Members: a list of IPv6 prefixes or route-sets to include</li>
+<li>Members by Reference: a list of organizations whose route objects should be included in the route-set</li>
+<li>Remarks: additional comments or notes visible to the public</li>
+</ul>
+</li>
+</ul>
+<h4 id="example-objects">Example objects</h4>
+<p><strong>aut-num</strong>: IU13 WAN
+<div class="highlight"><pre><span></span><code>$ whois -h rr.arin.net AS14773
+aut-num:        AS14773
+as-name:        LANLEB-IU13
+descr:          Lancaster-Lebanon IU13 WAN Consortium
+                1020 New Holland Avenue
+                Lancaster PA 17601
+                United States
+member-of:      AS-IU13WAN
+mp-export:      afi any.unicast to AS-ANY announce AS-IU13WAN
+admin-c:        NETWO9356-ARIN
+tech-c:         NETWO9356-ARIN
+mnt-by:         MNT-LLIU1
+created:        2023-02-02T18:08:17Z
+last-modified:  2023-02-02T18:08:17Z
+source:         ARIN
+</code></pre></div></p>
+<p><strong>aut-num</strong>: Hempfield School District
+<div class="highlight"><pre><span></span><code>$ whois -h rr.arin.net AS395182
+aut-num:        AS395182
+as-name:        HEMPFIELD-SD
+descr:          200 Church Street
+                Landisville PA 17538
+                United States
+admin-c:        GRAHA156-ARIN
+tech-c:         FARME185-ARIN
+tech-c:         GRAHA156-ARIN
+tech-c:         LICHT37-ARIN
+mnt-by:         MNT-HSD-37
+created:        2022-03-05T12:49:41Z
+last-modified:  2022-03-05T12:49:41Z
+source:         ARIN
+</code></pre></div></p>
+<p><strong>as-set</strong>: IU13 WAN
+<div class="highlight"><pre><span></span><code>$ whois -h rr.arin.net AS-IU13WAN
+as-set:         AS-IU13WAN
+descr:          Lancaster-Lebanon IU13 WAN Consortium
+                1020 New Holland Avenue
+                Lancaster PA 17601
+                United States
+members:        AS14773,AS395182,AS394781,AS398574
+admin-c:        NETWO9356-ARIN
+tech-c:         NETWO9356-ARIN
+mnt-by:         MNT-LLIU1
+created:        2022-03-07T21:58:53Z
+last-modified:  2022-06-01T15:09:59Z
+source:         ARIN
+</code></pre></div></p>
+<p><strong>route/route6</strong>: IU13
+<div class="highlight"><pre><span></span><code>$ whois -h rr.arin.net 206.82.16.0/20
+route:          206.82.16.0/20
+origin:         AS14773
+descr:          Lancaster-Lebanon IU13 WAN Consortium
+                1020 New Holland Avenue
+                Lancaster PA 17601
+                United States
+admin-c:        NETWO9356-ARIN
+tech-c:         NETWO9356-ARIN
+mnt-by:         MNT-LLIU1
+created:        2022-03-07T22:06:29Z
+last-modified:  2022-03-07T22:06:29Z
+source:         ARIN
+
+$ whois -h rr.arin.net 2620:1d5::/32
+route6:         2620:1d5::/32
+origin:         AS14773
+descr:          Lancaster-Lebanon IU13 WAN Consortium
+                1020 New Holland Avenue
+                Lancaster PA 17601
+                United States
+admin-c:        NETWO9356-ARIN
+tech-c:         NETWO9356-ARIN
+mnt-by:         MNT-LLIU1
+created:        2022-10-03T15:48:56Z
+last-modified:  2022-10-03T15:48:56Z
+source:         ARIN
+</code></pre></div></p>
+<h4 id="example-checking-the-state-of-irr">Example: Checking the state of IRR</h4>
+<p><strong>Red Lion Area School District</strong></p>
+<p>Let's find out what IP ranges they have been assigned by ARIN:
+<div class="highlight"><pre><span></span><code>$ whois -h whois.arin.net &quot;o ! &gt;  RLASD&quot; | grep NET
+Red Lion Area School District RLASD-ISP (NET-192-133-103-0-1) 192.133.103.0 - 192.133.103.255
+Red Lion Area School District RED-LION-AREA-SCHOOL-DISTRICT (NET6-2620-73-A000-1) 2620:73:A000:: - 2620:73:A000:FFFF:FFFF:FFFF:FFFF:FFFF
+</code></pre></div>
+We found these prefixes:</p>
+<ul>
+<li>192.133.103.0/24</li>
+<li>2620:73:a000::/48</li>
+</ul>
+<p>Let's query the IRR for 192.133.103.0/24:
+<div class="highlight"><pre><span></span><code>$ whois -h rr.arin.net 192.133.103.0/24
+%  No entries found for the selected source(s).
+</code></pre></div></p>
+<p>Nothing in ARIN... let's try RADb:
+<div class="highlight"><pre><span></span><code>$ whois -h whois.radb.net 192.133.103.0/24
+route:      192.133.103.0/24
+descr:      Zito Networks
+origin:     AS397737
+mnt-by:     MAINT-AS26801
+changed:    skyler.blumer@zitomedia.com 20220330
+source:     RADB
+</code></pre></div></p>
+<p><code>descr: Zito Networks</code> is clearly not accurate, since ARIN says the prefix is allocated to Red Lion! Notice that the maintainer is Zito as well. This is an example of "proxy registration", where a carrier creates IRR on behalf of their customer to make sure the customer's route is accepted upstream.</p>
+<p>Red Lion has two ISPs, Zito and FirstLight. What would happen if Red Lion's contract with Zito ended and Zito chose to clean up their IRR records? FirstLight <em>might</em> still carry Red Lion's prefix, but their upstream carriers would likely begin filtering it, causing bad routing or even service disruption for the school district!</p>
+<p>Don't worry, you don't have to check every IRR database individually!</p>
+<p><a href="https://irrexplorer.nlnog.net/" target="_blank">IRR Explorer</a> queries all of the IRR databases and displays a column for each database a prefix appears in, with a link to view the underlying whois query and response.</p>
+<p>Red Lion: <a href="https://irrexplorer.nlnog.net/asn/AS397737" target="_blank">https://irrexplorer.nlnog.net/asn/AS397737</a></p>
+<p>Here we see that Red Lion's prefix appears only in RADb, the same record we discovered above.</p>
+<p><a class="glightbox" href="../images/rlasd-irr.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../images/rlasd-irr.png" /></a>
+<a class="glightbox" href="../images/rlasd-radb.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../images/rlasd-radb.png" /></a></p>
+<p>IU13: <a href="https://irrexplorer.nlnog.net/asn/AS14773" target="_blank">https://irrexplorer.nlnog.net/asn/AS14773</a></p>
+<p>Notice the ARIN entries maintained by IU13, and RADb entries created in the past by Comcast and Zito. As long as the <code>origin: AS14773</code> is correct, it is ok to have those duplicate records. However, if a provider has listed your prefix with a different origin ASN, you should contact the IRR database operator and request that the record be removed (after you publish your own correct IRR records!)</p>
+<h4 id="example-publishing-irr-records">Example: Publishing IRR Records</h4>
+<p>Red Lion should create the following IRR records in the ARIN database:</p>
+<p><strong>aut-num</strong>
+<div class="highlight"><pre><span></span><code>aut-num:        AS397737
+as-name:        RLASD
+descr:          Red Lion Area School District
+                696 Delta Rd
+                Red Lion PA 17356
+                United States
+mp-export:      afi any.unicast to AS-ANY announce AS397737
+admin-c:        BEARD140-ARIN
+tech-c:         BEARD140-ARIN
+mnt-by:         MNT-RLASD
+</code></pre></div></p>
+<p><strong>route</strong>
+<div class="highlight"><pre><span></span><code>route:          192.133.103.0/24
+origin:         AS397737
+descr:          Red Lion Area School District
+                696 Delta Rd
+                Red Lion PA 17356
+                United States
+admin-c:        BEARD140-ARIN
+tech-c:         BEARD140-ARIN
+mnt-by:         MNT-RLASD
+</code></pre></div></p>
+<h5 id="arin-dashboard">ARIN Dashboard</h5>
+<p><a href="https://account.arin.net/public/secure/dashboard" target="_blank">https://account.arin.net/public/secure/dashboard</a></p>
+<p><a class="glightbox" href="../images/arin-dashboard-1.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../images/arin-dashboard-1.png" /></a>
+<a class="glightbox" href="../images/arin-dashboard-2.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../images/arin-dashboard-2.png" /></a>
+<a class="glightbox" href="../images/arin-dashboard-aut-num.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../images/arin-dashboard-aut-num.png" /></a>
+<a class="glightbox" href="../images/arin-dashboard-3.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../images/arin-dashboard-3.png" /></a>
+<a class="glightbox" href="../images/arin-dashboard-route.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../images/arin-dashboard-route.png" /></a></p>
+<p>** Review records seen by IRR Explorer after publishing changes **</p>
+<h3 id="building-route-filters-using-irr">Building route filters using IRR</h3>
+<p>For customer networks (like school districts), it is important to publish your own IRR objects. Filtering received routes using IRR is only necessary when you have customer networks or non-transit peerings. Do not try to filter routes you receive from a full transit provider!</p>
+<h4 id="bgpq3">bgpq3</h4>
+<p><a href="https://github.com/snar/bgpq3" target="_blank">bgpq3</a> is a utility used to generate router configurations (prefix-lists, extended access-lists, policy-statement terms and as-path lists) based on IRR data.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>If you're on Ubuntu/Debian, <code>sudo apt install bgpq3</code></p>
+</div>
+<p>bgpq3 can generate output formatted for JunOS, IOS, BIRD, generic JSON, and more. (<a href="https://github.com/snar/bgpq3/blob/master/README.md" target="_blank">bgpq3 man page</a>)</p>
+<h4 id="examples-junos">Examples (JunOS)</h4>
+<p>If you have customer AS395182 (Hempfield School District):</p>
+<div class="highlight"><pre><span></span><code>$ bgpq3 -Jz -4 -l Cust-Hempfield-v4 AS395182
+policy-options {
+replace:
+  route-filter-list Cust-Hempfield-v4 {
+    67.199.243.0/24 exact;
+  }
+}
+
+$ bgpq3 -Jz -6 -l Cust-Hempfield-v6 AS395182
+policy-options {
+replace:
+  route-filter-list Cust-Hempfield-v6 {
+    2620:120:c000::/40 exact;
+  }
+}
+</code></pre></div>
+<p>If you have peer AS20940 (Akamai — as-set AS-AKAMAI):</p>
+<div class="highlight"><pre><span></span><code>$ bgpq3 -Jz -A -4 -l Peer-Akamai-v4 AS-AKAMAI
+policy-options {
+replace:
+  route-filter-list Peer-Akamai-v4 {
+    2.16.0.0/13 exact;
+    2.16.0.0/22 prefix-length-range /24-/24;
+    2.16.4.0/22 prefix-length-range /23-/23;
+
+    ( 6449 lines omitted )
+
+    221.111.224.0/26 exact;
+  }
+}
+
+$ bgpq3 -Jz -A -6 -l Peer-Akamai-v6 AS-AKAMAI
+policy-options {
+replace:
+  route-filter-list Peer-Akamai-v6 {
+    2001:218:3003:100::/56 exact;
+    2001:218:3003:200::/56 exact;
+    2001:218:3004::/48 exact;
+
+    ( 2820 lines omitted )
+
+    2c0f:fd58:9::/64 exact;
+  }
+}
+</code></pre></div>
+<p><strong>Config automation is strongly recommended!</strong></p>
+<ul>
+<li>For networks with more than a few customers or peers, config automation should be used to keep route filters up-to-date</li>
+</ul>
+<p><strong>Watch out for filter list size!</strong></p>
+<ul>
+<li>Your router will likely crash and burn if you try to use a list that's too large</li>
+<li>For example, AS-HURRICANE, unsummarized, has over 900,000 IPv4 route entries and over 200,000 IPv6 route entries! Few, if any, hardware routers will handle lists that large</li>
+<li>Route server software such as BIRD can handle large filter sets more easily and are commonly deployed in IX peering environments</li>
+</ul>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Do not try to filter full transit providers! Filter customers and peers only.</p>
+</div>
+<h3 id="problems-with-irr">Problems with IRR</h3>
+<ul>
+<li>IRR data is incomplete — not every organization has published IRR</li>
+<li>IRR data may become outdated and inaccurate over time if not actively maintained</li>
+<li>Not every network uses IRR to filter routes</li>
+<li>There is no verification of IP or ASN ownership, so untrue records could be created in the IRR in an attempt to permit BGP hijacks rather than prevent them</li>
+</ul>
+<h3 id="questions-about-irr">Questions about IRR?</h3>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Footer" >
+        
+          
+          <a href="../" class="md-footer__link md-footer__link--prev" aria-label="Previous: Introduction">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              <div class="md-ellipsis">
+                Introduction
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../200-rpki/" class="md-footer__link md-footer__link--next" aria-label="Next: RPKI — Resource Public Key Infrastructure">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              <div class="md-ellipsis">
+                RPKI — Resource Public Key Infrastructure
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4Z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright © 2024 Dan Baker
+    </div>
+  
+  
+</div>
+      
+        <div class="md-social">
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://www.linkedin.com/in/dsbaker1/" target="_blank" rel="noopener" title="www.linkedin.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3zM135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5 0 21.3-17.2 38.5-38.5 38.5zm282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9V416z"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.tabs", "toc.integrate", "navigation.footer", "navigation.tracking", "navigation.prune", "content.code.copy", "content.code.annotate"], "search": "../../../assets/javascripts/workers/search.b8dbb3d2.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.a7c05c9e.min.js"></script>
+      
+    
+  <script>document$.subscribe(() => {const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});})</script></body>
+</html>

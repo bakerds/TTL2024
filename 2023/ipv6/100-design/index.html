@@ -1,0 +1,1323 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://ttl.iu13.net/2023/ipv6/100-design/">
+      
+      
+        <link rel="prev" href="../">
+      
+      
+        <link rel="next" href="../200-routing/">
+      
+      
+      <link rel="icon" href="../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.0, mkdocs-material-9.5.21">
+    
+    
+      
+        <title>Network Design - Segmentation - Tech Talk Live 2024</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.66ac8b77.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+  
+  
+  
+  
+  <style>:root{--md-annotation-icon:url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 9h-2V7h2m0 10h-2v-6h2m-1-9A10 10 0 0 0 2 12a10 10 0 0 0 10 10 10 10 0 0 0 10-10A10 10 0 0 0 12 2Z"/></svg>');}</style>
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+   <link href="../../../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
+    html.glightbox-open { overflow: initial; height: 100%; }
+    .gslide-title { margin-top: 0px; user-select: text; }
+    .gslide-desc { color: #666; user-select: text; }
+    .gslide-image img { background: white; }
+    .gscrollbar-fixer { padding-right: 15px; }
+    .gdesc-inner { font-size: 0.75rem; }
+    body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color);}
+    body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color);}
+    body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color);}</style> <script src="../../../assets/javascripts/glightbox.min.js"></script></head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#network-design-segmentation" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../.." title="Tech Talk Live 2024" class="md-header__button md-logo" aria-label="Tech Talk Live 2024" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Tech Talk Live 2024
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Network Design - Segmentation
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69Z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12c0-2.42-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69Z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var media,input,key,value,palette=__md_get("__palette");if(palette&&palette.color){"(prefers-color-scheme)"===palette.color.media&&(media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']"),palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent"));for([key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../.." class="md-tabs__link">
+        
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../graylog/" class="md-tabs__link">
+          
+  
+  Making NPS Logs Useful with Graylog
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../peering/" class="md-tabs__link">
+          
+  
+  Internet Exchange Peering
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../../" class="md-tabs__link">
+          
+  
+  TTL2023
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../about/" class="md-tabs__link">
+        
+  
+    
+  
+  About the presenter
+
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+  
+
+<nav class="md-nav md-nav--primary md-nav--lifted md-nav--integrated" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="Tech Talk Live 2024" class="md-nav__button md-logo" aria-label="Tech Talk Live 2024" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    Tech Talk Live 2024
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Home
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../../graylog/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Making NPS Logs Useful with Graylog
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../../peering/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Internet Exchange Peering
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+      
+        
+        
+      
+      
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    TTL2023
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            TTL2023
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Home
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_4_2" id="__nav_4_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Introduction to IPv6
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_4_2">
+            <span class="md-nav__icon md-icon"></span>
+            Introduction to IPv6
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Introduction
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Network Design - Segmentation
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    Network Design - Segmentation
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#why-is-segmentation-important" class="md-nav__link">
+    <span class="md-ellipsis">
+      Why is segmentation important?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#how-to-segment" class="md-nav__link">
+    <span class="md-ellipsis">
+      How to segment?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#what-to-segment" class="md-nav__link">
+    <span class="md-ellipsis">
+      What to segment?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ip-address-management-subnet-planning" class="md-nav__link">
+    <span class="md-ellipsis">
+      IP Address Management / Subnet Planning
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../200-routing/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Routing
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../300-host-configuration/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Host Configuration
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../400-implementing/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Implementing IPv6
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../500-configuring/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Configuring IPv6
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lab/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Lab
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../routing-security/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Routing Security — BGP, IRR, and RPKI
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../about/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    About the presenter
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+<h1 id="network-design-segmentation">Network Design - Segmentation</h1>
+<h2 id="why-is-segmentation-important">Why is segmentation important?</h2>
+<p><strong>Efficiency and reliability</strong></p>
+<ul>
+<li>Network segments are typically broadcast domains<ul>
+<li>A broadcast is message that must be delivered to every host in the broadcast domain</li>
+<li>Broadcasts are used by ARP and DHCP, and other protocols</li>
+<li>Putting too many hosts in a single layer 2 segment can create a large volume of broadcast traffic</li>
+<li>Carving layer 2 segments limits broadcast domains to manageable sizes</li>
+</ul>
+</li>
+<li>Switches must learn and store the MAC address of every device in the layer 2 segment<ul>
+<li>Switches have finite memory resources and can only learn a certain number of MAC addresses (16K-112K)</li>
+<li>Creating layer 2 segments limits the number of MAC address each switch needs to learn</li>
+</ul>
+</li>
+<li>Segmenting creates smaller failure domains<ul>
+<li>It is easier to troubleshoot an issue when you can easily identify the scope</li>
+</ul>
+</li>
+</ul>
+<p><strong>Security</strong></p>
+<ul>
+<li>Segmentation makes it easier to control communication between hosts<ul>
+<li>Rather than being able to communicate directly, hosts in different subnets must communicate through a router (and possibly a firewall), which may apply security policy.</li>
+</ul>
+</li>
+<li>Segmentation helps avoid spoofing or impersonation<ul>
+<li>Hosts in one subnet cannot easily impersonate hosts in another subnet</li>
+</ul>
+</li>
+</ul>
+<p><strong>Organization and management</strong></p>
+<ul>
+<li>Segmentation helps to keep the network organized</li>
+<li>Grouping similar devices or users together makes it easier to apply the correct policies</li>
+</ul>
+<h2 id="how-to-segment">How to segment?</h2>
+<p><strong>Layer 2 – VLAN</strong></p>
+<ul>
+<li>VLAN allows a single switch to handle multiple separate layer 2 segments</li>
+<li>VLAN tagging is implemented as an additional header in the layer 2 frame<ul>
+<li>12-bit header field, permitting 4094 VLAN IDs (0 and 4095 are reserved)</li>
+</ul>
+</li>
+<li>Layer 2 frames may be tagged or untagged<ul>
+<li>A tagged frame has a VLAN ID in the range of 1 - 4094 in the header</li>
+<li>An untagged frame has no VLAN ID in the frame header</li>
+</ul>
+</li>
+</ul>
+<p><strong>Layer 3 – IP subnetting</strong></p>
+<ul>
+<li>A unique IP subnet is defined and assigned to each layer 2 segment</li>
+<li>A router is required for communication between subnets</li>
+</ul>
+<h2 id="what-to-segment">What to segment?</h2>
+<p>Functions that should be segmented:</p>
+<ul>
+<li>Infrastructure<ul>
+<li>Network management</li>
+<li>Server management</li>
+<li>DMZ servers</li>
+<li>Internal servers</li>
+<li>Printers</li>
+<li>Security cameras</li>
+<li>Security devices / building access control</li>
+<li>HVAC and building automation</li>
+<li>Phones and phone systems</li>
+</ul>
+</li>
+<li>Users<ul>
+<li>Administrative users – wired</li>
+<li>Administrative users – wireless</li>
+<li>Faculty/staff – wired</li>
+<li>Faculty/staff – wireless</li>
+<li>Students – wired</li>
+<li>Students – wireless</li>
+<li>Guests – wired</li>
+<li>Guests – wireless</li>
+</ul>
+</li>
+</ul>
+<p><strong>Each building/campus should be segmented from the others</strong></p>
+<h2 id="ip-address-management-subnet-planning">IP Address Management / Subnet Planning</h2>
+<p><strong>Subnet size</strong></p>
+<ul>
+<li>IPv4<ul>
+<li>Large enough to accommodate all unique devices that will connect to the subnet within 24-48 hours</li>
+<li>Typically no smaller than /24 (253 host addresses)</li>
+<li>Ideally no larger than /20 (4093 host addresses)</li>
+</ul>
+</li>
+<li>IPv6<ul>
+<li>Always /64 (18 billion billion host addresses)</li>
+</ul>
+</li>
+</ul>
+<p><strong>Allocating address space</strong></p>
+<p>TTL School District:</p>
+<ul>
+<li>6 buildings (2 large, 4 small)</li>
+<li>3,500 students</li>
+</ul>
+<p>How much IP address space should be allocated to each building and to the district?</p>
+<ul>
+<li>IPv4: depends on building population<ul>
+<li>Per-building enrollment:<ul>
+<li>HS - 1400 - /18</li>
+<li>MS - 700 - /18</li>
+<li>EL1 - 350 - /19</li>
+<li>EL2 - 350 - /19</li>
+<li>EL3 - 350 - /19</li>
+<li>EL4 - 350 - /19</li>
+</ul>
+</li>
+<li>Total needed: /16</li>
+</ul>
+</li>
+<li>IPv6: /48 per building (standard allocation - enough for 64K subnets)<ul>
+<li>Total needed: /44 (enough for 16 buildings)</li>
+</ul>
+</li>
+</ul>
+<p><strong>Example IPAM</strong></p>
+<table>
+<thead>
+<tr>
+<th>Building</th>
+<th>IPv4</th>
+<th>IPv6</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>HS</td>
+<td><code>10.95.0.0/18</code></td>
+<td><code>2620:1d5:9500::/48</code></td>
+</tr>
+<tr>
+<td>MS</td>
+<td><code>10.95.64.0/18</code></td>
+<td><code>2620:1d5:9501::/48</code></td>
+</tr>
+<tr>
+<td>EL1</td>
+<td><code>10.95.128.0/19</code></td>
+<td><code>2620:1d5:9502::/48</code></td>
+</tr>
+<tr>
+<td>EL2</td>
+<td><code>10.95.160.0/19</code></td>
+<td><code>2620:1d5:9503::/48</code></td>
+</tr>
+<tr>
+<td>EL3</td>
+<td><code>10.95.192.0/19</code></td>
+<td><code>2620:1d5:9504::/48</code></td>
+</tr>
+<tr>
+<td>EL4</td>
+<td><code>10.95.224.0/19</code></td>
+<td><code>2620:1d5:9505::/48</code></td>
+</tr>
+</tbody>
+</table>
+<p><strong>HS</strong></p>
+<table>
+<thead>
+<tr>
+<th>VLAN ID</th>
+<th>Name</th>
+<th>IPv4</th>
+<th>IPv6</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1100</td>
+<td>Network Management</td>
+<td><code>10.95.1.0/24</code></td>
+<td><code>2620:1d5:9500:1100::/64</code></td>
+</tr>
+<tr>
+<td>1101</td>
+<td>Wireless Management</td>
+<td><code>10.95.2.0/23</code></td>
+<td><code>2620:1d5:9500:1101::/64</code></td>
+</tr>
+<tr>
+<td>1102</td>
+<td>Hypervisor Management</td>
+<td><code>10.95.4.0/24</code></td>
+<td><code>2620:1d5:9500:1102::/64</code></td>
+</tr>
+<tr>
+<td>1103</td>
+<td>Servers</td>
+<td><code>10.95.5.0/24</code></td>
+<td><code>2620:1d5:9500:1103::/64</code></td>
+</tr>
+<tr>
+<td>1104</td>
+<td>DMZ</td>
+<td><code>10.95.6.0/24</code></td>
+<td><code>2620:1d5:9500:1104::/64</code></td>
+</tr>
+<tr>
+<td>1200</td>
+<td>Door Access Control</td>
+<td><code>10.95.7.0/24</code></td>
+<td><code>2620:1d5:9500:1200::/64</code></td>
+</tr>
+<tr>
+<td>1201</td>
+<td>Security Cameras</td>
+<td><code>10.95.8.0/23</code></td>
+<td><code>2620:1d5:9500:1201::/64</code></td>
+</tr>
+<tr>
+<td>1202</td>
+<td>HVAC Controls</td>
+<td><code>10.95.10.0/24</code></td>
+<td><code>2620:1d5:9500:1202::/64</code></td>
+</tr>
+<tr>
+<td>1203</td>
+<td>Phones</td>
+<td><code>10.95.12.0/23</code></td>
+<td><code>2620:1d5:9500:1203::/64</code></td>
+</tr>
+<tr>
+<td>1300</td>
+<td>IT Staff</td>
+<td><code>10.95.20.0/24</code></td>
+<td><code>2620:1d5:9500:1300::/64</code></td>
+</tr>
+<tr>
+<td>1301</td>
+<td>Administrative Staff</td>
+<td><code>10.95.21.0/24</code></td>
+<td><code>2620:1d5:9500:1301::/64</code></td>
+</tr>
+<tr>
+<td>1302</td>
+<td>Staff Wired</td>
+<td><code>10.95.22.0/23</code></td>
+<td><code>2620:1d5:9500:1302::/64</code></td>
+</tr>
+<tr>
+<td>1303</td>
+<td>Student Wired</td>
+<td><code>10.95.24.0/22</code></td>
+<td><code>2620:1d5:9500:1303::/64</code></td>
+</tr>
+<tr>
+<td>1400</td>
+<td>Staff Wireless</td>
+<td><code>10.95.28.0/22</code></td>
+<td><code>2620:1d5:9500:1400::/64</code></td>
+</tr>
+<tr>
+<td>1401</td>
+<td>Student Wireless</td>
+<td><code>10.95.32.0/20</code></td>
+<td><code>2620:1d5:9500:1401::/64</code></td>
+</tr>
+<tr>
+<td>1402</td>
+<td>Guest Wireless</td>
+<td><code>10.95.48.0/20</code></td>
+<td><code>2620:1d5:9500:1402::/64</code></td>
+</tr>
+</tbody>
+</table>
+<p><strong>MS</strong></p>
+<table>
+<thead>
+<tr>
+<th>VLAN ID</th>
+<th>Name</th>
+<th>IPv4</th>
+<th>IPv6</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1100</td>
+<td>Network Management</td>
+<td><code>10.95.65.0/24</code></td>
+<td><code>2620:1d5:9501:1100::/64</code></td>
+</tr>
+<tr>
+<td>1101</td>
+<td>Wireless Management</td>
+<td><code>10.95.66.0/23</code></td>
+<td><code>2620:1d5:9501:1101::/64</code></td>
+</tr>
+<tr>
+<td>1102</td>
+<td>Hypervisor Management</td>
+<td><code>10.95.68.0/24</code></td>
+<td><code>2620:1d5:9501:1102::/64</code></td>
+</tr>
+<tr>
+<td>1103</td>
+<td>Servers</td>
+<td><code>10.95.69.0/24</code></td>
+<td><code>2620:1d5:9501:1103::/64</code></td>
+</tr>
+<tr>
+<td>1104</td>
+<td>DMZ</td>
+<td><code>10.95.70.0/24</code></td>
+<td><code>2620:1d5:9501:1104::/64</code></td>
+</tr>
+<tr>
+<td>1200</td>
+<td>Door Access Control</td>
+<td><code>10.95.71.0/24</code></td>
+<td><code>2620:1d5:9501:1200::/64</code></td>
+</tr>
+<tr>
+<td>1201</td>
+<td>Security Cameras</td>
+<td><code>10.95.72.0/23</code></td>
+<td><code>2620:1d5:9501:1201::/64</code></td>
+</tr>
+<tr>
+<td>1202</td>
+<td>HVAC Controls</td>
+<td><code>10.95.74.0/24</code></td>
+<td><code>2620:1d5:9501:1202::/64</code></td>
+</tr>
+<tr>
+<td>1203</td>
+<td>Phones</td>
+<td><code>10.95.76.0/23</code></td>
+<td><code>2620:1d5:9501:1203::/64</code></td>
+</tr>
+<tr>
+<td>1300</td>
+<td>IT Staff</td>
+<td><code>10.95.84.0/24</code></td>
+<td><code>2620:1d5:9501:1300::/64</code></td>
+</tr>
+<tr>
+<td>1301</td>
+<td>Administrative Staff</td>
+<td><code>10.95.85.0/24</code></td>
+<td><code>2620:1d5:9501:1301::/64</code></td>
+</tr>
+<tr>
+<td>1302</td>
+<td>Staff Wired</td>
+<td><code>10.95.86.0/23</code></td>
+<td><code>2620:1d5:9501:1302::/64</code></td>
+</tr>
+<tr>
+<td>1303</td>
+<td>Student Wired</td>
+<td><code>10.95.88.0/22</code></td>
+<td><code>2620:1d5:9501:1303::/64</code></td>
+</tr>
+<tr>
+<td>1400</td>
+<td>Staff Wireless</td>
+<td><code>10.95.90.0/22</code></td>
+<td><code>2620:1d5:9501:1400::/64</code></td>
+</tr>
+<tr>
+<td>1401</td>
+<td>Student Wireless</td>
+<td><code>10.95.96.0/20</code></td>
+<td><code>2620:1d5:9501:1401::/64</code></td>
+</tr>
+<tr>
+<td>1402</td>
+<td>Guest Wireless</td>
+<td><code>10.95.112.0/20</code></td>
+<td><code>2620:1d5:9501:1402::/64</code></td>
+</tr>
+</tbody>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Footer" >
+        
+          
+          <a href="../" class="md-footer__link md-footer__link--prev" aria-label="Previous: Introduction">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              <div class="md-ellipsis">
+                Introduction
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../200-routing/" class="md-footer__link md-footer__link--next" aria-label="Next: Routing">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              <div class="md-ellipsis">
+                Routing
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4Z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright © 2024 Dan Baker
+    </div>
+  
+  
+</div>
+      
+        <div class="md-social">
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://www.linkedin.com/in/dsbaker1/" target="_blank" rel="noopener" title="www.linkedin.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3zM135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5 0 21.3-17.2 38.5-38.5 38.5zm282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9V416z"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.tabs", "toc.integrate", "navigation.footer", "navigation.tracking", "navigation.prune", "content.code.copy", "content.code.annotate"], "search": "../../../assets/javascripts/workers/search.b8dbb3d2.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.a7c05c9e.min.js"></script>
+      
+    
+  <script>document$.subscribe(() => {const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});})</script></body>
+</html>
