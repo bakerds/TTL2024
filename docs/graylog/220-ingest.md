@@ -20,7 +20,7 @@
 </div>
 
 <div markdown="1" style="clear: both; padding: 5px 0">
-### Create API Token
+### Create Sidecar API Token
 ![](images/graylog-sidecars-api-token.png){ style="float: right; clear: both; padding: 5px; width: 400px"; data-description='Click on "Create or reuse a token for the graylog-sidecar user"' }
 ![](images/graylog-sidecars-api-token2.png){ style="float: right; clear: both; padding: 5px; width: 400px"; data-description='Enter a name and create the token' }
 
@@ -41,7 +41,7 @@
 ![](images/sidecar-installer.png){ style="float: right; clear: both; padding: 5px; width: 400px"; data-description='Enter Graylog API URL and API token during installation' }
 
 - Download the latest Sidecar installer from <https://github.com/Graylog2/collector-sidecar/releases>{:target="_blank"}
-- Run the Sidecare installer on NPS servers
+- Run the Sidecar installer on NPS servers
 - Provide the URL your Graylog server's API endpoint and API token during installation
 </div>
 <div markdown="1" style="clear: both; padding: 5px 0; overflow: hidden">
@@ -60,8 +60,10 @@
 
 - Navigate to System > Sidecars
 - Navigate to the *Configuration* tab and click *Create Configuration*
-- Enter a Name, choose the "filebeat for Windows" Collector, and input the configuration
+- Enter a Name, choose the "filebeat on Windows" Collector, and input the configuration text below.
+- Click *Create configuration*
 
+Configuration:
 ```yaml
 # Needed for Graylog
 fields_under_root: true

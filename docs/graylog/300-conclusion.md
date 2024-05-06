@@ -7,8 +7,7 @@
 - [X] **Process**: parse log messages using Graylog Extractors and Pipelines
 - [X] **Aggregate**: make log data useful for meaningful viewing
 
-**Takeaway**: be able to apply a similar process to other sources of log messages and make use of more data from your environment
-
+&nbsp; :medal: **Takeaway**: be able to apply a similar process to other sources of log messages and make use of more data from your environment
 !!! question "Feedback"
 	Can you think of applications for this type of log collection and aggregation in your network?
 	
